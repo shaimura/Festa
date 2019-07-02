@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_02_014014) do
+ActiveRecord::Schema.define(version: 2019_07_02_113852) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,6 +28,25 @@ ActiveRecord::Schema.define(version: 2019_07_02_014014) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "festivals", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "organization_id"
+    t.integer "area", default: 0, null: false
+    t.string "address"
+    t.string "web_url"
+    t.string "profile"
+    t.date "date"
+    t.string "traffic"
+    t.string "fes_imag_id"
+    t.integer "staff_status", default: 0, null: false
+    t.float "longitude"
+    t.float "latitude"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_festivals_on_deleted_at"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -51,6 +70,18 @@ ActiveRecord::Schema.define(version: 2019_07_02_014014) do
     t.index ["deleted_at"], name: "index_organizations_on_deleted_at"
     t.index ["email"], name: "index_organizations_on_email", unique: true
     t.index ["reset_password_token"], name: "index_organizations_on_reset_password_token", unique: true
+  end
+
+  create_table "staffs", force: :cascade do |t|
+    t.string "last_name"
+    t.string "first_name"
+    t.string "postalcode"
+    t.string "address"
+    t.datetime "deleted_at"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_staffs_on_deleted_at"
   end
 
   create_table "users", force: :cascade do |t|
