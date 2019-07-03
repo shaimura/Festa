@@ -6,9 +6,6 @@
 <%= festival.label :area, "地域" %>
 <%= festival.select :area, Festival.areas.keys.map{|area| [area, area]} %>
 
-<%= festival.label :address, "住所" %>
-<%= festival.text_field :address %>
-
 <%= festival.label :web_url, "サイトURL" %>
 <%= festival.text_field :web_url %>
 
@@ -17,6 +14,18 @@
 
 <%= festival.label :date, "開催日" %>
 <%= festival.text_field :date, class: "date-picker" %>
+
+<%= festival.label :address, "住所" %>
+<%= festival.text_field :address %>
+
+<%= festival.label :traffic, "交通情報" %>
+<%= festival.text_field :traffic %>
+
+<%= festival.label :staff_status, "スタッフ募集" %>
+<%= festival.select :staff_status, Festival.staff_statuses.keys.map{|staff| [staff, staff]} %>
+
+<%= festival.submit "登録" %>
+
 
 <% end %>
 
