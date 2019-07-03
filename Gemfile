@@ -69,3 +69,4 @@ gem "refile-mini_magick"
 gem 'kaminari', '~> 1.1.1'
 gem 'pry-rails'
 gem "paranoia", "~> 2.0"
+gem 'jquery-ui-rails'

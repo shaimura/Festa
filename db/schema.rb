@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_02_113852) do
+ActiveRecord::Schema.define(version: 2019_07_02_154011) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -81,6 +81,8 @@ ActiveRecord::Schema.define(version: 2019_07_02_113852) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "total_point", default: 0, null: false
+    t.integer "use_point", default: 0, null: false
     t.index ["deleted_at"], name: "index_staffs_on_deleted_at"
   end
 

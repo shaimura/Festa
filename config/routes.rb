@@ -26,11 +26,13 @@ Rails.application.routes.draw do
   root 'homes#top'
 
 
+  resources :admins
+
   resources :users do
     resources :staffs
   end
 
   resources :organizations
-  resources :admins
+  resources :festivals
 
 end
