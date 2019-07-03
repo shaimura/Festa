@@ -1,0 +1,25 @@
+<%= form_for @festival do |festival| %>
+
+<%= festival.label :name, "お祭りの名前" %>
+<%= festival.text_field :name %>
+
+<%= festival.label :area, "地域" %>
+<%= festival.select :area, Festival.areas.keys.map{|area| [area, area]} %>
+
+<%= festival.label :address, "住所" %>
+<%= festival.text_field :address %>
+
+<%= festival.label :web_url, "サイトURL" %>
+<%= festival.text_field :web_url %>
+
+<%= festival.label :profile, "お祭りPR" %>
+<%= festival.text_area :profile %>
+
+<%= festival.label :date, "開催日" %>
+<%= festival.text_field :date, class: "date-picker" %>
+
+<% end %>
+
+
+
+
