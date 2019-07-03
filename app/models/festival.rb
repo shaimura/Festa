@@ -1,8 +1,12 @@
 class Festival < ApplicationRecord
 
-	belongs_to :organizatio
+	acts_as_paranoid
+
+	belongs_to :organization
 
 	geocoded_by :address
+
+	attachment :image
 
 	after_validation :geocode, if: lambda{|obj| obj.address_changed?}
 

@@ -24,7 +24,10 @@
 <%= festival.label :staff_status, "スタッフ募集" %>
 <%= festival.select :staff_status, Festival.staff_statuses.keys.map{|staff| [staff, staff]} %>
 
-<%= festival.submit "登録" %>
+<%= festival.label :image, "お祭りイメージ画像" %>
+<%= festival.attachment_field :image %>
+
+<%= festival.submit %>
 
 
 <% end %>

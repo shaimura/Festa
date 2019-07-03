@@ -5,6 +5,12 @@ class FestivalsController < ApplicationController
   end
 
   def show
+     @festival = Festival.find(params[:id])
+    results = Geocoder.search(@festival.address)
+    @let = results.lat
+    @lon = results.lon
+
+
   end
 
   def index
@@ -14,15 +20,15 @@ class FestivalsController < ApplicationController
   end
 
   def create
-    @festival = Festival.new
+    @festival = Festival.new(festival_params)
     @festival.organization_id = 1
-    @festival.save
+    @festival.save!
     redirect_to root_path
   end
 
   def map
+    @festival = Festival.find(params[:id])
   	results = Geocoder.search(params[:address])
-  	@latlng = results.first.coordinates
 
 
   	respond_to do |format|
@@ -33,6 +39,6 @@ class FestivalsController < ApplicationController
   protected
 
   def festival_params
-  	params.require(:festival).permit(:name, :organization_id, :area, :address, :web_url, :profile, :fes_imag, :staff_status, :longitude, :latitude)
+  	params.require(:festival).permit(:id, :name, :organization_id, :area, :address, :web_url, :profile, :image, :staff_status, :date, :traffic)
   end
 end
