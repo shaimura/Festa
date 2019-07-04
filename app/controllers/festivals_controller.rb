@@ -6,7 +6,7 @@ class FestivalsController < ApplicationController
 
   def show
      @festival = Festival.find(params[:id])
-
+     @latlng = Geocoder.search(params[@festival.address])
 
   end
 
@@ -24,13 +24,6 @@ class FestivalsController < ApplicationController
   end
 
   def map
-    @festival = Festival.find(params[:id])
-  	results = Geocoder.search(params[:address])
-
-
-  	respond_to do |format|
-  		format.js
-  	end
   end
 
   protected

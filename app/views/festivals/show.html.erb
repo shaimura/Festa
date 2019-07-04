@@ -1,36 +1,64 @@
-<div id='map'></div>
+<div class="container">
+	<div class="row">
 
-<style>
-#map{
-  height: 300px;
-  width: 300px
-}
-</style>
+<h1> <%= @festival.name %> </h1>
+
+<div><%= attachment_image_tag @festival,:image, :fill,400,400 %></div>
+
+<h4>開催地域 <%= @festival.area %></h4>
+
+<h4> 開 催 日 <%= @festival.date %></h4>
 
 
+<h4> 開催場所 <%= @festival.address %></h4>
+
+<div class='map' id="map"></div>
+
+<h4> 交通情報 <%= @festival.traffic %></h4>
+
+<h4> スタッフ募集状況 <%= @festival.staff_status %> </h4>
+
+<h4> PR <%= @festival.profile %></h4>
+
+<h4> 関連サイト <%= @festival.web_url %></h4>
+
+</div>
+</div>
 
 <script>
-	let mapInstance;  //この変数はmap.js.erbでも使う
+
+	let map;
+	let geocoder;
 	let marker;
-	let center = {lat: <%= @festival.latitude %>, lng: <%= @festival.longitude %>}
 
+	function initMap(){
+		var geocoder = new google.maps.Geocoder();
+		var map = document.getElementById('map');
 
-function initMap(){
-  mapInstance = new google.maps.Map(document.getElementById('map'), {
-  center: center,
-  zoom: 15,
-  });
-  marker = new google.maps.Marker({
-		   map: mapInstance,
-		   position: center,
-	});
-}
+		geocoder.geocode({ address: '<%= @festival.address %>' },function(results,status){
+			if (status == 'OK' && results[0]){
+				map = new google.maps.Map(map,{
+					center: results[0].geometry.location,
+					zoom: 15,
+				});
+				var marker = new google.maps.Marker({
+					map: map,
+					position: results[0].geometry.location,
+				});
+			}else{
+				alert('失敗しました。理由：' + status);
+			return;
+			}
+		});
 
+	}
 
 
 </script>
 
-<%= @festival.name %>
-<%= @festival.longitude %>
+
+
+
+
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM3X900YOUbEJiQe9DnUJYZFoUzVhCVd4&callback=initMap" async defer></script>
