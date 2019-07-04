@@ -4,11 +4,13 @@ class Festival < ApplicationRecord
 
 	belongs_to :organization
 
-	geocoded_by :address
-
 	attachment :image
 
-	after_validation :geocode, if: lambda{|obj| obj.address_changed?}
+	geocoded_by :address, latitude: :latitude, longitude: :longitude
+
+	after_validation :geocode, if: :address_changed?
+
+
 
 	enum area:{北海道: 0, 東北: 1, 関東: 2, 中部: 3, 近畿: 4, 中国: 5, 四国: 6, 沖縄: 7}
 

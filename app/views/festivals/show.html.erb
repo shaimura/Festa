@@ -2,24 +2,35 @@
 
 <style>
 #map{
-  height: 400px;
+  height: 300px;
+  width: 300px
 }
 </style>
 
 
 
 <script>
-	let mapInstance  //この変数はmap.js.erbでも使う
+	let mapInstance;  //この変数はmap.js.erbでも使う
+	let marker;
+	let center = {lat: <%= @festival.latitude %>, lng: <%= @festival.longitude %>}
 
 
 function initMap(){
   mapInstance = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: @let, lng: @lon},
-  zoom: 8
+  center: center,
+  zoom: 15,
   });
+  marker = new google.maps.Marker({
+		   map: mapInstance,
+		   position: center,
+	});
 }
 
 
 
 </script>
+
+<%= @festival.name %>
+<%= @festival.longitude %>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM3X900YOUbEJiQe9DnUJYZFoUzVhCVd4&callback=initMap" async defer></script>

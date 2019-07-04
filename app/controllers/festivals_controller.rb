@@ -6,9 +6,6 @@ class FestivalsController < ApplicationController
 
   def show
      @festival = Festival.find(params[:id])
-    results = Geocoder.search(@festival.address)
-    @let = results.lat
-    @lon = results.lon
 
 
   end
@@ -39,6 +36,6 @@ class FestivalsController < ApplicationController
   protected
 
   def festival_params
-  	params.require(:festival).permit(:id, :name, :organization_id, :area, :address, :web_url, :profile, :image, :staff_status, :date, :traffic)
+  	params.require(:festival).permit(:id, :name, :organization_id, :area, :address, :web_url, :profile, :image, :staff_status, :date, :traffic, :longitude, :latitude)
   end
 end
