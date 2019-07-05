@@ -1,29 +1,91 @@
-<div class="container">
+<%= render 'layouts/header' %>
+<body class="festival_show">
+
+<div class="container" style="background-color: rgba(192,237,232,0.5);">
+<div style="background-color: rgba(192,237,232,0.5);">
 	<div class="row">
 
-<h1> <%= @festival.name %> </h1>
-
-<div><%= attachment_image_tag @festival,:image, :fill,400,400 %></div>
-
-<h4>開催地域 <%= @festival.area %></h4>
-
-<h4> 開 催 日 <%= @festival.date %></h4>
+<div style="text-align: center; margin: 30px;">
+	<h1> <%= @festival.name %> </h1>
+	<h4> 開 催 日 <%= @festival.date %></h4>
+</div>
 
 
-<h4> 開催場所 <%= @festival.address %></h4>
 
-<div class='map' id="map"></div>
+</div>
 
-<h4> 交通情報 <%= @festival.traffic %></h4>
+<div class="col-lg-6">
+	<div style="margin: 20px;">
+	<%= attachment_image_tag @festival,:image, :fill,500,650 %>
+	</div>
+</div>
 
-<h4> スタッフ募集状況 <%= @festival.staff_status %> </h4>
+<div class="col-lg-6">
+	<div style="margin: 20px 30px 10px 0;">
+	<table class="table">
+	<thead>
+		<tr>
+			<th colspan="2" style="text-align: center; font-size: 24px;">お祭り情報</th>
+		</tr>
+	</thead>
+	<tr style="font-size: 18px;">
+		<td>名称</td>
+		<td> <%= @festival.name %> </td>
+	</tr>
+	<tr style="font-size: 18px;">
+		<td>スタッフ募集状況</td>
+		<td> <%= @festival.staff_status %> </td>
+	</tr>
+	<tr style="font-size: 18px;">
+		<td>開催日</td>
+		<td> <%= @festival.date %> </td>
+	</tr>
+	<tr style="font-size: 18px;">
+		<td>主催</td>
+		<td> <%=  %> </td>
+	</tr>
+	<tr style="font-size: 18px;">
+		<td>アクセス</td>
+		<td> <%= @festival.traffic %> </td>
+	</tr>
+	<tr style="font-size: 18px;">
+		<td>関連サイト</td>
+		<td> <%= @festival.web_url %> </td>
+	</tr>
+	<tr style="font-size: 18px;">
+		<td>開催場所</td>
+		<td> <%= @festival.address %> </td>
+	</tr>
+	<tr>
+		<td colspan="2" class='map' id="map"></td>
+	</tr>
+</table>
+</div>
 
-<h4> PR <%= @festival.profile %></h4>
+</div>
 
-<h4> 関連サイト <%= @festival.web_url %></h4>
+	<table>
+		<thead>
+			<tr> お祭りPR </tr>
+		</thead>
+		<tbody>
+			<td> <%= @festival.profile %> </td>
+		</tbody>
+	</table>
+
 
 </div>
 </div>
+
+
+</body>
+
+
+
+
+
+
+<!-- マップ表示 -->
 
 <script>
 
@@ -39,7 +101,7 @@
 			if (status == 'OK' && results[0]){
 				map = new google.maps.Map(map,{
 					center: results[0].geometry.location,
-					zoom: 15,
+					zoom: 16,
 				});
 				var marker = new google.maps.Marker({
 					map: map,

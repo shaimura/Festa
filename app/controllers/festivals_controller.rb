@@ -6,7 +6,7 @@ class FestivalsController < ApplicationController
 
   def show
      @festival = Festival.find(params[:id])
-     @latlng = Geocoder.search(params[@festival.address])
+     @organization = @festival.organization
 
   end
 
@@ -18,13 +18,11 @@ class FestivalsController < ApplicationController
 
   def create
     @festival = Festival.new(festival_params)
-    @festival.organization_id = 1
+    @festival.organization = current_organization
     @festival.save!
     redirect_to root_path
   end
 
-  def map
-  end
 
   protected
 
