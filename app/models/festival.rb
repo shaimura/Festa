@@ -1,6 +1,16 @@
 class Festival < ApplicationRecord
 
-	belongs_to :organizatio
+	acts_as_paranoid
+
+	belongs_to :organization
+
+	attachment :image
+
+	geocoded_by :address, latitude: :latitude, longitude: :longitude
+
+	after_validation :geocode, if: :address_changed?
+
+
 
 	enum area:{北海道: 0, 東北: 1, 関東: 2, 中部: 3, 近畿: 4, 中国: 5, 四国: 6, 沖縄: 7}
 
