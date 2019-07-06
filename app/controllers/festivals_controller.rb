@@ -11,6 +11,7 @@ class FestivalsController < ApplicationController
   end
 
   def index
+      @search = Festival.search(params[:search])
   end
 
   def edit

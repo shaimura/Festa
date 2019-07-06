@@ -1,2 +1,9 @@
-<h1>Festivals#index</h1>
-<p>Find me in app/views/festivals/index.html.erb</p>
+
+
+<!-- 検索機能拡張 -->
+<% @search.each do |festival| %>
+
+	<%= festival.name %>
+	<%= attachment_image_tag festival,:image, :fill,300,300 %>
+
+<% end %>

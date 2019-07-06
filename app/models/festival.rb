@@ -16,4 +16,15 @@ class Festival < ApplicationRecord
 
 	enum staff_status:{募集中: 0, 募集していません: 1}
 
+
+
+	# 検索機能
+	def self.search(search)
+		if search
+			Festival.where(["name LIKE ? or area LIKE ?", "%#{search}%", "%#{search}%"])
+		else
+			Festival.all
+		end
+	end
+
 end

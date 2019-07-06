@@ -14,9 +14,13 @@
 		<ul class="nav navbar-nav navbar-center" style="margin: 25px 30px 0 30px;">
 			<li class="heder_li">
 				<div class="search">
-					
+					<%= form_tag(festivals_path, :method => 'get' ) do %>
+					<p>
+						<%= text_field_tag :search %>
+						<%= submit_tag '検索', :name => nil %>
+					</p>
+					<% end %>
 				</div>
-				検索フォーム
 			</li>
 			<li class="pointa heder_li">
 				エリアから探す
