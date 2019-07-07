@@ -11,6 +11,18 @@ class FestivalsController < ApplicationController
   end
 
   def index
+      @search = Festival.search_name(params[:search_name])
+      @festivals = Festival.all
+  end
+
+  def area
+    @search = Festival.search_area(params[:search_area])
+    @festivals = Festival.all
+  end
+
+  def date
+    @search = Festival.search_date(params[:search_date])
+    @festivals = Festival.all
   end
 
   def edit

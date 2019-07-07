@@ -1,5 +1,5 @@
 <header>
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default" >
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -12,22 +12,59 @@
 
 	<nav>
 		<ul class="nav navbar-nav navbar-center" style="margin: 25px 30px 0 30px;">
-			<li style="margin: 0px 20px 0 20px; font-size: 24px;">
-				検索フォーム
+			<li class="heder_li">
+				<div class="search">
+					<%= form_tag(festivals_path, :method => 'get') do %>
+					<p>
+						<%= text_field_tag :search %>
+						<%= submit_tag '検索', :name => nil %>
+					</p>
+					<% end %>
+				</div>
 			</li>
-			<li style="margin: 0px 20px 0 20px; font-size: 24px;">
+			<li class="pointa heder_li" onclick="Balloon()">
 				エリアから探す
+					<%= form_tag(festivals_area_path, :method => 'get') do %>
+					<ul class="balloon1" id="makeimg">
+						<li> <%= link_to "北海道", festivals_area_path(search_area: 0) %> </li>
+						<li> <%= link_to "東北", festivals_area_path(search_area: 1) %> </li>
+						<li> <%= link_to "関東", festivals_area_path(search_area: 2) %> </li>
+						<li> <%= link_to "中部", festivals_area_path(search_area: 3) %> </li>
+						<li> <%= link_to "近畿", festivals_area_path(search_area: 4) %> </li>
+						<li> <%= link_to "中国", festivals_area_path(search_area: 5) %> </li>
+						<li> <%= link_to "四国", festivals_area_path(search_area: 6) %> </li>
+						<li> <%= link_to "沖縄", festivals_area_path(search_area: 7) %> </li>
+					</ul>
+					<% end %>
 			</li>
-			<li style="margin: 0px 20px 0 20px; font-size: 24px;">
+			<li class="pointa heder_li">
 				開催月から探す
+				<span class="balloon1">
+					<%= form_tag(festivals_date_path, :method => 'get') do %>
+					<ul>
+						<li> <%= link_to "1月", festivals_date_path(search_date: 1 ) %> </li>
+						<li> <%= link_to "2月", festivals_date_path(search_date: 2 ) %> </li>
+						<li> <%= link_to "3月", festivals_date_path(search_date: 3 ) %> </li>
+						<li> <%= link_to "4月", festivals_date_path(search_date: 4 ) %> </li>
+						<li> <%= link_to "5月", festivals_date_path(search_date: 5 ) %> </li>
+						<li> <%= link_to "6月", festivals_date_path(search_date: 6 ) %> </li>
+						<li> <%= link_to "7月", festivals_date_path(search_date: 7 ) %> </li>
+						<li> <%= link_to "8月", festivals_date_path(search_date: 8 ) %> </li>
+						<li> <%= link_to "9月", festivals_date_path(search_date: 9 ) %> </li>
+						<li> <%= link_to "10月", festivals_date_path(search_date: 10 ) %> </li>
+						<li> <%= link_to "11月", festivals_date_path(search_date: 11 ) %> </li>
+						<li> <%= link_to "12月", festivals_date_path(search_date: 12 ) %> </li>
+					</ul>
+					<% end %>
+				</span>
 			</li>
-			<li style="margin: 0px 20px 0 20px; font-size: 24px;">
+			<li class="heder_li">
 				スタッフ
 			</li>
-			<li style="margin: 0px 20px 0 20px; font-size: 24px;">
+			<li class="heder_li">
 				団体
 			</li>
-			<li style="margin: 0px 20px 0 20px; font-size: 24px;">
+			<li class="heder_li">
 				ユーザー
 			</li>
 		</ul>

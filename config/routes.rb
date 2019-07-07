@@ -24,8 +24,9 @@ Rails.application.routes.draw do
 
   get 'homes/top'
   root 'homes#top'
+  get 'festivals/area'
+  get 'festivals/date'
 
-  get '/map_request', to: 'festivals#map', as: 'map_request'
 
 
   resources :admins

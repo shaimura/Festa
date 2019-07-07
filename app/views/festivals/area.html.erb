@@ -1,0 +1,8 @@
+<!-- 検索結果 -->
+<% @search.each do |festival| %>
+
+	<%= festival.name %>
+	<%= attachment_image_tag festival,:image, :fill,300,300 %>
+
+<% end %>
+

@@ -1,5 +1,3 @@
-
-
 <!-- 検索結果 -->
 <% @search.each do |festival| %>
 
@@ -9,8 +7,10 @@
 <% end %>
 
 
-<!-- 検索結果が０件ならば -->
-<% if Festival.name.present? %>
+
+<h2>確認用</h2>
+
+<% if @search.present? %>
 
 	<% @festivals.each do |f| %>
 
