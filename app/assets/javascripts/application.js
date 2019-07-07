@@ -19,3 +19,15 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+
+//$(function Balloon(){
+//	 var wObjballoon = document.getElementById("makeimg");
+//	  if (wObjballoon.className == "balloon1"){
+//		wObjballoon.className = "balloon";
+//	}else{
+//		wObjballoon.className = "balloon1";
+//	}
+//});
+
+
