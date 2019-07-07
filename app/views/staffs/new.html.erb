@@ -1,2 +1,21 @@
-<h1>Staffs#new</h1>
-<p>Find me in app/views/staffs/new.html.erb</p>
+<h1>スタッフ登録をしてお祭りに参加しよう!!</h1>
+
+
+
+
+<%= form_for @staff do |staff| %>
+
+<h2>スタッフ登録フォーム</h2>
+
+
+<%= staff.label :last_name, "姓" %>
+<%= staff.text_field :last_name %>
+
+<%= staff.label :fast_name, "名" %>
+<%= staff.text_field :last_name %>
+
+<%= staff.label :postalcode, "郵便番号" %>
+<%= staff.text_field :postalcode %>
+
+<%= staff.label :address, "住所" %>
+<%= staff.text_field :address %>
