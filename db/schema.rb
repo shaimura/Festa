@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_08_050218) do
+ActiveRecord::Schema.define(version: 2019_07_08_083516) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -49,6 +49,21 @@ ActiveRecord::Schema.define(version: 2019_07_08_050218) do
     t.index ["deleted_at"], name: "index_festivals_on_deleted_at"
   end
 
+  create_table "matches", force: :cascade do |t|
+    t.integer "festival_id"
+    t.integer "staff_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "present_id"
+    t.integer "staff_id"
+    t.integer "order_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -70,6 +85,24 @@ ActiveRecord::Schema.define(version: 2019_07_08_050218) do
     t.index ["deleted_at"], name: "index_organizations_on_deleted_at"
     t.index ["email"], name: "index_organizations_on_email", unique: true
     t.index ["reset_password_token"], name: "index_organizations_on_reset_password_token", unique: true
+  end
+
+  create_table "points", force: :cascade do |t|
+    t.integer "festival_id"
+    t.integer "staff_id"
+    t.integer "plus_point", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "presents", force: :cascade do |t|
+    t.string "product"
+    t.string "product_image_id"
+    t.integer "use_point", default: 0, null: false
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_presents_on_deleted_at"
   end
 
   create_table "staffs", force: :cascade do |t|

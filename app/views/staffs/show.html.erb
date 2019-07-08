@@ -7,15 +7,12 @@
 			<h1 class="staff"> <strong> スタッフページ </strong> </h1>
 
 			<div class="row">
-				<div class="col-lg-7" style="padding: 0 40px 0 40px;">
+				<div class="col-lg-7" style="padding: 30px 50px 30px 40px;">
 
 
-					<div style="margin: 30px 10px 30px 0;">
 				<table class="table">
 					<thead>
-						<tr>
 							<th class="staff-info" colspan="2" style="text-align: center; font-size: 24px;">スタッフ情報</th>
-						</tr>
 					</thead>
 					<tr class="staff-info">
 						<td>名前</td>
@@ -30,19 +27,28 @@
 						<td> 総合 <%= @staff.total_point %> /使用ポイント  <%= @staff.remaining_point %> </td>
 					</tr>
 				</table>
-			</div>
 
 
 				</div>
 
-				<div class="col-lg-5">
-					<h3 class="staff-info"> 参加お祭一覧 </h3>
+				<div class="col-lg-5" style="padding: 30px 50px 30px 40px;">
+					<table>
+						<thead>
+							<th class="staff-info" colspan="2" style="text-align: center; font-size: 24px;">
+							参加お祭一覧
+							</th>
+						</thead>
+						<tr class="staff-info">
+							<td>お祭名</td>
+							<td>開催日</td>
+						</tr>
+					</table>
 				</div>
 
 
 			</div>
 
-			<div class="row">
+			<div>
 				ポイント履歴
 			</div>
 
