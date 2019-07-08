@@ -8,6 +8,8 @@ class FestivalsController < ApplicationController
      @festival = Festival.find(params[:id])
      @organization = @festival.organization
 
+     @matching = Match.new
+
   end
 
   def index
@@ -29,16 +31,16 @@ class FestivalsController < ApplicationController
   end
 
   def create
-    @festival = Festival.new(festival_params)
-    @festival.organization = current_organization
-    @festival.save!
-    redirect_to root_path
+    festival = Festival.new(festival_params)
+    festival.organization = current_organization
+    festival.save!
+    redirect_to festival_path(festival)
   end
 
 
   protected
 
   def festival_params
-  	params.require(:festival).permit(:id, :name, :organization_id, :area, :address, :web_url, :profile, :image, :staff_status, :date, :traffic, :longitude, :latitude)
+  	params.require(:festival).permit(:id, :name, :organization_id, :area, :address, :web_url, :profile, :fes_image, :staff_status, :date, :traffic, :longitude, :latitude)
   end
 end

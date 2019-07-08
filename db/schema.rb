@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_03_164555) do
+ActiveRecord::Schema.define(version: 2019_07_08_093506) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -43,10 +43,25 @@ ActiveRecord::Schema.define(version: 2019_07_03_164555) do
     t.string "traffic"
     t.integer "staff_status", default: 0, null: false
     t.datetime "deleted_at"
-    t.string "image_id"
+    t.string "fes_image_id"
     t.float "longitude"
     t.float "latitude"
     t.index ["deleted_at"], name: "index_festivals_on_deleted_at"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "festival_id"
+    t.integer "staff_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "present_id"
+    t.integer "staff_id"
+    t.integer "order_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -72,6 +87,24 @@ ActiveRecord::Schema.define(version: 2019_07_03_164555) do
     t.index ["reset_password_token"], name: "index_organizations_on_reset_password_token", unique: true
   end
 
+  create_table "points", force: :cascade do |t|
+    t.integer "festival_id"
+    t.integer "staff_id"
+    t.integer "plus_point", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "presents", force: :cascade do |t|
+    t.string "present"
+    t.string "present_image_id"
+    t.integer "use_point", default: 0, null: false
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_presents_on_deleted_at"
+  end
+
   create_table "staffs", force: :cascade do |t|
     t.string "last_name"
     t.string "first_name"
@@ -82,7 +115,8 @@ ActiveRecord::Schema.define(version: 2019_07_03_164555) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "total_point", default: 0, null: false
-    t.integer "use_point", default: 0, null: false
+    t.integer "remaining_point", default: 0, null: false
+    t.string "telephone_number"
     t.index ["deleted_at"], name: "index_staffs_on_deleted_at"
   end
 

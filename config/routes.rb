@@ -30,12 +30,16 @@ Rails.application.routes.draw do
 
 
   resources :admins
+  resources :presents
 
-  resources :users do
-    resources :staffs
-  end
+  resources :users
+  resources :staffs
+
 
   resources :organizations
   resources :festivals
+  resources :matchs
+  resources :points
+
 
 end

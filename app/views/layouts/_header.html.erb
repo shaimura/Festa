@@ -16,16 +16,16 @@
 				<div class="search">
 					<%= form_tag(festivals_path, :method => 'get') do %>
 					<p>
-						<%= text_field_tag :search %>
+						<%= text_field_tag :search_name %>
 						<%= submit_tag '検索', :name => nil %>
 					</p>
 					<% end %>
 				</div>
 			</li>
-			<li class="pointa heder_li" onclick="Balloon()">
-				エリアから探す
+			<li class="heder_li" id="pointa1">
+					エリアから探す
 					<%= form_tag(festivals_area_path, :method => 'get') do %>
-					<ul class="balloon1" id="makeimg">
+					<ul class="list-inline balloon1">
 						<li> <%= link_to "北海道", festivals_area_path(search_area: 0) %> </li>
 						<li> <%= link_to "東北", festivals_area_path(search_area: 1) %> </li>
 						<li> <%= link_to "関東", festivals_area_path(search_area: 2) %> </li>
@@ -37,11 +37,10 @@
 					</ul>
 					<% end %>
 			</li>
-			<li class="pointa heder_li">
-				開催月から探す
-				<span class="balloon1">
+			<li class="heder_li" id="pointa2">
+					開催月から探す
 					<%= form_tag(festivals_date_path, :method => 'get') do %>
-					<ul>
+					<ul class="list-inline balloon2">
 						<li> <%= link_to "1月", festivals_date_path(search_date: 1 ) %> </li>
 						<li> <%= link_to "2月", festivals_date_path(search_date: 2 ) %> </li>
 						<li> <%= link_to "3月", festivals_date_path(search_date: 3 ) %> </li>
@@ -56,7 +55,6 @@
 						<li> <%= link_to "12月", festivals_date_path(search_date: 12 ) %> </li>
 					</ul>
 					<% end %>
-				</span>
 			</li>
 			<li class="heder_li">
 				スタッフ
@@ -78,3 +76,6 @@
 </div>
 </nav>
 </header>
+<script>
+
+</script>
