@@ -1,3 +1,25 @@
 // Place all the styles related to the staffs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.staff_show{
+	background-image: url("青空2.jpg");
+	height: auto;
+    background-size:cover;
+    background-position: center;
+}
+
+.staff-info{
+	font-size: 24px;
+	color: #ffffff;
+	font-weight: 900;
+}
+
+.staff{
+	margin: 20px;
+	text-align: center;
+	font-size: 50px;
+	color: #ffffff;
+}
+

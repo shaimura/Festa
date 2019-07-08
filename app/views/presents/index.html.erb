@@ -1,0 +1,23 @@
+<h1>プレゼント一覧</h1>
+
+<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>画像</th>
+				<th>プレゼント名</th>
+				<th>必要ポイント</th>
+			</tr>
+		</thead>
+			<% @presents.each do |present| %>
+			<tbody>
+			<tr>
+				<td><%=link_to present_path(present.id) do %>
+					<%= attachment_image_tag present, :present_image, :fill, 50, 50, format: 'jpg' %>
+					<% end %>
+					</td>
+				<td><%= present.present %></td>
+                <td><%= present.use_point %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>

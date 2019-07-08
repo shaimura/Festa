@@ -6,7 +6,7 @@ class Festival < ApplicationRecord
 
 	belongs_to :organization
 
-	attachment :image
+	attachment :fes_image
 
 	geocoded_by :address, latitude: :latitude, longitude: :longitude
 
@@ -20,15 +20,16 @@ class Festival < ApplicationRecord
 
 
 
-	# 検索機能
-	def self.search_name(search)
-		if search
-			Festival.where(["name LIKE ?", "%#{search}%"])
+	# 名前検索機能
+	def self.search_name(search_name)
+		if search_name
+			Festival.where(["name LIKE ?", "%#{search_name}%"])
 		else
 			Festival.all
 		end
 	end
 
+	#地域検索機能
 	def self.search_area(search_area)
 		if search_area
 			Festival.where("area LIKE ?", "#{search_area}")
@@ -38,24 +39,29 @@ class Festival < ApplicationRecord
 	end
 
 
+	#開催月検索機能
 	def self.search_date(search_date)
 
 		month = Date.today.month
 		year = Date.today.year
 		day = 1
-
-		mon = search_date.to_i
-
+		search_month = search_date.to_i
 
 
-		if mon < month
-			year += 1
-			date = Date.new(year,mon,day)
+
+		if search_month < month
+				year += 1
+				date = Date.new(year,search_month,day)
+				Festival.where(date: date.in_time_zone.all_month)
+
+		elsif search_month == month
+				Festival.where(date: (Date.today)..(Date.today.end_of_month))
+
 		else
-			date = Date.new(year,mon,day)
+			date = Date.new(year,search_month,day)
+			Festival.where(date: date.in_time_zone.all_month)
 		end
 
-		Festival.where(date: date.in_time_zone.all_month)
 
 
 	end
