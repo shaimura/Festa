@@ -71,6 +71,5 @@ gem 'pry-rails'
 gem "paranoia", "~> 2.0"
 gem 'jquery-ui-rails'
 gem 'acts_as_paranoid', '~> 0.6.0'
-gem 'bootstrap', '~> 4.0.0.alpha6'
 
 gem 'geocoder'
