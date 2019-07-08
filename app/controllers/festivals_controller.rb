@@ -32,7 +32,7 @@ class FestivalsController < ApplicationController
     @festival = Festival.new(festival_params)
     @festival.organization = current_organization
     @festival.save!
-    redirect_to root_path
+    redirect_to festival_path
   end
 
 
