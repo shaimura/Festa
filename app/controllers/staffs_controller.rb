@@ -11,10 +11,10 @@ class StaffsController < ApplicationController
   end
 
   def create
-  	@staff = Staff.new(staff_params)
-  	@staff.user = current_user
-    @staff.save!
-    redirect_to staff_path(@staff)
+  	staff = Staff.new(staff_params)
+  	staff.user = current_user
+    staff.save!
+    redirect_to staff_path(staff)
   end
 
   protected

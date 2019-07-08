@@ -6,7 +6,7 @@ class Festival < ApplicationRecord
 
 	belongs_to :organization
 
-	attachment :image
+	attachment :fes_image
 
 	geocoded_by :address, latitude: :latitude, longitude: :longitude
 

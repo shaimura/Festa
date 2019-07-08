@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_08_083516) do
+ActiveRecord::Schema.define(version: 2019_07_08_093506) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_07_08_083516) do
     t.string "traffic"
     t.integer "staff_status", default: 0, null: false
     t.datetime "deleted_at"
-    t.string "image_id"
+    t.string "fes_image_id"
     t.float "longitude"
     t.float "latitude"
     t.index ["deleted_at"], name: "index_festivals_on_deleted_at"
@@ -96,8 +96,8 @@ ActiveRecord::Schema.define(version: 2019_07_08_083516) do
   end
 
   create_table "presents", force: :cascade do |t|
-    t.string "product"
-    t.string "product_image_id"
+    t.string "present"
+    t.string "present_image_id"
     t.integer "use_point", default: 0, null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
