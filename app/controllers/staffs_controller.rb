@@ -17,6 +17,11 @@ class StaffsController < ApplicationController
     redirect_to staff_path(staff)
   end
 
+  def update
+    staff = Staff.find(params[:id])
+    staff.update!
+  end
+
   protected
 
   def staff_params

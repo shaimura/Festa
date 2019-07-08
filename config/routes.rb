@@ -38,5 +38,8 @@ Rails.application.routes.draw do
 
   resources :organizations
   resources :festivals
+  resources :matchs
+  resources :points
+
 
 end

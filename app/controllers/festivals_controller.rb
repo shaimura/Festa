@@ -8,6 +8,8 @@ class FestivalsController < ApplicationController
      @festival = Festival.find(params[:id])
      @organization = @festival.organization
 
+     @matching = Match.new
+
   end
 
   def index
