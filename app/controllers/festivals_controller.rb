@@ -7,6 +7,7 @@ class FestivalsController < ApplicationController
   def show
      @festival = Festival.find(params[:id])
      @organization = @festival.organization
+     @festivals = Festival.all
 
      @matching = Match.new
 

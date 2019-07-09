@@ -5,6 +5,10 @@ class StaffsController < ApplicationController
 
   def show
     @staff = Staff.find(params[:id])
+    @festivals = Festival.all
+    @festival_record = Festival.count
+
+    @festival_dates = Festival.pluck(:date)
   end
 
   def edit
