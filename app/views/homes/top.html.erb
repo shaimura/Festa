@@ -1,4 +1,32 @@
-<h1>トップ画面</h1>
-<% @users.each  do  |user| %>
-<%= user.name %>
-<% end %>
+<%= render 'layouts/header' %>
+
+
+<body class="top-body">
+
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-5">
+<div class="top-staff"> スタッフに参加しよう!! </div>
+		</div>
+
+<div class="col-lg-7">
+<div id="top-festival-date">
+	<% @festival_date.each do |fesdate| %>
+	<%=link_to festival_path(fesdate.id) do %>
+	<%= attachment_image_tag fesdate, :fes_image, :fill, 200, 200, format: 'jpg' %>
+	<%= fesdate.name %>
+	<% end %>
+	<% end %>
+</div>
+</div>
+</div>
+</div>
+
+
+</body>
+
+<%= render 'layouts/footer' %>
+
+

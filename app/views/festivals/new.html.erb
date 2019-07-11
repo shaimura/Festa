@@ -1,3 +1,6 @@
+<%= render 'layouts/header' %>
+
+
 <%= form_for @festival do |festival| %>
 
 <%= festival.label :name, "お祭りの名前" %>
@@ -31,6 +34,8 @@
 
 
 <% end %>
+
+<%= render 'layouts/footer' %>
 
 
 

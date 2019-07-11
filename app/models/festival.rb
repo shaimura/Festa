@@ -12,6 +12,8 @@ class Festival < ApplicationRecord
 
 	after_validation :geocode, if: :address_changed?
 
+	has_many :matchs
+
 
 
 	enum area:{北海道: 0, 東北: 1, 関東: 2, 中部: 3, 近畿: 4, 中国: 5, 四国: 6, 沖縄: 7}
@@ -21,9 +23,9 @@ class Festival < ApplicationRecord
 
 
 	# 名前検索機能
-	def self.search_name(search_name)
-		if search_name
-			Festival.where(["name LIKE ?", "%#{search_name}%"])
+	def self.search_etc(search_etc)
+		if search_etc
+			Festival.where(["name LIKE ?", "%#{search_etc}%"])
 		else
 			Festival.all
 		end
@@ -64,6 +66,12 @@ class Festival < ApplicationRecord
 
 
 
+	end
+
+	def self.search_calendar(search_calendar)
+		calendar_day = search_calendar.to_i
+		search_day = Date.new(calendar_day)
+		Festival.where(date: search_day)
 	end
 
 end

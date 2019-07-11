@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'festivals/area'
   get 'festivals/date'
+  get 'festivals/etc'
+  get 'festivals/calendar'
 
 
 

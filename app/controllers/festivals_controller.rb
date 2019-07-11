@@ -7,13 +7,24 @@ class FestivalsController < ApplicationController
   def show
      @festival = Festival.find(params[:id])
      @organization = @festival.organization
+     @festivals = Festival.all
 
      @matching = Match.new
 
   end
 
   def index
-      @search = Festival.search_name(params[:search_name])
+      @search = Festival.search_name(params[:search_etc])
+      @festivals = Festival.all
+  end
+
+  def etc
+      @search = Festival.search_name(params[:search_etc])
+      @festivals = Festival.all
+  end
+
+  def calendar
+      @search = Festival.search_name(params[:search_calendar])
       @festivals = Festival.all
   end
 

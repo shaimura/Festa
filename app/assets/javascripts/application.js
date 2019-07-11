@@ -21,30 +21,30 @@
 //= require_tree .
 
 
-
-
-$(function(){
-	$('#pointa1').hover(
-		function(){
-			$(this).find('.balloon1').addClass('balloon-active');
-		},
-		function(){
-			$(this).find('.balloon1').removeClass('balloon-active');
-
-		}
-		);
+$(document).ready(function(){
+ $('#top-festival-date').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 3000,
+      });
 });
 
 
 $(function(){
-	$('#pointa2').hover(
+	$('#pointa').hover(
 		function(){
-			$(this).find('.balloon2').addClass('balloon-active');
+			$(this).find('.balloon3').addClass('balloon-active');
 		},
 		function(){
-			$(this).find('.balloon2').removeClass('balloon-active');
+			$(this).find('.balloon3').removeClass('balloon-active');
 
 		}
-		);
+	);
 });
+
+
+
+
+
 
