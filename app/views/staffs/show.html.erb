@@ -2,7 +2,6 @@
 
 <%= render 'layouts/header' %>
 
-<body class="staff_show">
 
 	<div class="container " style="background-color: rgba(255,165,0,0.5);">
 		<div style="background-color: rgba(255,165,0,0.3); margin: 20px 0 20px 0;">
@@ -60,7 +59,6 @@
 
 	<div id="festival-list"></div>
 
-</body>
 
 
 <%= render 'layouts/footer' %>
@@ -194,8 +192,6 @@ function createCalender(year, month){
 					<% end %>
 
 
-					console.log(festivalnames)
-					console.log(festivalstaffdates)
 
 
 
@@ -203,7 +199,7 @@ function createCalender(year, month){
 
 
 					if  (festivalstaffdates.indexOf(setday) >= 0){
-						calendarHtml += '<td class="calender-td-festival-sutaff" id="pointa">' + '★' + '<ul class="list-inline balloon3">'
+						calendarHtml += '<td class="calender-td-festival-sutaff pointa">' + '★' + '<ul class="list-inline balloon3">'
 						for (var i = 0; i < festivalstaffsname.length; i++){
 						calendarHtml += '<li>' + festivalstaffsname[i] + '</li>'
 					}
@@ -212,7 +208,7 @@ function createCalender(year, month){
 					}
 					 //もしその日に開催するお祭りがあれば『祭』を表示
 					else if (festivaldates.indexOf(setday) >= 0){
-						calendarHtml += '<td class="calender-td-festival" id="pointa">' + '祭' + '<ul class="list-inline balloon3">'
+						calendarHtml += '<td class="calender-td-festival pointa">' + '祭' + '<ul class="list-inline balloon3">'
 
 					for (var i = 0; i < festivalnames.length; i++){
 						calendarHtml += '<li>' + festivalnames[i] + '</li>'
@@ -261,13 +257,16 @@ document.querySelector('#next').addEventListener('click', moveCalendar)
 
 
 
+/*
 document.addEventListener("click", function(e) {
     if(e.target.classList.contains("calendar_td")) {
         alert('クリックした日付は' + e.target.dataset.date + 'です')
     }
 })
+*/
 
 showCalendar(year, month)
+
 
 
 

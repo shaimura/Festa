@@ -16,13 +16,13 @@
 				<div class="search">
 					<%= form_tag(festivals_etc_path, :method => 'get') do %>
 					<p>
-						<%= text_field_tag :search_etc %>
+						<%= text_field_tag :search_etc, '', placeholder: "お祭りの名前で検索" %>
 						<%= submit_tag '検索', :name => nil %>
 					</p>
 					<% end %>
 				</div>
 			</li>
-			<li class="heder-li" id="pointa1">
+			<li class="heder-li pointa">
 					エリアから探す
 					<%= form_tag(festivals_area_path, :method => 'get') do %>
 					<ul class="list-inline balloon1">
@@ -37,7 +37,7 @@
 					</ul>
 					<% end %>
 			</li>
-			<li class="heder-li" id="pointa2">
+			<li class="heder-li pointa">
 					開催月から探す
 					<%= form_tag(festivals_date_path, :method => 'get') do %>
 					<ul class="list-inline balloon2">

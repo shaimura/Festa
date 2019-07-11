@@ -6,7 +6,7 @@
 
 
 
-<%= form_for @staff  do |staff| %>
+<%= form_for @staff, url:user_staffs_path(user_id: current_user.id)  do |staff| %>
 
 <h2>スタッフ登録フォーム</h2>
 

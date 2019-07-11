@@ -5,12 +5,28 @@
 
 
 .top-staff{
-	background-color: #dddddd;
+	background-image: url("太陽.jpg");
+	background-repeat:  no-repeat;
+    opacity:0.9;
+    width:auto;
+    height:300pX;
+    background-position: center;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
 }
 
-.top-body{
-	background-image: url("太陽.jpg");
-	height: auto;
-    background-size:cover;
-    background-position: center;
+.top-festa-text{
+	font-size: 50px;
+	color: #383838;
+	text-align: center;
 }
+
+.top-staff-text-h{
+	font-size: 60px;
+	text-align: center;
+	color: #f0f8ff;
+	text-shadow: 2px 2px 0 #FFF, -1px -1px 0 #000000;
+	margin: auto;
+}
+
+

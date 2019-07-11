@@ -1,7 +1,7 @@
 /*ヘッダーのホバーアクション*/
 
 $(function(){
-	$('#pointa1').hover(
+	$('.pointa').hover(
 		function(){
 			$(this).find('.balloon1').addClass('balloon-active');
 		},
@@ -14,7 +14,7 @@ $(function(){
 
 
 $(function(){
-	$('#pointa2').hover(
+	$('.pointa').hover(
 		function(){
 			$(this).find('.balloon2').addClass('balloon-active');
 		},

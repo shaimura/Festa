@@ -31,15 +31,20 @@ Rails.application.routes.draw do
 
 
 
-  resources :admins
-  resources :presents
+  resources :admins do
+    resources :presents
+  end
 
-  resources :users
-  resources :staffs
+  resources :users do
+    resources :staffs
+  end
+
 
 
   resources :organizations
   resources :festivals
+
+
   resources :matchs
   resources :points
 

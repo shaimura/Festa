@@ -68,10 +68,5 @@ class Festival < ApplicationRecord
 
 	end
 
-	def self.search_calendar(search_calendar)
-		calendar_day = search_calendar.to_i
-		search_day = Date.new(calendar_day)
-		Festival.where(date: search_day)
-	end
 
 end

@@ -20,13 +20,19 @@
  @import "slick-theme";
  @import "slick";
 
+
+body{
+  background-color: rgba(192,237,232,0.5);
+  height: auto;
+}
+
  #map{
  height: 300px;
  width: 550px;
  }
 
 
-#pointa{
+.pointa{
 	position: relative;
 	cursor: pointer;
 }
@@ -49,8 +55,8 @@
 	position: relative; top: -50px; z-index: 1;
 	padding: 16px;
 	background-color: #f5deb3;
-	-webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
+	-webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
 	width:230px;
 	top: 100%;
 	margin-top: 12px;

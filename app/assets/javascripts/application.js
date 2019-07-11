@@ -10,38 +10,28 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require rails-ujs
 //= require jquery
 //= require jquery-ui/widgets/datepicker
 //= require jquery-ui/i18n/datepicker-ja
 //= require jquery_ujs
-//= require rails-ujs
 //= require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 
 
-$(document).ready(function(){
- $('#top-festival-date').slick({
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 3000,
-      });
-});
+$(document).on('mouseenter', '.pointa', function(){
+		$(this).find('.balloon3').addClass('balloon-active');
+	}
+);
+$(document).on('mouseleave', '.pointa', function(){
+		$(this).find('.balloon3').removeClass('balloon-active');
+	}
+);
 
 
-$(function(){
-	$('#pointa').hover(
-		function(){
-			$(this).find('.balloon3').addClass('balloon-active');
-		},
-		function(){
-			$(this).find('.balloon3').removeClass('balloon-active');
 
-		}
-	);
-});
 
 
 
