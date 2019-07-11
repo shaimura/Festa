@@ -12,17 +12,17 @@
 
 	<nav>
 		<ul class="nav navbar-nav navbar-center" style="margin: 25px 30px 0 30px;">
-			<li class="heder_li">
+			<li class="heder-li-s">
 				<div class="search">
-					<%= form_tag(festivals_path, :method => 'get') do %>
+					<%= form_tag(festivals_etc_path, :method => 'get') do %>
 					<p>
-						<%= text_field_tag :search_name %>
+						<%= text_field_tag :search_etc %>
 						<%= submit_tag '検索', :name => nil %>
 					</p>
 					<% end %>
 				</div>
 			</li>
-			<li class="heder_li" id="pointa1">
+			<li class="heder-li" id="pointa1">
 					エリアから探す
 					<%= form_tag(festivals_area_path, :method => 'get') do %>
 					<ul class="list-inline balloon1">
@@ -37,7 +37,7 @@
 					</ul>
 					<% end %>
 			</li>
-			<li class="heder_li" id="pointa2">
+			<li class="heder-li" id="pointa2">
 					開催月から探す
 					<%= form_tag(festivals_date_path, :method => 'get') do %>
 					<ul class="list-inline balloon2">
@@ -56,13 +56,13 @@
 					</ul>
 					<% end %>
 			</li>
-			<li class="heder_li">
+			<li class="heder-li">
 				スタッフ
 			</li>
-			<li class="heder_li">
+			<li class="heder-li">
 				団体
 			</li>
-			<li class="heder_li">
+			<li class="heder-li">
 				ユーザー
 			</li>
 		</ul>

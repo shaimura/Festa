@@ -21,17 +21,27 @@
 //= require_tree .
 
 
-
-/*カレンダー*/
-
-
-
-$(function(){
-
-
+$(document).ready(function(){
+ $('#top-festival-date').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 3000,
+      });
 });
 
 
+$(function(){
+	$('#pointa').hover(
+		function(){
+			$(this).find('.balloon3').addClass('balloon-active');
+		},
+		function(){
+			$(this).find('.balloon3').removeClass('balloon-active');
+
+		}
+	);
+});
 
 
 

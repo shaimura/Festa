@@ -26,7 +26,7 @@
 					</tr>
 					<tr class="staff-info">
 						<td>ポイント</td>
-						<td> 総合 <%= @staff.total_point %> /使用ポイント  <%= @staff.remaining_point %> </td>
+						<td> ポイント  <%= @staff.remaining_point %> </td>
 					</tr>
 				</table>
 
@@ -53,20 +53,18 @@
 
 				</div>
 
-				<% @festivals.each do |festival| %>
-				<div id="festivalname">
-				<%= festival.name %>
-				</div>
-				<div id="festivaldate">
-				<%= festival.date %>
-				</div>
-				<% end %>
 
 
 		</div>
 	</div>
 
+	<div id="festival-list"></div>
+
 </body>
+
+
+<%= render 'layouts/footer' %>
+
 
 
 
@@ -106,8 +104,9 @@ function createCalender(year, month){
 	const lastMonthEndDayCount = lastMonthEndDate.getDate() //先月の末日
 	const startDay = startDate.getDay();             		//月の最初の日の曜日を取得
 	let dayCount = 1;                                		//日にちのカウント
-	let calendarHtml = '';
-	let calendarHtmlhed = '';                           		//HTMLを組み立てる変数
+	let calendarHtml = '';									//HTMLを組み立てる変数
+	let calendarHtmlhed = '';
+	let calendarHtmlfesta = '';
 
 
 
@@ -143,6 +142,7 @@ function createCalender(year, month){
 					dayCount++
 				}else{
 
+					//月と日を文字型にする
 					let submonth = month;
 					if (month < 10){
 						submonth = '0' + month
@@ -154,22 +154,71 @@ function createCalender(year, month){
 					}
 					const setday = year + '-' + submonth + '-' + d
 
-					//Festivalのレコードの数
-					const record = (<%= @festival_record %>)
+
+					//開催するお祭りの配列
 
 					//配列の入れ物を作る
-					var dates = [record];
+					var festivaldate = "";
+					var festivalname = "";
+					var festivaldates = [];
+					var festivalnames = [];
 
 					//配列にdateを入れる
 					<% @festivals.each do |festival| %>
-					var festa =  ('<%= festival.date %>')
-					dates.unshift(festa);
-					<% end %>
-					console.log(dates)
+					festivaldate = ('<%= festival.date %>')
+					festivalname = ('<%= festival.name %>')
+					festivaldates.push(festivaldate)
 
-					if (dates.indexOf(setday) >= 0){
-						calendarHtml += '<td class="calender-td-festival">' + '祭' + '</td>'
-						console.log('存在する')
+
+					if (festivaldate == setday){
+						festivalnames.push(festivalname);
+					}
+
+					<% end %>
+
+					//スタッフ登録しているお祭りの配列
+
+					var festivalstaffdates = [];
+					var festivalstaffsname = [];
+					var festivalstaffdate = "";
+					var festivalstaffname = "";
+
+					<% @matchs.each do |matching| %>
+					festivalstaffname = ('<%= matching.festival.name %>')
+					festivalstaffdate = ('<%= matching.festival.date %>')
+
+					festivalstaffdates.push(festivalstaffdate)
+					if (festivalstaffdate == setday){
+						festivalstaffsname.push(festivalstaffname);
+					}
+					<% end %>
+
+
+					console.log(festivalnames)
+					console.log(festivalstaffdates)
+
+
+
+
+
+
+					if  (festivalstaffdates.indexOf(setday) >= 0){
+						calendarHtml += '<td class="calender-td-festival-sutaff" id="pointa">' + '★' + '<ul class="list-inline balloon3">'
+						for (var i = 0; i < festivalstaffsname.length; i++){
+						calendarHtml += '<li>' + festivalstaffsname[i] + '</li>'
+					}
+
+					calendarHtml += '</ul>'  + '</td>'
+					}
+					 //もしその日に開催するお祭りがあれば『祭』を表示
+					else if (festivaldates.indexOf(setday) >= 0){
+						calendarHtml += '<td class="calender-td-festival" id="pointa">' + '祭' + '<ul class="list-inline balloon3">'
+
+					for (var i = 0; i < festivalnames.length; i++){
+						calendarHtml += '<li>' + festivalnames[i] + '</li>'
+					}
+
+					calendarHtml += '</ul>'  + '</td>'
 					}else{
 						calendarHtml += '<td class="calender-td">' + dayCount + '</td>'
 					}
@@ -210,16 +259,26 @@ function createCalender(year, month){
 document.querySelector('#prev').addEventListener('click', moveCalendar)
 document.querySelector('#next').addEventListener('click', moveCalendar)
 
+
+
+document.addEventListener("click", function(e) {
+    if(e.target.classList.contains("calendar_td")) {
+        alert('クリックした日付は' + e.target.dataset.date + 'です')
+    }
+})
+
 showCalendar(year, month)
 
 
 
 
 
-document.querySelector('#calendar').innerHTML = calendarHtml;
 
 
 
 </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
 

@@ -4,7 +4,7 @@
 <% @search.each do |festival| %>
 
 	<%= festival.name %>
-	<%= attachment_image_tag festival,:image, :fill,300,300 %>
+	<%= attachment_image_tag festival,:fes_image, :fill,300,300 %>
 
 <% end %>
 
@@ -15,7 +15,7 @@
 	<% @festivals.each do |f| %>
 
 	<%= f.name %>
-	<%= attachment_image_tag f,:image, :fill,300,300 %>
+	<%= attachment_image_tag f,:fes_image, :fill,300,300 %>
 
 	<% end %>
 

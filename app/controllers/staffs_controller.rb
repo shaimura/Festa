@@ -6,9 +6,8 @@ class StaffsController < ApplicationController
   def show
     @staff = Staff.find(params[:id])
     @festivals = Festival.all
-    @festival_record = Festival.count
+    @matchs = Match.where(staff_id: current_user.staff.id)
 
-    @festival_dates = Festival.pluck(:date)
   end
 
   def edit

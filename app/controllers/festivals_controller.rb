@@ -14,7 +14,17 @@ class FestivalsController < ApplicationController
   end
 
   def index
-      @search = Festival.search_name(params[:search_name])
+      @search = Festival.search_name(params[:search_etc])
+      @festivals = Festival.all
+  end
+
+  def etc
+      @search = Festival.search_name(params[:search_etc])
+      @festivals = Festival.all
+  end
+
+  def calendar
+      @search = Festival.search_name(params[:search_calendar])
       @festivals = Festival.all
   end
 

@@ -4,10 +4,8 @@
 
 
 .staff_show{
-	background-image: url("青空2.jpg");
+	background-color: rgba(192,237,232,0.5);
 	height: auto;
-    background-size:cover;
-    background-position: center;
 }
 
 .staff-info{
@@ -38,10 +36,12 @@ section{
 }
 
 .calendar-table {
-	background-color: #ffffff;
+	background-color: #fafad2;
     border-spacing: 0;
     border-collapse: collapse;
     font-size: 20px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
 }
 
 .calender-td {
@@ -74,5 +74,15 @@ section{
     text-align: center;
     width: 60px;
     height: 60px;
-    color: orange;
+    color: red;
 }
+
+.calender-td-festival-sutaff{
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    color: royalblue;
+}
+

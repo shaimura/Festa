@@ -1,5 +1,6 @@
 class HomesController < ApplicationController
   def top
-  	@users = User.all
+  	@festivals = Festival.all
+  	@festival_date = Festival.where(date: (Date.today)..(Date.today.end_of_month))
   end
 end
