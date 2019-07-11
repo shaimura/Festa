@@ -5,6 +5,9 @@ class StaffsController < ApplicationController
 
   def show
     @staff = Staff.find(params[:id])
+    @festivals = Festival.all
+    @matchs = Match.where(staff_id: current_user.staff.id)
+
   end
 
   def edit
