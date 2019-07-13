@@ -10,41 +10,82 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require rails-ujs
 //= require jquery
 //= require jquery-ui/widgets/datepicker
 //= require jquery-ui/i18n/datepicker-ja
 //= require jquery_ujs
-//= require rails-ujs
 //= require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 
 
+//カレンダーのホバーアクション
+
+$(document).on('mouseenter', '.pointa', function(){
+		$(this).find('.balloon-calender').addClass('balloon-active');
+	}
+);
+$(document).on('mouseleave', '.pointa', function(){
+		$(this).find('.balloon-calender').removeClass('balloon-active');
+	}
+);
+
+/*上に戻るボタン*/
 $(document).ready(function(){
- $('#top-festival-date').slick({
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 3000,
-      });
-});
-
-
-$(function(){
-	$('#pointa').hover(
-		function(){
-			$(this).find('.balloon3').addClass('balloon-active');
-		},
-		function(){
-			$(this).find('.balloon3').removeClass('balloon-active');
-
+	var pagetop = $('.pagetop');
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 100){
+			pagetop.fadeIn();
+		}else{
+			pagetop.fadeOut();
 		}
-	);
+	});
+	pagetop.click(function(){
+		$('body,html').animate({ scrollTop: 0}, 500);
+		return false;
+	});
 });
 
 
-
-
+$(document).ready(function(){
+  /*open*/
+  $('.header__icon').on('click',function(){
+    $('.sidebar').css(
+      'display','block'
+    ).animate({
+      left:'0'
+    },
+      300
+    );
+    $('.sidebar-bg').css(
+      'display','block'
+    ).animate({
+      opacity:'0.5'
+    },
+      300
+    )
+  });
+  /*close*/
+  $('.sidebar__icon').on('click',function(){
+    $('.sidebar').animate({
+      left:'-200px'
+    },
+      300
+    );
+    $('.sidebar-bg').animate({
+      opacity:'0'
+    },
+      300
+    );
+    setTimeout(function(){
+      $('.sidebar').css('display','none');
+      $('.sidebar-bg').css('display','none');
+    },
+      300
+    );
+  });
+});
 
 

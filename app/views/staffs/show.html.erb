@@ -1,69 +1,68 @@
-
-
 <%= render 'layouts/header' %>
 
-<body class="staff_show">
 
-	<div class="container " style="background-color: rgba(255,165,0,0.5);">
-		<div style="background-color: rgba(255,165,0,0.3); margin: 20px 0 20px 0;">
-			<h1 class="staff"> <strong> スタッフページ </strong> </h1>
+  <div class="container " style="background-color: rgba(255,165,0,0.5);">
+    <div style="background-color: rgba(255,165,0,0.3); margin: 20px 0 20px 0;">
+      <p class="staff-title">スタッフページ</p>
 
-			<div class="row">
-				<div class="col-lg-6" style="padding: 30px 50px 30px 40px;">
-
-
-				<table class="table">
-					<thead>
-							<th class="staff-info" colspan="2" style="text-align: center; font-size: 24px;">スタッフ情報</th>
-					</thead>
-					<tr class="staff-info">
-						<td>名前</td>
-						<td> <%= @staff.last_name %><%= @staff.first_name %> </td>
-					</tr>
-					<tr class="staff-info">
-						<td>住所</td>
-						<td> <%= @staff.address %> </td>
-					</tr>
-					<tr class="staff-info">
-						<td>ポイント</td>
-						<td> ポイント  <%= @staff.remaining_point %> </td>
-					</tr>
-				</table>
+      <div class="row">
+        <div class="col-lg-6" style="padding: 30px 50px 30px 40px;">
 
 
-				</div>
-
-				<div class="col-lg-6" style="padding: 30px 50px 30px 40px;">
-
-					<div class="row">
-						<div class="col-lg-3">
-							<button id="prev" type="button">前月</button>
-						</div>
-						<div class="col-lg-5">
-							<div id="calendarhed"></div>
-						</div>
-						<div class="col-lg-4">
-							<button id="next" type="button">来月</button>
-						</div>
-					</div>
-
-					<div id="calendar"></div>
-
-				</div>
-
-				</div>
-
-
-
-		</div>
-	</div>
-
-	<div id="festival-list"></div>
-
-</body>
+        <table class="table">
+          <thead>
+              <th class="staff-info" colspan="2" style="text-align: center; font-size: 24px;">スタッフ情報</th>
+          </thead>
+          <tr class="staff-info">
+            <td>名前</td>
+            <td> <%= @staff.name %> </td>
+          </tr>
+          <tr class="staff-info">
+            <td>登録住所</td>
+            <td> <%= @staff.address %> </td>
+          </tr>
+          <tr class="staff-info">
+            <td>電話番号</td>
+            <td> <%= @staff.telephone %></td>
+          </tr>
+          <tr class="staff-info">
+            <td>ポイント</td>
+            <td> ポイント  <%= @staff.remaining_point %> </td>
+          </tr>
+        </table>
 
 
-<%= render 'layouts/footer' %>
+        </div>
+
+        <div class="col-lg-6" style="padding: 30px 50px 30px 40px;">
+
+          <div class="row" style="margin-left: 10px;">
+            <div class="col-lg-3">
+              <button id="prev" type="button">前月</button>
+            </div>
+            <div class="col-lg-5">
+              <div id="calendarhed"></div>
+            </div>
+            <div class="col-lg-4">
+              <button id="next" type="button">来月</button>
+            </div>
+          </div>
+
+          <div id="calendar"></div>
+
+        </div>
+
+        </div>
+
+
+
+    </div>
+  </div>
+
+  <div id="festival-list"></div>
+
+
+
 
 
 
@@ -82,158 +81,166 @@
  let month = date.getMonth() + 1;
 
 function showCalendar(year, month){
-		const calendarHtml = createCalender(year, month)
-		const sec = document.createElement('section')
-		sec.innerHTML = calendarHtml
-		document.querySelector('#calendar').appendChild(sec)
+    const calendarHtml = createCalender(year, month)
+    const sec = document.createElement('section')
+    sec.innerHTML = calendarHtml
+    document.querySelector('#calendar').appendChild(sec)
 
-		month++
-		if (month > 12){
-			year++
-			month = 1
-		}
-	}
+    month++
+    if (month > 12){
+      year++
+      month = 1
+    }
+  }
 
 
 
 function createCalender(year, month){
-	const startDate = new Date(year, month - 1, 1);  		//今月の最初の日
-	const endDate = new Date(year, month, 0);        		//今月の最後の日
-	const endDayCount = endDate.getDate();           		//月の末日
-	const lastMonthEndDate = new Date(year, month -1, 0)	//先月の最後の日の情報
-	const lastMonthEndDayCount = lastMonthEndDate.getDate() //先月の末日
-	const startDay = startDate.getDay();             		//月の最初の日の曜日を取得
-	let dayCount = 1;                                		//日にちのカウント
-	let calendarHtml = '';									//HTMLを組み立てる変数
-	let calendarHtmlhed = '';
-	let calendarHtmlfesta = '';
+  const startDate = new Date(year, month - 1, 1);     //今月の最初の日
+  const endDate = new Date(year, month, 0);           //今月の最後の日
+  const endDayCount = endDate.getDate();              //月の末日
+  const lastMonthEndDate = new Date(year, month -1, 0)  //先月の最後の日の情報
+  const lastMonthEndDayCount = lastMonthEndDate.getDate() //先月の末日
+  const startDay = startDate.getDay();                //月の最初の日の曜日を取得
+  let dayCount = 1;                                   //日にちのカウント
+  let calendarHtml = '';                  //HTMLを組み立てる変数
+  let calendarHtmlhed = '';
+  let calendarHtmlfesta = '';
 
 
 
-	calendarHtmlhed += '<p class="calendar-h">' + year + '/' + month + '</p>';
+  calendarHtmlhed += '<p class="calendar-h">' + year + '/' + month + '</p>';
 
-	document.querySelector('#calendarhed').innerHTML = calendarHtmlhed;
+  document.querySelector('#calendarhed').innerHTML = calendarHtmlhed;
 
-	calendarHtml += '<table class="calendar-table">';
-
-
- 	 let nextmonth = month + 1;					  //来月を取得
-	 if (nextmonth > 12) {
-	            nextmonth = 1
-	        }
-	 let lastmonth = month - 1;					  //先月を取得
-	 if (lastmonth < 1) {
-	            lastmonth = 12
-	        }
-
-	 //曜日の行を作成
-	 for (let i = 0; i < weeks.length; i++){
-		calendarHtml += '<td class="calender-td">' + weeks[i] + '</td>'
-	}
-	 for (let w = 0; w < 6; w++){
-		calendarHtml += '<tr>'
-		 for(let d = 0; d < 7; d++){
-				if(w == 0 && d < startDay){                    //１行目で１日の曜日の前
-					let num = lastMonthEndDayCount - startDay + d + 1
-					calendarHtml += '<td class="is-disabled">' + lastmonth + '/' + num + '</td>'
-				}else if (dayCount > endDayCount){            //末尾の日数を超えた
-					let num = dayCount - endDayCount;
-					calendarHtml += '<td class="is-disabled">' + nextmonth + '/' + num + '</td>'
-					dayCount++
-				}else{
-
-					//月と日を文字型にする
-					let submonth = month;
-					if (month < 10){
-						submonth = '0' + month
-					}
-
-					let d = dayCount;
-					if (dayCount < 10){
-						d = '0' + dayCount
-					}
-					const setday = year + '-' + submonth + '-' + d
+  calendarHtml += '<table class="calendar-table">';
 
 
-					//開催するお祭りの配列
+   let nextmonth = month + 1;           //来月を取得
+   if (nextmonth > 12) {
+              nextmonth = 1
+          }
+   let lastmonth = month - 1;           //先月を取得
+   if (lastmonth < 1) {
+              lastmonth = 12
+          }
 
-					//配列の入れ物を作る
-					var festivaldate = "";
-					var festivalname = "";
-					var festivaldates = [];
-					var festivalnames = [];
+   //曜日の行を作成
+   for (let i = 0; i < weeks.length; i++){
+    calendarHtml += '<td class="calender-td">' + weeks[i] + '</td>'
+  }
+   for (let w = 0; w < 6; w++){
+    calendarHtml += '<tr class="calender-tr">'
+     for(let d = 0; d < 7; d++){
+        if(w == 0 && d < startDay){                    //１行目で１日の曜日の前
+          let num = lastMonthEndDayCount - startDay + d + 1
+          calendarHtml += '<td class="is-disabled">' + lastmonth + '/' + num + '</td>'
+        }else if (dayCount > endDayCount){            //末尾の日数を超えた
+          let num = dayCount - endDayCount;
+          calendarHtml += '<td class="is-disabled">' + nextmonth + '/' + num + '</td>'
+          dayCount++
+        }else{
 
-					//配列にdateを入れる
-					<% @festivals.each do |festival| %>
-					festivaldate = ('<%= festival.date %>')
-					festivalname = ('<%= festival.name %>')
-					festivaldates.push(festivaldate)
+          //月と日を文字型にする
+          let submonth = month;
+          if (month < 10){
+            submonth = '0' + month
+          }
 
-
-					if (festivaldate == setday){
-						festivalnames.push(festivalname);
-					}
-
-					<% end %>
-
-					//スタッフ登録しているお祭りの配列
-
-					var festivalstaffdates = [];
-					var festivalstaffsname = [];
-					var festivalstaffdate = "";
-					var festivalstaffname = "";
-
-					<% @matchs.each do |matching| %>
-					festivalstaffname = ('<%= matching.festival.name %>')
-					festivalstaffdate = ('<%= matching.festival.date %>')
-
-					festivalstaffdates.push(festivalstaffdate)
-					if (festivalstaffdate == setday){
-						festivalstaffsname.push(festivalstaffname);
-					}
-					<% end %>
-
-
-					console.log(festivalnames)
-					console.log(festivalstaffdates)
+          let d = dayCount;
+          if (dayCount < 10){
+            d = '0' + dayCount
+          }
+          const setday = year + '-' + submonth + '-' + d
 
 
+          //開催するお祭りの配列
+
+          //配列の入れ物を作る
+          var festivaldate = "";
+          var festivalname = "";
+          var festivalid = "";
+          var festivaldates = [];
+          var festivalsname = [];
+          var festivalsid = [];
+
+          //配列にdateを入れる
+          <% @festivals.each do |festival| %>
+          festivaldate = ('<%= festival.date %>')
+          festivalname = ('<%= festival.name %>')
+          festivalid = ('<%= festival.id %>')
+          festivaldates.push(festivaldate)
+
+
+          if (festivaldate == setday){
+            festivalsname.push(festivalname)
+            festivalsid.push(festivalid)
+          }
+
+          <% end %>
+
+          //スタッフ登録しているお祭りの配列
+
+          var festivalstaffdates = [];
+          var festivalstaffsname = [];
+          var festivalstaffsid = [];
+          var festivalstaffdate = "";
+          var festivalstaffname = "";
+          var festibalstaffid = "";
+
+          <% @matchs.each do |matching| %>
+          festivalstaffname = ('<%= matching.festival.name %>')
+          festivalstaffdate = ('<%= matching.festival.date %>')
+          festibalstaffid = ('<%= matching.festival.id %>')
+
+          festivalstaffdates.push(festivalstaffdate)
+
+          if (festivalstaffdate == setday){
+            festivalstaffsname.push(festivalstaffname)
+            festivalstaffsid.push(festibalstaffid)
+          }
+          <% end %>
 
 
 
 
-					if  (festivalstaffdates.indexOf(setday) >= 0){
-						calendarHtml += '<td class="calender-td-festival-sutaff" id="pointa">' + '★' + '<ul class="list-inline balloon3">'
-						for (var i = 0; i < festivalstaffsname.length; i++){
-						calendarHtml += '<li>' + festivalstaffsname[i] + '</li>'
-					}
-
-					calendarHtml += '</ul>'  + '</td>'
-					}
-					 //もしその日に開催するお祭りがあれば『祭』を表示
-					else if (festivaldates.indexOf(setday) >= 0){
-						calendarHtml += '<td class="calender-td-festival" id="pointa">' + '祭' + '<ul class="list-inline balloon3">'
-
-					for (var i = 0; i < festivalnames.length; i++){
-						calendarHtml += '<li>' + festivalnames[i] + '</li>'
-					}
-
-					calendarHtml += '</ul>'  + '</td>'
-					}else{
-						calendarHtml += '<td class="calender-td">' + dayCount + '</td>'
-					}
-					dayCount++
-				}
-			}
-			calendarHtml += '</tr>'
-		}
-		calendarHtml += '</table>'
-
-		return calendarHtml
-	}
 
 
-	function moveCalendar(e) {
+
+
+          if  (festivalstaffdates.indexOf(setday) >= 0){
+            calendarHtml += '<td class="calender-td-festival-sutaff pointa">' + '★' + '<ul class="list-inline balloon-calender">'
+            for (var i = 0; i < festivalstaffsname.length; i++){
+            calendarHtml += '<li class="balloon-text">' + '<a href="http://localhost:3000/festivals/' + festivalstaffsid[i] + '" class="link-none">' + festivalstaffsname[i] + '</a>' + '</li>'
+          }
+
+
+          calendarHtml += '</ul>'  + '</td>'
+          }
+           //もしその日に開催するお祭りがあれば『祭』を表示
+          else if (festivaldates.indexOf(setday) >= 0){
+            calendarHtml += '<td class="calender-td-festival pointa">' + '祭' + '<ul class="list-inline balloon-calender">'
+
+          for (var i = 0; i < festivalsname.length; i++){
+            calendarHtml += '<li class="balloon-text">' + '<a href="http://localhost:3000/festivals/' + festivalsid[i] + '" class="link-none">' + festivalsname[i] + '</a>' + '</li>'
+          }
+
+          calendarHtml += '</ul>'  + '</td>'
+          }else{
+            calendarHtml += '<td class="calender-td">' + dayCount + '</td>'
+          }
+          dayCount++
+        }
+      }
+      calendarHtml += '</tr>'
+    }
+    calendarHtml += '</table>'
+
+    return calendarHtml
+  }
+
+
+  function moveCalendar(e) {
     document.querySelector('#calendar').innerHTML = ''
 
     if (e.target.id === 'prev') {
@@ -261,12 +268,6 @@ document.querySelector('#next').addEventListener('click', moveCalendar)
 
 
 
-document.addEventListener("click", function(e) {
-    if(e.target.classList.contains("calendar_td")) {
-        alert('クリックした日付は' + e.target.dataset.date + 'です')
-    }
-})
-
 showCalendar(year, month)
 
 
@@ -276,9 +277,7 @@ showCalendar(year, month)
 
 
 
+
 </script>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
 

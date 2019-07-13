@@ -20,13 +20,27 @@
  @import "slick-theme";
  @import "slick";
 
+
+body{
+  background-color: rgba(220,255,255,0.5);
+}
+
+.link-none{
+  text-decoration: none;
+  color: #333333;
+}
+.link-none:hover {
+  text-decoration: none;
+  opacity: 0.5 ;
+}
+
  #map{
  height: 300px;
  width: 550px;
  }
 
 
-#pointa{
+.pointa{
 	position: relative;
 	cursor: pointer;
 }
@@ -34,39 +48,30 @@
 
 .balloon1{
 	display: none;
-	position: relative; top: -50px; z-index: 1;
+	position: absolute;
+  z-index: 1;
 	padding: 16px;
 	background-color: #f5deb3;
 	-webkit-border-radius: 15px;
   -moz-border-radius: 15px;
 	width:200px;
-	top: 100%;
+	top: 65%;
 	margin-top: 12px;
 }
 
 .balloon2{
 	display: none;
-	position: relative; top: -50px; z-index: 1;
+	position: absolute;
+  z-index: 1;
 	padding: 16px;
 	background-color: #f5deb3;
-	-webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
+	-webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
 	width:230px;
-	top: 100%;
+	top: 65%;
 	margin-top: 12px;
 }
 
-.balloon3{
-  display: none;
-  position: relative; top: -50px; z-index: 1;
-  padding: 16px;
-  background-color: #f5deb3;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  width:200px;
-  top: 100%;
-  margin-top: 12px;
-}
 
 .balloon-active{
 	display: block;
@@ -75,7 +80,7 @@
 
 
 
-.heder-li{
+.heder-li-search{
 	margin: 0px 20px 0 20px;
 	font-size: 24px;
   color: #00bfff;
@@ -87,13 +92,79 @@
   font-size: 24px;
 }
 
-
 footer{
   width: 100%;
   height: 60px;
   color: #fff;
   background-color: #e6e6fa;
+  margin-top: 30px;
+  position: relative;
 }
+
+.title-text{
+  font-size: 60px;
+  color: #333333;
+  text-shadow: 1px 1px 0 #FFF, -1.2px -1.2px 0 #000000;
+  text-align: center;
+}
+
+
+/*戻るボタン*/
+
+.pagetop{
+  display: none;
+  position: fixed;
+  bottom: 65px;
+  right: 15px;
+   width: 60px;
+  height: 60px;
+  background: image-url("arrow3.png");
+  background-size: cover;
+  cursor: pointer;
+}
+
+/*sidebar*/
+.sidebar {
+  padding:16px;
+  width:220px;
+  height:100vh;
+  position:fixed;
+  background-color:#fff;
+  top:0;
+  left:-220px;
+  z-index:4;
+  box-shadow:0 0 10px rgba(0,0,0,0.5);
+  box-sizing:border-box;
+  display:none;
+}
+.sidebar__inner {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.sidebar__icon {
+  font-size:28px;
+  color:#654;
+}
+.sidebar__txt {
+  font-size:18px;
+  margin-top:16px;
+  margin-left:8px;
+}
+.sidebar-bg {
+  background-color:#558;
+  width:100vw;
+  height:100vh;
+  opacity:0;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:3;
+  display:none;
+}
+
+
+
 
 
 

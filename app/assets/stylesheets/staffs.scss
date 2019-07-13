@@ -10,15 +10,19 @@
 
 .staff-info{
 	font-size: 24px;
-	color: #ffffff;
+	color: #f5f5f5;
+  text-shadow: 0.1px 0.1px 0 #FFF, -0.3px -0.3px 0 #000000;
+  line-height: 150px;
 	font-weight: 900;
 }
 
-.staff{
+.staff-title{
 	margin: 20px;
 	text-align: center;
-	font-size: 50px;
-	color: #ffffff;
+  font-size: 60px;
+	color: #f5f5f5;
+  text-shadow: 0.8px 0.8px 0 #FFF, -1.1px -1.1px 0 #000000;
+  line-height: 150px;
 }
 
 #calendar{
@@ -32,7 +36,8 @@ section{
 
 .calendar-h {
     font-size: 45px;
-    color: #ffffff;
+    color: #f5f5f5;
+    text-shadow: 0.1px 0.1px 0 #FFF, -0.3px -0.3px 0 #000000;
 }
 
 .calendar-table {
@@ -84,5 +89,28 @@ section{
     width: 60px;
     height: 60px;
     color: royalblue;
+}
+
+.balloon-calender{
+  display: none;
+  position: absolute;
+  padding: 16px;
+  background-color: #f5deb3;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  top: 100%;
+  margin: auto;
+  z-index: 1;
+}
+
+.balloon-active{
+    display: block;
+}
+
+.balloon-text{
+    width: 200px;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
