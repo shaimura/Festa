@@ -21,6 +21,8 @@
 //= require_tree .
 
 
+//カレンダーのホバーアクション
+
 $(document).on('mouseenter', '.pointa', function(){
 		$(this).find('.balloon3').addClass('balloon-active');
 	}
@@ -29,12 +31,5 @@ $(document).on('mouseleave', '.pointa', function(){
 		$(this).find('.balloon3').removeClass('balloon-active');
 	}
 );
-
-
-
-
-
-
-
 
 

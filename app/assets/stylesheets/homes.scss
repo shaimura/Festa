@@ -4,12 +4,35 @@
 
 
 
-.top-staff{
-	background-image: url("太陽.jpg");
+.top-festival-{
+	background-color: rgba(255,147,147,0.3);
 	background-repeat:  no-repeat;
     opacity:0.9;
-    width:auto;
-    height:300pX;
+    width: 30%;
+    height: 150pX;
+    background-position: center;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+}
+
+.top-staff-box{
+	background-color: rgba(255,165,0,0.6);
+	background-repeat:  no-repeat;
+    opacity:0.9;
+    width: 30%;
+    height: 150pX;
+    background-position: center;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+}
+
+
+.top-organization-{
+	background-color: rgba(178,255,178,0.3);
+	background-repeat:  no-repeat;
+    opacity:0.9;
+    width: 30%;
+    height: 150pX;
     background-position: center;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
@@ -22,11 +45,11 @@
 }
 
 .top-staff-text-h{
-	font-size: 60px;
+	font-size: 45px;
 	text-align: center;
 	color: #f0f8ff;
-	text-shadow: 2px 2px 0 #FFF, -1px -1px 0 #000000;
-	margin: auto;
+	text-shadow: 1px 1px 0 #FFF, -1px -1px 0 #000000;
+	line-height: 150px;
 }
 
 

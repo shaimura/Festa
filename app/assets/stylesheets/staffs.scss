@@ -86,3 +86,25 @@ section{
     color: royalblue;
 }
 
+.balloon3{
+  display: none;
+  position: absolute;
+  padding: 16px;
+  background-color: #f5deb3;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  top: 100%;
+  margin: auto;
+}
+
+.balloon-active{
+    display: block;
+}
+
+.balloon-text{
+    width: 200px;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+

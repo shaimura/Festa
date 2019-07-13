@@ -2,8 +2,8 @@
 
 
 
-	<div class="container" style="background-color: rgba(192,237,232,0.5);">
-		<div style="background-color: rgba(192,237,232,0.5); margin: 20px 0 20px 0;">
+	<div class="container" style="background-color: rgba(178,255,178,0.3);">
+		<div style="background-color: rgba(178,255,178,0.7); margin: 20px 0 20px 0;">
 			<div class="row">
 
 				<div style="text-align: center; margin: 30px;">
@@ -34,6 +34,12 @@
 					<tr style="font-size: 18px;">
 						<td>スタッフ募集</td>
 						<td> <%= @festival.staff_status %> </td>
+						<% if @festival.staff_status == "募集中" %>
+							<%= form_for @matching, url:matchs_path do |matching| %>
+							<%= matching.hidden_field :festival_id, :value => @festival.id %>
+							<%= matching.submit "お祭に参加する" %>
+							<% end %>
+						<% end %>
 					</tr>
 					<tr style="font-size: 18px;">
 						<td>開催日</td>
@@ -78,12 +84,6 @@
 			</div>
 		</div>
 
-		<div>
-		<%= form_for @matching, url:matchs_path do |matching| %>
-		<%= matching.hidden_field :festival_id, :value => @festival.id %>
-		<%= matching.submit "お祭に参加する" %>
-		<% end %>
-	</div>
 
 
 		</div>

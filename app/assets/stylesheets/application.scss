@@ -40,39 +40,28 @@ body{
 
 .balloon1{
 	display: none;
-	position: relative; top: -50px; z-index: 1;
+	position: absolute;
 	padding: 16px;
 	background-color: #f5deb3;
 	-webkit-border-radius: 15px;
   -moz-border-radius: 15px;
 	width:200px;
-	top: 100%;
+	top: 68%;
 	margin-top: 12px;
 }
 
 .balloon2{
 	display: none;
-	position: relative; top: -50px; z-index: 1;
+	position: absolute;
 	padding: 16px;
 	background-color: #f5deb3;
 	-webkit-border-radius: 15px;
   -moz-border-radius: 15px;
 	width:230px;
-	top: 100%;
+	top: 65%;
 	margin-top: 12px;
 }
 
-.balloon3{
-  display: none;
-  position: relative; top: -50px; z-index: 1;
-  padding: 16px;
-  background-color: #f5deb3;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  width:200px;
-  top: 100%;
-  margin-top: 12px;
-}
 
 .balloon-active{
 	display: block;

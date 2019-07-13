@@ -1,19 +1,15 @@
 <%= render 'layouts/header' %>
 
 
+<div>
+	<p>お祭りを探しに行く</p>
+	<div class="top-staff">
+		<p class="top-staff-text-h">スタッフ登録画面へ</p>
+	</div>
+	<p>団体登録をする</p>
+</div>
 
 
-
-<% if user_signed_in? %>
-<div class="container">
-	<div class="row">
-		<div class="col-lg-10 col-lg-offset-1" >
-			<div class="top-staff">
-			<P class="top-staff-text-h">スタッフ登録をして</P><br>
-			<P class="top-staff-text-h">お祭りに参加しよう!!</P>
-			<%= link_to "登録画面へ", new_user_staff_path(user_id: current_user.id), class: "btn btn-default" %>
-			</div>
-<% end %>
 
 <p class="top-festa-text"> 近日開催のお祭り </p>
 <div id="top-festival-date">
