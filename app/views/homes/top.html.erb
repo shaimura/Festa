@@ -1,31 +1,35 @@
 <%= render 'layouts/header' %>
 
+<h1 class="top-h">FESTAへようこそ！</h1>
 
-<div>
-	<p>お祭りを探しに行く</p>
-	<div class="top-staff">
-		<p class="top-staff-text-h">スタッフ登録画面へ</p>
+
+
+<div class="container-fluid">
+	<div class="top-festival-box">
+		<%= link_to festivals_path,class: "link-none" do %>
+		<p class="top-festival-text link-none">お祭りを探しに行く</p>
+		<% end %>
 	</div>
-	<p>団体登録をする</p>
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="top-staff-box">
+				<%= link_to new_staff_session_path,class: "link-none" do %>
+				<p class="top-staff-text link-none">スタッフ登録画面へ</p>
+				<% end %>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="top-organization-box">
+				<%= link_to new_organization_session_path,class: "link-none" do %>
+				<p class="top-organization-text link-none">団体登録画面へ</p>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>
 
 
 
-<p class="top-festa-text"> 近日開催のお祭り </p>
-<div id="top-festival-date">
-	<% @festival_date.each do |festa| %>
-	<%=link_to festival_path(festa.id) do %>
-	<%= attachment_image_tag festa, :fes_image, :fill, 200, 200, format: 'jpg' %>
-	<p> <%= festa.name %> / 開催地域: <%= festa.area %> </p>
-	<% end %>
-	<% end %>
-</div>
-</div>
-</div>
-</div>
 
-
-
-<%= render 'layouts/footer' %>
 
 

@@ -3,7 +3,7 @@
 
   <div class="container " style="background-color: rgba(255,165,0,0.5);">
     <div style="background-color: rgba(255,165,0,0.3); margin: 20px 0 20px 0;">
-      <h1 class="staff"> <strong> スタッフページ </strong> </h1>
+      <p class="staff-title">スタッフページ</p>
 
       <div class="row">
         <div class="col-lg-6" style="padding: 30px 50px 30px 40px;">
@@ -36,7 +36,7 @@
 
         <div class="col-lg-6" style="padding: 30px 50px 30px 40px;">
 
-          <div class="row">
+          <div class="row" style="margin-left: 10px;">
             <div class="col-lg-3">
               <button id="prev" type="button">前月</button>
             </div>
@@ -63,7 +63,6 @@
 
 
 
-<%= render 'layouts/footer' %>
 
 
 
@@ -210,9 +209,9 @@ function createCalender(year, month){
 
 
           if  (festivalstaffdates.indexOf(setday) >= 0){
-            calendarHtml += '<td class="calender-td-festival-sutaff pointa">' + '★' + '<ul class="list-inline balloon3">'
+            calendarHtml += '<td class="calender-td-festival-sutaff pointa">' + '★' + '<ul class="list-inline balloon-calender">'
             for (var i = 0; i < festivalstaffsname.length; i++){
-            calendarHtml += '<li>' + '<a href="http://localhost:3000/festivals/' + festivalstaffsid[i] + '">' + festivalstaffsname[i] + '</a>' + '</li>'
+            calendarHtml += '<li class="balloon-text">' + '<a href="http://localhost:3000/festivals/' + festivalstaffsid[i] + '" class="link-none">' + festivalstaffsname[i] + '</a>' + '</li>'
           }
 
 
@@ -220,10 +219,10 @@ function createCalender(year, month){
           }
            //もしその日に開催するお祭りがあれば『祭』を表示
           else if (festivaldates.indexOf(setday) >= 0){
-            calendarHtml += '<td class="calender-td-festival pointa">' + '祭' + '<ul class="list-inline balloon3">'
+            calendarHtml += '<td class="calender-td-festival pointa">' + '祭' + '<ul class="list-inline balloon-calender">'
 
           for (var i = 0; i < festivalsname.length; i++){
-            calendarHtml += '<li class="balloon-text">' + '<a href="http://localhost:3000/festivals/' + festivalsid[i] + '">' + festivalsname[i] + '</a>' + '</li>'
+            calendarHtml += '<li class="balloon-text">' + '<a href="http://localhost:3000/festivals/' + festivalsid[i] + '" class="link-none">' + festivalsname[i] + '</a>' + '</li>'
           }
 
           calendarHtml += '</ul>'  + '</td>'

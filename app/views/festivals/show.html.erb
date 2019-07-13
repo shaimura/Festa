@@ -7,14 +7,13 @@
 			<div class="row">
 
 				<div style="text-align: center; margin: 30px;">
-					<h1> <%= @festival.name %> </h1>
-					<h4> 開 催 日 <%= @festival.date %></h4>
+					<p class="title-text"> <%= @festival.name %> </p>
 				</div>
 			</div>
 
 
 		<div class="col-lg-6">
-			<div style="margin: 20px;">
+			<div  style="margin: 20px;">
 			<%= attachment_image_tag @festival,:fes_image, :fill,500,650 %>
 			</div>
 		</div>
@@ -33,13 +32,16 @@
 					</tr>
 					<tr style="font-size: 18px;">
 						<td>スタッフ募集</td>
-						<td> <%= @festival.staff_status %> </td>
-						<% if @festival.staff_status == "募集中" %>
-							<%= form_for @matching, url:matchs_path do |matching| %>
-							<%= matching.hidden_field :festival_id, :value => @festival.id %>
-							<%= matching.submit "お祭に参加する" %>
+						<td>
+						 <%= @festival.staff_status %>
+
+						    <% if @festival.staff_status == "募集中" %>
+								<%= form_for @matching, url:matchs_path do |matching| %>
+								<%= matching.hidden_field :festival_id, :value => @festival.id %>
+								<%= matching.submit "お祭に参加する" %>
+								<% end %>
 							<% end %>
-						<% end %>
+						</td>
 					</tr>
 					<tr style="font-size: 18px;">
 						<td>開催日</td>
@@ -92,7 +94,6 @@
 
 
 
-<%= render 'layouts/footer' %>
 
 
 
@@ -122,7 +123,7 @@
 					position: results[0].geometry.location,
 				});
 			}else{
-				alert('失敗しました。理由：' + status);
+				alert('失敗しました');
 			return;
 			}
 		});

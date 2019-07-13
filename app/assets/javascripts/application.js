@@ -24,12 +24,68 @@
 //カレンダーのホバーアクション
 
 $(document).on('mouseenter', '.pointa', function(){
-		$(this).find('.balloon3').addClass('balloon-active');
+		$(this).find('.balloon-calender').addClass('balloon-active');
 	}
 );
 $(document).on('mouseleave', '.pointa', function(){
-		$(this).find('.balloon3').removeClass('balloon-active');
+		$(this).find('.balloon-calender').removeClass('balloon-active');
 	}
 );
+
+/*上に戻るボタン*/
+$(document).ready(function(){
+	var pagetop = $('.pagetop');
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 100){
+			pagetop.fadeIn();
+		}else{
+			pagetop.fadeOut();
+		}
+	});
+	pagetop.click(function(){
+		$('body,html').animate({ scrollTop: 0}, 500);
+		return false;
+	});
+});
+
+
+$(document).ready(function(){
+  /*open*/
+  $('.header__icon').on('click',function(){
+    $('.sidebar').css(
+      'display','block'
+    ).animate({
+      left:'0'
+    },
+      300
+    );
+    $('.sidebar-bg').css(
+      'display','block'
+    ).animate({
+      opacity:'0.5'
+    },
+      300
+    )
+  });
+  /*close*/
+  $('.sidebar__icon').on('click',function(){
+    $('.sidebar').animate({
+      left:'-200px'
+    },
+      300
+    );
+    $('.sidebar-bg').animate({
+      opacity:'0'
+    },
+      300
+    );
+    setTimeout(function(){
+      $('.sidebar').css('display','none');
+      $('.sidebar-bg').css('display','none');
+    },
+      300
+    );
+  });
+});
 
 
