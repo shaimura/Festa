@@ -17,22 +17,11 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require activestorage
-//= require turbolinks
 //= require_tree .
 
 
-//カレンダーのホバーアクション
 
-$(document).on('mouseenter', '.pointa', function(){
-		$(this).find('.balloon-calender').addClass('balloon-active');
-	}
-);
-$(document).on('mouseleave', '.pointa', function(){
-		$(this).find('.balloon-calender').removeClass('balloon-active');
-	}
-);
-
-/*上に戻るボタン*/
+//上に戻るボタン
 $(document).ready(function(){
 	var pagetop = $('.pagetop');
 	$(window).scroll(function(){
@@ -49,43 +38,39 @@ $(document).ready(function(){
 });
 
 
-$(document).ready(function(){
-  /*open*/
-  $('.header__icon').on('click',function(){
-    $('.sidebar').css(
-      'display','block'
-    ).animate({
-      left:'0'
-    },
-      300
-    );
-    $('.sidebar-bg').css(
-      'display','block'
-    ).animate({
-      opacity:'0.5'
-    },
-      300
-    )
-  });
-  /*close*/
-  $('.sidebar__icon').on('click',function(){
-    $('.sidebar').animate({
-      left:'-200px'
-    },
-      300
-    );
-    $('.sidebar-bg').animate({
-      opacity:'0'
-    },
-      300
-    );
-    setTimeout(function(){
-      $('.sidebar').css('display','none');
-      $('.sidebar-bg').css('display','none');
-    },
-      300
-    );
-  });
+$(document).ready(function() {
+	 $('.drawer').drawer();
+});
+
+
+//プレビュー表示
+$(function(){
+	$('form').on('change', 'input[type="file"]',function(e){
+		var file = e.target.files[0],
+		reader = new FileReader(),
+		$preview = $(".preview");
+		t = this;
+
+		if(file.type.indexOf("image") < 0){
+			return false;
+		}
+		reader.onload = (function(file){
+			return function(e){
+				$preview.empty();
+
+				$preview.append($('<img>').attr({
+					src: e.target.result,
+					width: "200px",
+					height: "200px",
+					class: "preview",
+					title: file.name,
+				}));
+			};
+		})(file);
+		reader.readAsDataURL(file);
+
+		console.log(file)
+	});
 });
 
 

@@ -1,6 +1,24 @@
 Rails.application.routes.draw do
 
 
+  get 'organizations/show'
+  get 'organizations/index'
+
+  namespace :organizations do
+    resources :festivals
+  end
+  namespace :admins do
+    resources :presents
+  end
+  namespace :admins do
+    get 'organizations/index'
+  end
+  namespace :admins do
+    get 'festivals/index'
+  end
+  namespace :admins do
+    get 'staffs/index'
+  end
   devise_for :staffs, controllers:{
   sessions:      'staffs/sessions',
   passwords:     'staffs/passwords',
@@ -32,9 +50,8 @@ Rails.application.routes.draw do
 
 
 
-  resources :admins do
-    resources :presents
-  end
+  resources :admins
+  resources :presents
 
 
   resources :staffs
@@ -42,7 +59,12 @@ Rails.application.routes.draw do
 
 
 
-  resources :organizations
+  resources :organizations do
+    resources :festivals
+  end
+
+
+
   resources :festivals
 
 
