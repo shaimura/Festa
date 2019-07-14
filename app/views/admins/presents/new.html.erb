@@ -1,0 +1,27 @@
+<%= render 'layouts/subheader' %>
+
+<P>プレゼント登録画面</P>
+
+
+<%= form_for @present, url:admins_presents_path do |present| %>
+
+<%= present.label :present, "プレゼント" %>
+<%= present.text_field :present %>
+
+<%= present.label :present_image, "プレゼントイメージ" %>
+<%= present.attachment_field :present_image %>
+
+<%= present.label :use_point, "必要ポイント" %>
+<%= present.number_field :use_point %>
+
+<%= present.submit %>
+
+
+<% end %>
+
+
+
+
+
+
+

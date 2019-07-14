@@ -1,8 +1,7 @@
-<header>
+<header role="banner">
 	<nav class="navbar navbar-default" >
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-12">
 
 			<nav class="nav navbar-nav navbar-left">
 				<%= link_to festivals_path, :style=>"color:#777;text-decoration: none;" do %>
@@ -56,23 +55,27 @@
 					</ul>
 					<% end %>
 			</li>
-			<li class="heder-hm-menu">
-				スタッフ
-			</li>
-			<li class="heder-hm-menu">
-				団体
-			</li>
+			<div class="drawer drawer--right">
+				<button type="button" class="drawer-toggle drawer-hamburger">
+					<span class="sr-only"></span>
+					<span class="drawer-hamburger-icon"></span>
+				</button>
+				<nav class="drawer-nav" role="navigation">
+					<ul class="drawer-menu">
+						<li><a class="drawer-brand" href="#">ユーザーメニュー</a></li>
+						<li><%= link_to "ユーザーページ", staff_path(id: current_staff.id),class: "drawer-menu-item" %></li>
+						<li><%= link_to "ログアウト", destroy_staff_session_path, class: "drawer-menu-item", method: :delete %> </li>
+					</ul>
+			</div>
 		</ul>
 	</nav>
 
-	<nav class="nav navbar-nav navbar-right">
-		<p> ログアウト　</p>
-	</nav>
-</div>
 </div>
 </div>
 </nav>
 </header>
-<script>
 
-</script>
+
+	<main role="main">
+		<!-- コンテンツ -->
+	</main>

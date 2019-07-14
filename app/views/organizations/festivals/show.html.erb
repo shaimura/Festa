@@ -1,0 +1,130 @@
+<%= render 'layouts/subheader' %>
+
+
+
+	<div class="container" style="background-color: rgba(178,255,178,0.3);">
+		<div style="background-color: rgba(178,255,178,0.7); margin: 20px 0 20px 0;">
+			<div class="row">
+
+				<div style="text-align: center; margin: 30px;">
+					<p class="title-text"> <%= @festival.name %> </p>
+				</div>
+			</div>
+
+
+		<div class="col-lg-6">
+			<div  style="margin: 20px;">
+			<%= attachment_image_tag @festival,:fes_image, :fill,500,650 %>
+			</div>
+		</div>
+
+		<div class="col-lg-6">
+			<div style="margin: 20px 30px 10px 0;">
+				<table class="table">
+					<thead>
+						<tr>
+							<th colspan="2" style="text-align: center; font-size: 24px;">お祭り情報</th>
+						</tr>
+					</thead>
+					<tr style="font-size: 18px;">
+						<td>名称</td>
+						<td> <%= @festival.name %> </td>
+					</tr>
+					<tr style="font-size: 18px;">
+						<td>スタッフ募集</td>
+						<td>
+						 <%= @festival.staff_status %>
+							<% end %>
+						</td>
+					</tr>
+					<tr style="font-size: 18px;">
+						<td>開催日</td>
+						<td> <%= @festival.date %> </td>
+					</tr>
+					<tr style="font-size: 18px;">
+						<td>主催</td>
+						<td> <%=  %> </td>
+					</tr>
+					<tr style="font-size: 18px;">
+						<td>アクセス</td>
+						<td> <%= @festival.traffic %> </td>
+					</tr>
+					<tr style="font-size: 18px;">
+						<td>関連サイト</td>
+						<td> <%= @festival.web_url %> </td>
+					</tr>
+					<tr style="font-size: 18px;">
+						<td>開催場所</td>
+						<td> <%= @festival.address %> </td>
+					</tr>
+					<tr>
+						<td colspan="2" id="map"></td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-lg-10 col-lg-offset-1">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th class="fes_pr_head">お祭PR</th>
+						</tr>
+					</thead>
+					<tbody>
+						<td  class="fes_pr_body"> <%= @festival.profile %> </td>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+<!-- マップ表示 -->
+
+<script>
+
+	let map;
+	let geocoder;
+	let marker;
+
+	function initMap(){
+		var geocoder = new google.maps.Geocoder();
+		var map = document.getElementById('map');
+
+		geocoder.geocode({ address: '<%= @festival.address %>' },function(results,status){
+			if (status == 'OK' && results[0]){
+				map = new google.maps.Map(map,{
+					center: results[0].geometry.location,
+					zoom: 16,
+				});
+				var marker = new google.maps.Marker({
+					map: map,
+					position: results[0].geometry.location,
+				});
+			}else{
+				alert('失敗しました');
+			return;
+			}
+		});
+
+	}
+
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM3X900YOUbEJiQe9DnUJYZFoUzVhCVd4&callback=initMap" async defer></script>

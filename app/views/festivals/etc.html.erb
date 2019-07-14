@@ -1,10 +1,70 @@
-<!-- 検索結果 -->
-<% @search.each do |festival| %>
+<%= render 'layouts/header' %>
 
-	<%= festival.name %>
-	<%= attachment_image_tag festival,:fes_image, :fill,300,300 %>
+
+
+
+<% if @searchs.blank? %>
+
+<p class="search-blank-text">検索結果は０件でした</p>
+
+<p class="title-text"> お祭り一覧　</p>
+
+
+<% @festivals.each do |festival| %>
+
+<div class="container">
+	<div class="col-lg-10 col-lg-offset-1">
+		<%= link_to festival_path(festival.id) do  %>
+		<div class="festivals-box row">
+			<div class="col-lg-4">
+				<div class="img-thumbnail">
+					<%= attachment_image_tag festival,:fes_image, :fill,250,250 %>
+				</div>
+			</div>
+			<div class="col-lg-8 festival-box-text link-none">
+				<p class="festival-box-title"> <%= festival.name %> </p>
+				<p> 開催日：<%= festival.date %> </p>
+				<p> 開催場所：<%= festival.address %> </p>
+				<p> スタッフ募集状況：<%= festival.staff_status %></p>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>
 
 <% end %>
 
+<% else %>
+
+
+<p class="title-text"> 検索結果一覧　</p>
+
+<% @searchs.each do |festival| %>
+
+<div class="container">
+	<div class="col-lg-10 col-lg-offset-1">
+		<%= link_to festival_path(festival.id) do  %>
+		<div class="festivals-box row">
+			<div class="col-lg-4">
+				<div class="img-thumbnail">
+					<%= attachment_image_tag festival,:fes_image, :fill,250,250 %>
+				</div>
+			</div>
+			<div class="col-lg-8 festival-box-text link-none">
+				<p class="festival-box-title"> <%= festival.name %> </p>
+				<p> 開催日：<%= festival.date %> </p>
+				<p> 開催場所：<%= festival.address %> </p>
+				<p> スタッフ募集状況：<%= festival.staff_status %></p>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>
+
+<% end %>
+
+<% end %>
+
+<p class="pagetop"></p>
 
 
