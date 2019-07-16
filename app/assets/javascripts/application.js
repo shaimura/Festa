@@ -73,4 +73,25 @@ $(function(){
 	});
 });
 
+//無限スクロール
+$(function(){
+		$('.jscroll').jscroll({
+		contentSelector: '.scroll-list',
+		nextSelector: 'span.next:last a'
+	   });
+	});
+
+$(function(){
+	$(window).on('scroll', function(){
+	scrollHeigth = $(document).height();
+	scrollPosition = $(window).height() + $(window).scrollTop();
+	if ((scrollHeigth - scrollPosition) / scrollHeigth <= 0.05){
+		$('.jscroll').jscroll({
+			contentSelector: '.scroll-list',
+		nextSelector: 'span.next:last a'
+		});
+	   }
+	});
+});
+
 

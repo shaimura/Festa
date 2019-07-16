@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   devise_for :staffs, controllers:{
   sessions:      'staffs/sessions',
   passwords:     'staffs/passwords',
@@ -35,16 +36,19 @@ Rails.application.routes.draw do
   get 'organizations/index'
 
   namespace :organizations do
+    resources :organization_inquirys
     resources :festivals
   end
-  namespace :admins do
-    resources :presents
-    get 'top'
-  end
+
+
+
+
   namespace :admins do
     resources :organizations
     resources :staffs
     resources :festivals
+    resources :presents
+    get 'top'
   end
 
 
@@ -66,8 +70,11 @@ Rails.application.routes.draw do
 
 
   resources :organizations do
+    resources :organization_inquirys
     resources :festivals
   end
+
+  resources :organization_inquirys
 
 
 

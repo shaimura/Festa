@@ -6,4 +6,6 @@ class Organization < ApplicationRecord
 
    has_many :festivals
 
+   has_many :organization_inquiries
+
 end
