@@ -24,6 +24,13 @@
             <td>電話番号</td>
             <td> <%= @organization.telephone %></td>
           </tr>
+          <tr class="organizations-info">
+            <td>メールアドレス</td>
+            <td> <%= @organization.email %></td>
+          </tr>
+          <tr class="organizations-info" colspan="2">
+            <td> <%= link_to "登録しているお祭りを確認する", organization_festivals_path(organization_id: @organization) %> </td>
+          </tr>
         </table>
 
         </div>
@@ -99,7 +106,7 @@ function createCalender(year, month){
 
 
 
-  calendarHtmlhed += '<p class="calendar-h" style="">' + year + '/' + month + '</p>';
+  calendarHtmlhed += '<p class="organizations-calender">' + year + '/' + month + '</p>';
 
   document.querySelector('#calendarhed').innerHTML = calendarHtmlhed;
 
@@ -169,23 +176,13 @@ function createCalender(year, month){
 
           <% end %>
 
-          //スタッフ登録しているお祭りの配列
-
-          var festivalstaffdates = [];
-          var festivalstaffsname = [];
-          var festivalstaffsid = [];
-          var festivalstaffdate = "";
-          var festivalstaffname = "";
-          var festibalstaffid = "";
-
-
 
 
 
 
 
           if (festivaldates.indexOf(setday) >= 0){
-            calendarHtml += '<td class="calender-td-festival pointa">' + '祭' + '<ul class="list-inline balloon-calender">'
+            calendarHtml += '<td class="calender-td-festival pointa" style="color: #ff7f00;">' + '★' + '<ul class="list-inline balloon-calender">'
 
           for (var i = 0; i < festivalsname.length; i++){
             calendarHtml += '<li class="balloon-text">' + '<a href="/festivals/' + festivalsid[i] + '" class="link-none">' + festivalsname[i] + '</a>' + '</li>'

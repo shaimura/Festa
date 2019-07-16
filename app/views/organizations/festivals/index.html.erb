@@ -15,7 +15,7 @@
 						<th>スタッフ募集状況</th>
 					</tr>
 				</thead>
-					<% @festivals.each do |festival| %>
+					<% @festivals.each, url: organizations_festivals_path(organization_id: current_organization.id) do |festival| %>
 					<tbody>
 					<tr>
 						<td style="text-align: center;"><%=link_to organizations_festivals_path(festival.id) do %>
