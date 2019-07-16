@@ -1,24 +1,7 @@
 Rails.application.routes.draw do
 
 
-  get 'organizations/show'
-  get 'organizations/index'
 
-  namespace :organizations do
-    resources :festivals
-  end
-  namespace :admins do
-    resources :presents
-  end
-  namespace :admins do
-    get 'organizations/index'
-  end
-  namespace :admins do
-    get 'festivals/index'
-  end
-  namespace :admins do
-    get 'staffs/index'
-  end
   devise_for :staffs, controllers:{
   sessions:      'staffs/sessions',
   passwords:     'staffs/passwords',
@@ -46,7 +29,34 @@ Rails.application.routes.draw do
   get 'festivals/area'
   get 'festivals/date'
   get 'festivals/etc'
-  get 'festivals/calendar'
+  get 'admins/top'
+
+
+  get 'organizations/show'
+  get 'organizations/index'
+
+  namespace :organizations do
+    resources :organization_inquirys
+    resources :festivals
+  end
+
+
+
+
+  namespace :admins do
+    resources :organizations
+    resources :staffs
+    resources :festivals
+    resources :presents
+    get 'top'
+  end
+
+
+    namespace :staffs do
+    resources :staff_inquirys
+  end
+
+  resources :staff_inquirys
 
 
 
@@ -60,8 +70,11 @@ Rails.application.routes.draw do
 
 
   resources :organizations do
+    resources :organization_inquirys
     resources :festivals
   end
+
+  resources :organization_inquirys
 
 
 
