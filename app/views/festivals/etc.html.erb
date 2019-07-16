@@ -34,6 +34,8 @@
 
 <% end %>
 
+<%= paginate @festivals, class: "paginate paginate-style"  %>
+
 <% else %>
 
 
@@ -66,5 +68,10 @@
 <% end %>
 
 <p class="pagetop"></p>
+
+
+<%= paginate @searchs, class: "paginate paginate-style"  %>
+
+
 
 

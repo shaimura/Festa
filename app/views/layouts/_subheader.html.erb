@@ -1,24 +1,43 @@
 <header role="banner">
 	<nav class="navbar navbar-default" >
-<div class="container-fluid">
-	<div class="row">
+		<div class="container-fluid">
+			<div class="row">
 
-			<nav class="nav navbar-nav navbar-left">
-				<%= link_to festivals_path, :style=>"color:#777;text-decoration: none;" do %>
-				<h1>FESTA</h1>
-				<% end %>
-			</nav>
+					<nav class="nav navbar-nav navbar-left">
+						<%= link_to _path, :style=>"color:#777;text-decoration: none;" do %>
+						<h1>FESTA</h1>
+						<% end %>
+					</nav>
 
-	<nav>
-		<ul class="nav navbar-nav navbar-center" style="margin: 25px 30px 0 30px;">
-			<li>スタッフ一覧</li>
-			<li>団体一覧</li>
-			<li>お祭り一覧</li>
-			<li>プレゼント一覧</li>
-		</ul>
+				<ul class="nav navbar-nav navbar-center" style="margin: 25px 30px 0 30px;">
+					<li>
+						<%= link_to admins_staffs_path, class: "link-none" do %>
+							<p class="sub-header-text link-none"> スタッフ一覧 </p>
+						<% end %>
+					</li>
+					<li>
+						<%= link_to admins_organizations_path, class: "link-none" do %>
+							<p class="sub-header-text link-none"> 団体一覧 </p>
+						<% end %>
+					</li>
+					<li>
+						<%= link_to admins_festivals_path, class: "link-none" do %>
+							<p class="sub-header-text link-none"> お祭り一覧 </p>
+						<% end %>
+					</li>
+					<li>
+						<%= link_to admins_festivals_path, class: "link-none" do %>
+							<p class="sub-header-text link-none"> プレゼント一覧 </p>
+						<% end %>
+					</li>
+					<li>
+						<%= link_to destroy_admin_session_path, class: "link-none" do %>
+							<p class="sub-header-text link-none"> ログアウト </p>
+						<% end %>
+					</li>
+				</ul>
+
+			</div>
+		</div>
 	</nav>
-
-</div>
-</div>
-</nav>
 </header>

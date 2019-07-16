@@ -1,0 +1,2 @@
+module StaffInquirysHelper
+end

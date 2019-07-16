@@ -1,4 +1,5 @@
 class Organizations::FestivalsController < ApplicationController
+
   def new
   	@festival = Festival.new
   end
@@ -9,7 +10,7 @@ class Organizations::FestivalsController < ApplicationController
   end
 
   def index
-  	@festivals = Festival.all
+  	@festivals = Festival.where(organization_id: current_organization.id).page(params[:page])
   end
 
   def create

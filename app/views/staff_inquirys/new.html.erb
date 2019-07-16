@@ -1,0 +1,15 @@
+<%= form_for @staff_inquiry do |inquiry| %>
+
+  <div class="form-group">
+    <%= inquiry.label :email, '返信先メールアドレス' %>
+    <%= inquiry.staff.email %>
+  </div>
+
+ <div class="form-group">
+   <%= inquiry.label :message, 'お問い合わせ内容' %>
+   <%= inquiry.text_area :message, size: '10x10', class: 'form-control' %>
+ </div>
+
+  <%= inquiry.submit '送信' %>
+
+<% end %>

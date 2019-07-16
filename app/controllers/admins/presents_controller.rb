@@ -6,7 +6,6 @@ class Admins::PresentsController < ApplicationController
   end
 
   def show
-  	
   end
 
   def create

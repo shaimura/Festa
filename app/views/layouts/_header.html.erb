@@ -62,9 +62,9 @@
 				</button>
 				<nav class="drawer-nav" role="navigation">
 					<ul class="drawer-menu">
-						<li><a class="drawer-brand" href="#">ユーザーメニュー</a></li>
-						<li><%= link_to "ユーザーページ", staff_path(id: current_staff.id),class: "drawer-menu-item" %></li>
-						<li><%= link_to "ログアウト", destroy_staff_session_path, class: "drawer-menu-item", method: :delete %> </li>
+						<li><P class="drawer-brand" href="#">ユーザーメニュー</P></li>
+						<li><%= link_to "ユーザーページ", staff_path(id: current_staff.id),class: "drawer-menu-item sub-heder-li" %></li>
+						<li><%= link_to "ログアウト", destroy_staff_session_path, class: "drawer-menu-item sub-heder-li", method: :delete %> </li>
 					</ul>
 			</div>
 		</ul>
