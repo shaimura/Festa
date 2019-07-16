@@ -1,0 +1,31 @@
+<%= render 'layouts/header' %>
+
+<%= form_for @staff_inquiry, url:staffs_staff_inquirys_path do |inquiry| %>
+
+
+
+
+<p class="inquity-title">お問い合わせフォーム</p>
+
+<div class="col-lg-4 col-lg-offset-4">
+<div>
+	<p class="sub-text">お名前</p>
+	<p class="inquity-text"><%= @staff.name %></p>
+</div>
+
+<div style="margin: 20px 0 0 0">
+	<p class="sub-text">返信先メールアドレス(登録されたメールアドレスに返信されます)</p>
+	<P class="inquity-text" ><%= @staff.email %><P>
+</div>
+
+ <div class="form-group" style="margin-top: 30px;">
+   <%= inquiry.label :message, 'お問い合わせ内容' %>
+   <%= inquiry.text_area :message, class: 'form-control inquiry-message-box' %>
+ </div>
+
+  <%= inquiry.submit '送信' %>
+
+
+<% end %>
+
+</div>

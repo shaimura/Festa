@@ -10,6 +10,10 @@
 <p class="title-text"> お祭り一覧　</p>
 
 
+
+<ul class="scroll-list jscroll" style="padding-left: 0px;">
+
+
 <% @festivals.each do |festival| %>
 
 <div class="container">
@@ -33,6 +37,12 @@
 </div>
 
 <% end %>
+
+<p class="pagetop"></p>
+
+<%= paginate @festivals, class: "paginate paginate-style"  %>
+
+</ul>
 
 <% else %>
 
@@ -66,5 +76,10 @@
 <% end %>
 
 <p class="pagetop"></p>
+
+
+<%= paginate @searchs, class: "paginate paginate-style"  %>
+
+
 
 

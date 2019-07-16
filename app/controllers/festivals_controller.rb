@@ -10,23 +10,22 @@ class FestivalsController < ApplicationController
   end
 
   def index
-      @festivals = Festival.where('date >= ?', Date.today)
+      @festivals = Festival.where('date >= ?', Date.today).page(params[:page])
   end
 
   def etc
-      @searchs = Festival.search_etc(params[:search_etc])
-      @festivals = Festival.where('date >= ?', Date.today)
+      @searchs = Festival.search_etc(params[:search_etc]).page(params[:page]).where('date >= ?', Date.today)
+      @festivals = Festival.where('date >= ?', Date.today).page(params[:page])
   end
 
   def area
-    @searchs = Festival.search_area(params[:search_area])
-    @festivals = Festival.where('date >= ?', Date.today)
+    @searchs = Festival.search_area(params[:search_area]).page(params[:page]).where('date >= ?', Date.today)
+    @festivals = Festival.where('date >= ?', Date.today).page(params[:page])
   end
 
   def date
-    @searchs = Festival.search_date(params[:search_date])
-    @date = Festival.find_by(params[:search_date])
-    @festivals = Festival.where('date >= ?', Date.today)
+    @searchs = Festival.search_date(params[:search_date]).page(params[:page])
+    @festivals = Festival.where('date >= ?', Date.today).page(params[:page])
 
   end
 

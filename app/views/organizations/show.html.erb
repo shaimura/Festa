@@ -1,2 +1,249 @@
-<h1>Organizations#show</h1>
-<p>Find me in app/views/organizations/show.html.erb</p>
+<%= render 'layouts/header' %>
+
+<div class="container " style="background-color: rgba(127,255,127,0.3);">
+    <div style="background-color: rgba(127,255,127,0.6); margin: 20px 0 20px 0;">
+      <p class="title-text">団体ページ</p>
+
+      <div class="row">
+        <div class="col-lg-6" style="padding: 30px 50px 30px 40px;">
+
+
+        <table class="table">
+          <thead>
+              <th class="organizations-info" colspan="2" style="text-align: center; font-size: 24px;">団体情報</th>
+          </thead>
+          <tr class="organizations-info">
+            <td>名前</td>
+            <td> <%= @organization.name %> </td>
+          </tr>
+          <tr class="organizations-info">
+            <td>登録住所</td>
+            <td> <%= @organization.address %> </td>
+          </tr>
+          <tr class="organizations-info">
+            <td>電話番号</td>
+            <td> <%= @organization.telephone %></td>
+          </tr>
+        </table>
+
+        </div>
+
+        <div class="col-lg-6" style="padding: 30px 50px 30px 40px;">
+
+          <div class="row" style="margin-left: 10px;">
+            <div class="col-lg-3">
+              <button id="prev" type="button">前月</button>
+            </div>
+            <div class="col-lg-5">
+              <div id="calendarhed"></div>
+            </div>
+            <div class="col-lg-4">
+              <button id="next" type="button">来月</button>
+            </div>
+          </div>
+
+          <div id="calendar"></div>
+
+        </div>
+
+        </div>
+
+
+
+    </div>
+  </div>
+
+
+
+
+
+<!-- カレンダー -->
+
+
+
+<script>
+
+
+
+ const weeks = ['日', '月', '火', '水', '木', '金', '土'];
+ const date = new Date();
+ let year = date.getFullYear();
+ let month = date.getMonth() + 1;
+
+function showCalendar(year, month){
+    const calendarHtml = createCalender(year, month)
+    const sec = document.createElement('section')
+    sec.innerHTML = calendarHtml
+    document.querySelector('#calendar').appendChild(sec)
+
+    month++
+    if (month > 12){
+      year++
+      month = 1
+    }
+  }
+
+
+
+function createCalender(year, month){
+  const startDate = new Date(year, month - 1, 1);     //今月の最初の日
+  const endDate = new Date(year, month, 0);           //今月の最後の日
+  const endDayCount = endDate.getDate();              //月の末日
+  const lastMonthEndDate = new Date(year, month -1, 0)  //先月の最後の日の情報
+  const lastMonthEndDayCount = lastMonthEndDate.getDate() //先月の末日
+  const startDay = startDate.getDay();                //月の最初の日の曜日を取得
+  let dayCount = 1;                                   //日にちのカウント
+  let calendarHtml = '';                  //HTMLを組み立てる変数
+  let calendarHtmlhed = '';
+  let calendarHtmlfesta = '';
+
+
+
+  calendarHtmlhed += '<p class="calendar-h">' + year + '/' + month + '</p>';
+
+  document.querySelector('#calendarhed').innerHTML = calendarHtmlhed;
+
+  calendarHtml += '<table class="calendar-table">';
+
+
+   let nextmonth = month + 1;           //来月を取得
+   if (nextmonth > 12) {
+              nextmonth = 1
+          }
+   let lastmonth = month - 1;           //先月を取得
+   if (lastmonth < 1) {
+              lastmonth = 12
+          }
+
+   //曜日の行を作成
+   for (let i = 0; i < weeks.length; i++){
+    calendarHtml += '<td class="calender-td">' + weeks[i] + '</td>'
+  }
+   for (let w = 0; w < 6; w++){
+    calendarHtml += '<tr class="calender-tr">'
+     for(let d = 0; d < 7; d++){
+        if(w == 0 && d < startDay){                    //１行目で１日の曜日の前
+          let num = lastMonthEndDayCount - startDay + d + 1
+          calendarHtml += '<td class="is-disabled">' + lastmonth + '/' + num + '</td>'
+        }else if (dayCount > endDayCount){            //末尾の日数を超えた
+          let num = dayCount - endDayCount;
+          calendarHtml += '<td class="is-disabled">' + nextmonth + '/' + num + '</td>'
+          dayCount++
+        }else{
+
+          //月と日を文字型にする
+          let submonth = month;
+          if (month < 10){
+            submonth = '0' + month
+          }
+
+          let d = dayCount;
+          if (dayCount < 10){
+            d = '0' + dayCount
+          }
+          const setday = year + '-' + submonth + '-' + d
+
+
+          //開催するお祭りの配列
+
+          //配列の入れ物を作る
+          var festivaldate = "";
+          var festivalname = "";
+          var festivalid = "";
+          var festivaldates = [];
+          var festivalsname = [];
+          var festivalsid = [];
+
+          //配列にdateを入れる
+          <% @festivals.each do |festival| %>
+          festivaldate = ('<%= festival.date %>')
+          festivalname = ('<%= festival.name %>')
+          festivalid = ('<%= festival.id %>')
+          festivaldates.push(festivaldate)
+
+
+          if (festivaldate == setday){
+            festivalsname.push(festivalname)
+            festivalsid.push(festivalid)
+          }
+
+          <% end %>
+
+          //スタッフ登録しているお祭りの配列
+
+          var festivalstaffdates = [];
+          var festivalstaffsname = [];
+          var festivalstaffsid = [];
+          var festivalstaffdate = "";
+          var festivalstaffname = "";
+          var festibalstaffid = "";
+
+
+
+
+
+
+
+          if (festivaldates.indexOf(setday) >= 0){
+            calendarHtml += '<td class="calender-td-festival pointa">' + '祭' + '<ul class="list-inline balloon-calender">'
+
+          for (var i = 0; i < festivalsname.length; i++){
+            calendarHtml += '<li class="balloon-text">' + '<a href="/festivals/' + festivalsid[i] + '" class="link-none">' + festivalsname[i] + '</a>' + '</li>'
+          }
+
+          calendarHtml += '</ul>'  + '</td>'
+          }else{
+            calendarHtml += '<td class="calender-td">' + dayCount + '</td>'
+          }
+          dayCount++
+        }
+      }
+      calendarHtml += '</tr>'
+    }
+    calendarHtml += '</table>'
+
+    return calendarHtml
+  }
+
+
+  function moveCalendar(e) {
+    document.querySelector('#calendar').innerHTML = ''
+
+    if (e.target.id === 'prev') {
+        month--
+
+        if (month < 1) {
+            year--
+            month = 12
+        }
+    }
+
+    if (e.target.id === 'next') {
+        month++
+
+        if (month > 12) {
+            year++
+            month = 1
+        }
+    }
+
+    showCalendar(year, month)
+}
+document.querySelector('#prev').addEventListener('click', moveCalendar)
+document.querySelector('#next').addEventListener('click', moveCalendar)
+
+
+
+showCalendar(year, month)
+
+
+
+
+
+
+
+
+
+</script>
+
+
