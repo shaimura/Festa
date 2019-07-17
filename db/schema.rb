@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_16_101309) do
+ActiveRecord::Schema.define(version: 2019_07_17_114456) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -72,6 +72,14 @@ ActiveRecord::Schema.define(version: 2019_07_16_101309) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "organization_replies", force: :cascade do |t|
+    t.integer "organization_inquiry_id"
+    t.integer "admin_id"
+    t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -117,6 +125,14 @@ ActiveRecord::Schema.define(version: 2019_07_16_101309) do
     t.integer "staff_id"
     t.string "message"
     t.integer "inquiri_status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "staff_replies", force: :cascade do |t|
+    t.integer "staff_inquiry_id"
+    t.integer "admin_id"
+    t.string "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

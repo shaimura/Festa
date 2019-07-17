@@ -27,20 +27,23 @@
 						</tr>
 					</thead>
 					<tr style="font-size: 18px;">
-						<td>名称</td>
+						<td style="width: 30%;">名称</td>
 						<td> <%= @festival.name %> </td>
 					</tr>
 					<tr style="font-size: 18px;">
 						<td>スタッフ募集</td>
 						<td>
-						 <%= @festival.staff_status %>
-
-						    <% if @festival.staff_status == "募集中" %>
-								<%= form_for @matching, url:matchs_path do |matching| %>
-								<%= matching.hidden_field :festival_id, :value => @festival.id %>
-								<%= matching.submit "お祭に参加する" %>
+							<div class="col-lg-6">
+								 <%= @festival.staff_status %>
+							</div>
+							<div class="col-lg-6">
+						 		<% if @festival.staff_status == "募集中" %>
+									<%= form_for @matching, url:matchs_path do |matching| %>
+									<%= matching.hidden_field :festival_id, :value => @festival.id %>
+									<%= matching.submit "お祭に参加する", class: "blue-button" %>
+									<% end %>
 								<% end %>
-							<% end %>
+							</div>
 						</td>
 					</tr>
 					<tr style="font-size: 18px;">
@@ -48,16 +51,12 @@
 						<td> <%= @festival.date %> </td>
 					</tr>
 					<tr style="font-size: 18px;">
-						<td>主催</td>
-						<td> <%=  %> </td>
-					</tr>
-					<tr style="font-size: 18px;">
 						<td>アクセス</td>
 						<td> <%= @festival.traffic %> </td>
 					</tr>
 					<tr style="font-size: 18px;">
 						<td>関連サイト</td>
-						<td> <%= @festival.web_url %> </td>
+						<td> <a href="<%= @festival.web_url %>" target="_blank" > <%= @festival.web_url %> </a> </td>
 					</tr>
 					<tr style="font-size: 18px;">
 						<td>開催場所</td>

@@ -21,6 +21,7 @@ class Organizations::FestivalsController < ApplicationController
   end
 
   def edit
+    @festival = Festival.find(params[:id])
   end
 
   protected

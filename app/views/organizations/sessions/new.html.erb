@@ -1,26 +1,54 @@
-<h2>Log in</h2>
+<%= render 'layouts/header' %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<% if notice %>
+              <div class="alert alert-info alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert">
+                  <span aria-hidden="true">&times;</span>
+                  <span class="sr-only">close</span>
+                </button>
+                <%= notice %>
+              </div>
+          <% end %>
+          <% if alert %>
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">close</span>
+            </button>
+            <%= alert %>
+          </div>
+          <% end %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+<div class="container">
+  <div class="row">
+    <p class="title-text"> 団体 ログイン </p>
+    <div class="col-lg-4 col-lg-offset-4">
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :email,class: "sub-sgin-text" %><br />
+        <%= f.email_field :email,:size  => "50", autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password,class: "sub-sgin-text" %><br />
+        <%= f.password_field :password,:size  => "50", autocomplete: "current-password" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "Log in", class: "blue-button sign-button" %>
+      </div>
+    <% end %>
+
+    <%= render "organizations/shared/links" %>
+
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "organizations/shared/links" %>
+</div>

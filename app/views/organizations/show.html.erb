@@ -28,8 +28,8 @@
             <td>メールアドレス</td>
             <td> <%= @organization.email %></td>
           </tr>
-          <tr class="organizations-info" colspan="2">
-            <td> <%= link_to "登録しているお祭りを確認する", organization_festivals_path(organization_id: @organization) %> </td>
+          <tr class="organizations-info">
+            <td  colspan="2"> <%= link_to "登録しているお祭りを確認する", organizations_festivals_path %> </td>
           </tr>
         </table>
 
@@ -39,13 +39,13 @@
 
           <div class="row" style="margin-left: 10px;">
             <div class="col-lg-3">
-              <button id="prev" type="button">前月</button>
-            </div>
-            <div class="col-lg-5">
-              <div id="calendarhed"></div>
+              <button id="prev" type="button" class="red-button calender-button">前月</button>
             </div>
             <div class="col-lg-4">
-              <button id="next" type="button">来月</button>
+              <div id="calendarhed"></div>
+            </div>
+            <div class="col-lg-3">
+              <button id="next" type="button" class="red-button calender-button">来月</button>
             </div>
           </div>
 

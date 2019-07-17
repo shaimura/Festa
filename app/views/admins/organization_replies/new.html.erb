@@ -1,0 +1,31 @@
+<%= render 'layouts/header' %>
+
+<%= form_for @organization_reply , url:admins_organization_replies_path do |reply| %>
+
+
+
+
+<p class="inquity-title">お問い合わせフォーム</p>
+
+<div class="col-lg-4 col-lg-offset-4">
+<div>
+	<p class="sub-text">お名前</p>
+	<p class="inquity-text"><%= reply.organization_inquiry.organizatio.name %></p>
+</div>
+
+<div style="margin: 20px 0 0 0">
+	<p class="sub-text">返信先メールアドレス</p>
+	<P class="inquity-text" ><%= reply.organization_inquiries.organizatio.email %><P>
+</div>
+
+ <div class="form-group" style="margin-top: 30px;">
+   <%= reply.label :message, 'お問い合わせ内容' %>
+   <%= reply.text_area :message, class: 'form-control inquiry-message-box' %>
+ </div>
+
+  <%= reply.submit '送信' %>
+
+
+<% end %>
+
+</div>

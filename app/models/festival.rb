@@ -23,9 +23,9 @@ class Festival < ApplicationRecord
 
 
 	# 名前検索機能
-	def self.search_etc(search_etc)
-		if search_etc
-			Festival.where(["name LIKE ?", "%#{search_etc}%"])
+	def self.search_name(search_name)
+		if search_name
+			Festival.where(["name LIKE ?", "%#{search_name}%"])
 		else
 			Festival.all
 		end
