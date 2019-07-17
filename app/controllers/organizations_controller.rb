@@ -4,6 +4,4 @@ class OrganizationsController < ApplicationController
   	@festivals = Festival.where(organization_id: current_organization.id)
   end
 
-  def index
-  end
 end

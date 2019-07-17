@@ -44,6 +44,10 @@ Rails.application.routes.draw do
 
 
   namespace :admins do
+    resources :staff_replies
+    resources :staff_inquirys
+    resources :organization_inquirys
+    resources :organization_replies
     resources :organizations
     resources :staffs
     resources :festivals
@@ -56,6 +60,9 @@ Rails.application.routes.draw do
     resources :staff_inquirys
   end
 
+  resources :organization_inquirys
+  resources :organization_replies
+  resources :staff_replies
   resources :staff_inquirys
 
 
@@ -74,7 +81,6 @@ Rails.application.routes.draw do
     resources :festivals
   end
 
-  resources :organization_inquirys
 
 
 

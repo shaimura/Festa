@@ -1,9 +1,12 @@
 <%= form_for @festival, url:organizations_festivals_path do |festival| %>
-<%= render 'layouts/subheader' %>
+<%= render 'layouts/header' %>
+
+<p class="title-text">お祭り登録画面</p>
 
 <div class="row">
 <div class="col-lg-4"></div>
 <div class="col-lg-8">
+
 
 	<div class="festival-new-box">
 		<%= festival.label :name, "１：お祭りの名前を入力してください", class: "festival-new-text" %><br>
@@ -52,7 +55,7 @@
 	</div>
 
 	<div>
-		<%= festival.submit "お祭りを登録します", class: "registration-button festival-button" %>
+		<%= festival.submit "お祭りを登録します", class: "green-button festival-button" %>
 	</div>
 
 </div>

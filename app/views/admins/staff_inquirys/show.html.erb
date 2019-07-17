@@ -1,0 +1,45 @@
+<%= render 'layouts/subheader' %>
+
+
+
+
+
+<p class="inquity-title">お問い合わせ内容</p>
+
+<div class="col-lg-4 col-lg-offset-4">
+<div>
+	<p class="sub-text">お名前</p>
+	<p class="inquity-text"><%= @staff.name %></p>
+</div>
+
+<div style="margin: 20px 0 0 0">
+	<p class="sub-text">返信先メールアドレス</p>
+	<P class="inquity-text" ><%= @staff.email %><P>
+</div>
+
+ <div class="form-group" style="margin-top: 30px;">
+ 		<p class="sub-text">お問い合わせ内容</p>
+ 	<div class="inquity-box">
+    	<p class="inquity-text"><%= @staff_inquiry.message %></p>
+	</div>
+ </div>
+
+ <p class="inquity-title">返信</p>
+
+
+<div class="form-group" style="margin-top: 30px;">
+	<%= form_for @staff_reply, url:admins_staff_replies_path do |reply| %>
+    <%= reply.text_area :message, class: 'form-control inquiry-message-box' %>
+    <%= reply.hidden_field :staff_inquiry_id, :value => @staff_inquiry.id %>
+
+
+ 	<%= reply.submit '送信' %>
+
+  <% end %>
+
+  </div>
+
+
+
+
+</div>

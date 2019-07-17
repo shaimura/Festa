@@ -1,4 +1,4 @@
-<%= render 'layouts/subheader' %>
+<%= render 'layouts/header' %>
 
 
 
@@ -8,6 +8,7 @@
 
 				<div style="text-align: center; margin: 30px;">
 					<p class="title-text"> <%= @festival.name %> </p>
+					<%= link_to "編集画面へ", edit_organizations_festival_path %>
 				</div>
 			</div>
 
@@ -34,7 +35,6 @@
 						<td>スタッフ募集</td>
 						<td>
 						 <%= @festival.staff_status %>
-							<% end %>
 						</td>
 					</tr>
 					<tr style="font-size: 18px;">
@@ -43,7 +43,7 @@
 					</tr>
 					<tr style="font-size: 18px;">
 						<td>主催</td>
-						<td> <%=  %> </td>
+						<td> <%= @organization.name %> </td>
 					</tr>
 					<tr style="font-size: 18px;">
 						<td>アクセス</td>
@@ -51,7 +51,7 @@
 					</tr>
 					<tr style="font-size: 18px;">
 						<td>関連サイト</td>
-						<td> <%= @festival.web_url %> </td>
+						<td> <a href="<%= @festival.web_url %>" target="_blank" > <%= @festival.web_url %> </a> </td>
 					</tr>
 					<tr style="font-size: 18px;">
 						<td>開催場所</td>

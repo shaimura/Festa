@@ -28,6 +28,13 @@ body{
   min-height: 100vh;
 }
 
+
+.drawer-menu-item:hover{
+  font-size: 18px;
+}
+
+
+
 .link-none{
   text-decoration: none;
   color: #333333;
@@ -115,6 +122,12 @@ footer{
   color: #444444;
 }
 
+.sub-sgin-text{
+  color: #444444;
+  font-size: 16px;
+  margin: 5px 0 5px 0;
+}
+
 .drawer-menu-item{
   font-size: 50px;
 }
@@ -144,6 +157,52 @@ footer{
   font-size: 20px;
   text-align: center;
 }
+
+.green-button{
+  background-color: #66cdaa;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  color: #f8f8ff;
+  text-align: center;
+}
+
+.blue-button{
+  background-color: #7fbfff;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  color: #f8f8ff;
+  text-align: center;
+}
+
+.red-button{
+   background-color: #ff7f7f;
+   -webkit-border-radius: 15px;
+   -moz-border-radius: 15px;
+   color: #f8f8ff;
+   text-align: center;
+}
+
+.orange-button{
+   background-color: #ffbf7f;
+   -webkit-border-radius: 15px;
+   -moz-border-radius: 15px;
+   color: #f8f8ff;
+   text-align: center;
+}
+
+.calender-button{
+  margin: 10px 0 0 10px;
+  font-size: 30px;
+}
+
+
+.sign-button{
+  margin: 10px 0 0 0;
+  font-size: 20px;
+  width: 100%;
+}
+
+
 
 
 .select-box{
@@ -193,6 +252,14 @@ nav.pagination {
 
 .paginate-style{
   font-size: 24px;
+}
+
+
+
+.sub-header-text{
+  font-size: 18px;
+  text-align: center;
+  color: #444444;
 }
 
 

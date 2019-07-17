@@ -26,10 +26,16 @@
             <td> <%= @staff.telephone %></td>
           </tr>
           <tr class="staff-info">
+            <td>メールアドレス</td>
+            <td> <%= @staff.email %></td>
+          </tr>
+          <tr class="staff-info">
             <td>ポイント</td>
-            <td> ポイント  <%= @staff.remaining_point %> </td>
+            <td> ポイント  <%= @staff.remaining_point %></td>
           </tr>
         </table>
+
+        <p>お知らせ一覧</p>
 
 
         </div>
@@ -38,13 +44,13 @@
 
           <div class="row" style="margin-left: 10px;">
             <div class="col-lg-3">
-              <button id="prev" type="button">前月</button>
-            </div>
-            <div class="col-lg-5">
-              <div id="calendarhed"></div>
+              <button id="prev" type="button" class="calender-button blue-button">前月</button>
             </div>
             <div class="col-lg-4">
-              <button id="next" type="button">来月</button>
+              <div id="calendarhed"></div>
+            </div>
+            <div class="col-lg-3">
+              <button id="next" type="button" class="calender-button blue-button">来月</button>
             </div>
           </div>
 
