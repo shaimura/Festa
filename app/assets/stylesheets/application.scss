@@ -216,18 +216,7 @@ footer{
 
 
 
-/*無限スクロール*/
-ul.skill-list{
-  padding: 0;
-}
 
-nav.pagination {
-  display: none;
-}
-
-.scroll{
-  font-size: 24px;
-}
 
 
 /*お問い合わせ*/
@@ -248,6 +237,17 @@ nav.pagination {
   color: #444444;
   font-size: 24px;
 }
+
+.inquity-box{
+  width: 100%;
+  height: auto;
+  background-color: #ffffcc;
+  padding:10px;
+  -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border: ridge;
+}
+
 
 
 .paginate-style{

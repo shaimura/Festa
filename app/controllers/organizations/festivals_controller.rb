@@ -10,7 +10,7 @@ class Organizations::FestivalsController < ApplicationController
   end
 
   def index
-  	@festivals = Festival.where(organization_id: current_organization.id).page(params[:page])
+  	@festivals = Festival.where(organization_id: current_organization.id)
   end
 
   def create

@@ -1,3 +1,22 @@
 // Place all the styles related to the admins/staff_inquirys controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.inquity-box{
+	width: 100%;
+	height: auto;
+	background-color: #ffffcc;
+	padding:10px;
+	-webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+}
+
+.green-button{
+  background-color: #66cdaa;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  color: #f8f8ff;
+  text-align: center;
+}

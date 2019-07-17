@@ -13,7 +13,7 @@ class FestivalsController < ApplicationController
       @festivals = Festival.where('date >= ?', Date.today).page(params[:page]).order(:date)
   end
 
-  def etc
+  def name
       @searchs = Festival.search_name(params[:search_name]).page(params[:page]).where('date >= ?', Date.today).order(:date)
       @festivals = Festival.where('date >= ?', Date.today).page(params[:page]).order(:date)
   end

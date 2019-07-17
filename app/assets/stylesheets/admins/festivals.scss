@@ -1,3 +1,17 @@
 // Place all the styles related to the admins/festivals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/*無限スクロール*/
+ul.scroll-list{
+  padding: 0;
+}
+
+nav.pagination {
+  display: none;
+}
+
+.scroll{
+  font-size: 24px;
+}

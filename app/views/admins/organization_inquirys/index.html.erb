@@ -23,8 +23,10 @@
 		                <td><%= inquiry.message %></td>
 		                <td>
 		                	<%= inquiry.inquiri_status %>
-		                	<% if inquiry.inquiri_status == "未対応" %>
-		                	: <%= link_to "返信する",admins_organization_inquiry_path(id: inquiry.id) %>
+		                	<% if inquiry.inquiri_status == "返信済み" %>
+		                	<%= link_to "確認する",admins_organization_inquiry_path(id: inquiry.id), class: "orange-button link-none" %>
+		                	<% elsif inquiry.inquiri_status == "未対応" %>
+		                	: <%= link_to "返信する",admins_organization_inquiry_path(id: inquiry.id), class: "green-button link-none" %>
 		                	<% end %>
 		                </td>
 					</tr>

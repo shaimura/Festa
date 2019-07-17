@@ -6,4 +6,6 @@ class Staff < ApplicationRecord
 
   has_many :staff_inquirys
 
+  has_many :matchs
+
 end

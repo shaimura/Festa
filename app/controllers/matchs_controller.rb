@@ -4,7 +4,14 @@ class MatchsController < ApplicationController
 		@match = Match.new(match_params)
 		@match.staff_id = current_staff.id
 		@match.save!
-		redirect_to staff_path(@match.staff_id)
+		redirect_to festival_path(@match.festival_id)
+	end
+
+	def destroy
+		@festival = Festival.find(params[:festival_id])
+        @match = current_staff.matchs.find_by(festival_id: @festival.id)
+        @match.destroy
+        redirect_to  festival_path(@festival.id)
 	end
 
 	protected

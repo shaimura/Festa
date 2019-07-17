@@ -6,4 +6,5 @@ class OrganizationInquiry < ApplicationRecord
 
 	enum inquiri_status:{未対応: 0, 返信済み: 1}
 
+
 end

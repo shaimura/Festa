@@ -84,7 +84,9 @@ Rails.application.routes.draw do
 
 
 
-  resources :festivals
+  resources :festivals do
+    resources :matchs
+  end
 
 
   resources :matchs
