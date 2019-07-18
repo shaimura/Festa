@@ -19,7 +19,7 @@ class StaffsController < ApplicationController
 	protected
 
 	def staff_params
-	  	params.require(:staff).permit(:id, :user_id, :last_name, :first_name, :postalcode, :address)
+	  	params.require(:staff).permit(:id, :name, :postalcode, :address, :telephone, :email, :password, :password_confirmation)
 	end
 
 

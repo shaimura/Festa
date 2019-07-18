@@ -31,6 +31,10 @@
     	 <p class="inquity-box inquity-text"><%= @organization_inquiry.organization_reply.message %></p>
   	</div>
 
+    <div class="orange-button inquirys-show-buttn link-none">
+    <p class="inquirys-show-buttn-text"><%= link_to "一覧に戻る", admins_organization_inquirys_path, class: "link-none" %></p>
+  </div>
+
   <% else %>
 
  <p class="inquity-title">返信</p>
@@ -42,7 +46,11 @@
     <%= reply.hidden_field :organization_inquiry_id, :value => @organization_inquiry.id %>
 
 
- 	<%= reply.submit '送信', class: "green-button" %>
+ 	<%= reply.submit '送信', class: "green-button inquirys-buttn" %>
+
+  <div class="orange-button inquirys-show-buttn link-none">
+    <p class="inquirys-show-buttn-text"><%= link_to "一覧に戻る", admins_organization_inquirys_path, class: "link-none" %></p>
+  </div>
 
   <% end %>
 

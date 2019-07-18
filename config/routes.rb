@@ -32,8 +32,6 @@ Rails.application.routes.draw do
   get 'admins/top'
 
 
-  get 'organizations/show'
-  get 'organizations/index'
 
   namespace :organizations do
     resources :organization_inquirys
@@ -76,6 +74,8 @@ Rails.application.routes.draw do
 
 
 
+
+
   resources :organizations do
     resources :organization_inquirys
     resources :festivals
@@ -86,7 +86,9 @@ Rails.application.routes.draw do
 
   resources :festivals do
     resources :matchs
+    resources :informations
   end
+
 
 
   resources :matchs

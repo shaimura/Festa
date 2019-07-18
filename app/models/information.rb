@@ -1,7 +1,6 @@
 class Information < ApplicationRecord
 
 
-	belongs_to :festivals
-
+	belongs_to :festival
 
 end

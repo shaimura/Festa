@@ -29,9 +29,6 @@ class FestivalsController < ApplicationController
 
   end
 
-  def edit
-  end
-
 
 
   protected

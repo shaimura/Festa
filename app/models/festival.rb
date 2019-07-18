@@ -12,7 +12,7 @@ class Festival < ApplicationRecord
 
 	after_validation :geocode, if: :address_changed?
 
-	has_many :informations
+	has_many :information
 
 	has_many :matchs
 

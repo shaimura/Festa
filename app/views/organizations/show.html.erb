@@ -28,10 +28,13 @@
             <td>メールアドレス</td>
             <td> <%= @organization.email %></td>
           </tr>
-          <tr class="organizations-info">
-            <td  colspan="2"> <%= link_to "登録しているお祭りを確認する", organizations_festivals_path %> </td>
-          </tr>
+          <tr><td colspan="2"></td></tr>
         </table>
+
+            <p class="blue-button info-button"><%= link_to "団体情報を変更する", edit_organization_path, class: "link-none butn" %></p>
+
+            <p class="red-button info-button"><%= link_to "登録しているお祭りを確認する", organizations_festivals_path, class: "link-none" %></p>
+
 
         </div>
 
@@ -157,6 +160,8 @@ function createCalender(year, month){
           var festivaldate = "";
           var festivalname = "";
           var festivalid = "";
+          var organization = "";
+          var organizations = [];
           var festivaldates = [];
           var festivalsname = [];
           var festivalsid = [];
@@ -166,12 +171,15 @@ function createCalender(year, month){
           festivaldate = ('<%= festival.date %>')
           festivalname = ('<%= festival.name %>')
           festivalid = ('<%= festival.id %>')
+          organization = ('<%= festival.organization %>')
+
           festivaldates.push(festivaldate)
 
 
           if (festivaldate == setday){
             festivalsname.push(festivalname)
             festivalsid.push(festivalid)
+            organizations.push(organization)
           }
 
           <% end %>
@@ -185,7 +193,7 @@ function createCalender(year, month){
             calendarHtml += '<td class="calender-td-festival pointa" style="color: #ff7f00;">' + '★' + '<ul class="list-inline balloon-calender">'
 
           for (var i = 0; i < festivalsname.length; i++){
-            calendarHtml += '<li class="balloon-text">' + '<a href="/festivals/' + festivalsid[i] + '" class="link-none">' + festivalsname[i] + '</a>' + '</li>'
+            calendarHtml += '<li class="balloon-text">' + '<a href="/organizations/festivals/' + festivalsid[i] + '" class="link-none">' + festivalsname[i] + '</a>' + '</li>'
           }
 
           calendarHtml += '</ul>'  + '</td>'

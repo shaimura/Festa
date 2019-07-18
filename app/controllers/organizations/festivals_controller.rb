@@ -7,6 +7,8 @@ class Organizations::FestivalsController < ApplicationController
   def show
   	 @festival = Festival.find(params[:id])
      @organization = @festival.organization
+     @information = Information.new
+     @informations = Information.where(festival_id: @festival)
   end
 
   def index
@@ -17,12 +19,24 @@ class Organizations::FestivalsController < ApplicationController
     festival = Festival.new(festival_params)
     festival.organization = current_organization
     festival.save!
-    redirect_to festival_path(festival)
+    redirect_to organizations_festival_path(festival)
   end
 
   def edit
     @festival = Festival.find(params[:id])
   end
+
+  def update
+    festival = Festival.find(params[:id])
+    festival.update!(festival_params)
+    redirect_to organizations_festival_path(festival)
+  end
+
+  def destroy
+      festival = Festival.find(params[:id])
+      festival.destroy
+      redirect_to organizations_festivals_path
+    end
 
   protected
 
