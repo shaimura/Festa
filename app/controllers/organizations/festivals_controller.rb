@@ -36,7 +36,7 @@ class Organizations::FestivalsController < ApplicationController
       festival = Festival.find(params[:id])
       festival.destroy
       redirect_to organizations_festivals_path
-    end
+  end
 
   protected
 

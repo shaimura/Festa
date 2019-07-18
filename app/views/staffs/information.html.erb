@@ -1,0 +1,37 @@
+<%= render 'layouts/header' %>
+
+<div class="container">
+	<div class="row">
+
+		<p class="title-text"> お祭りからのお知らせ一覧　</p>
+
+
+			<table class="table table-bordered sub-text">
+				<thead>
+					<tr>
+						<th>お祭りの名前</th>
+						<th>配信日</th>
+						<th>お知らせ内容</th>
+					</tr>
+				</thead>
+					<tbody>
+						<% @matchs.each do |matching| %>
+						<% matching.festival.informations do |information| %>
+					<tr>
+						<td><%= information.festival.name %></td>
+		                <td><%= information.created_at.strftime('%Y/%m/%d') %></td>
+		                <td><%= information.message %></td>
+					</tr>
+					<% end %>
+					<% end %>
+				</tbody>
+			</table>
+	</div>
+</div>
+
+
+
+
+<p class="pagetop"></p>
+
+

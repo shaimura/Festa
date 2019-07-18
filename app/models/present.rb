@@ -5,4 +5,12 @@ class Present < ApplicationRecord
 	has_many :orders
 
 	attachment :present_image
+
+
+
+   def staff
+   	Staff.unscoped{super}
+   end
+
+
 end

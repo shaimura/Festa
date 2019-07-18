@@ -7,4 +7,17 @@ class Admin < ApplicationRecord
   has_many :organizationreplies
 
 
+  acts_as_paranoid
+
+
+
+   def organization
+   	Organization.unscoped{super}
+   end
+
+   def festival
+   	Festival.unscoped{super}
+   end
+
+
 end

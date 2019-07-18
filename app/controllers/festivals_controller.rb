@@ -2,7 +2,7 @@ class FestivalsController < ApplicationController
 
 
   def show
-     @festival = Festival.find(params[:id])
+     @festival = Festival.unscoped.find(params[:id])
      @organization = @festival.organization
 
      @matching = Match.new

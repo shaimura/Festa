@@ -1,14 +1,17 @@
 class StaffsController < ApplicationController
 
 	def show
-    @staff = Staff.find(params[:id])
-    @festivals = Festival.all
-    @matchs = Match.where(staff_id: current_staff.id)
+	    @staff = Staff.find(params[:id])
+	    @festivals = Festival.all
+    	@matchs = Match.unscoped.where(staff_id: current_staff.id)
 
 	end
 
-	 def edit
-	 end
+
+	def information
+		@staff = current_staff
+		@matchs = Match.unscoped.where(staff_id: @staff.id)
+	end
 
 
 	def update

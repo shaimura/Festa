@@ -33,9 +33,12 @@
             <td>ポイント</td>
             <td> ポイント  <%= @staff.remaining_point %></td>
           </tr>
+          <tr>
+            <td colspan="2"></td>
+          </tr>
         </table>
 
-        <p>お知らせ一覧</p>
+        <p class="blue-button info-button"><%= link_to "お祭りからのお知らせ一覧へ", staffs_information_path, class: "link-none" %></p>
 
 
         </div>

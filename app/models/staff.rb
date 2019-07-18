@@ -8,4 +8,16 @@ class Staff < ApplicationRecord
 
   has_many :matchs
 
+  acts_as_paranoid
+
+
+   def organization
+   	Organization.unscoped{super}
+   end
+
+
+   def festival
+    Festival.unscoped{super}
+   end
+
 end

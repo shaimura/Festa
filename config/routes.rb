@@ -56,6 +56,7 @@ Rails.application.routes.draw do
 
     namespace :staffs do
     resources :staff_inquirys
+    get 'information'
   end
 
   resources :organization_inquirys

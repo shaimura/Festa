@@ -90,13 +90,17 @@
 				<table class="table table-bordered">
 					<thead>
 						<tr>
-							<th class="fes_pr_head">お祭りからのお知らせ</th>
+							<th class="fes_pr_head">お知らせ一覧</th>
 						</tr>
 					</thead>
 					<tbody>
-						<td  class="fes_pr_body"> <%= @festival.information %> </td>
+						<% @informations.each do |information| %>
+						<td  class="fes_pr_body"> <%= information.message %> </td>
+						<% end %>
 					</tbody>
 				</table>
+
+
 			</div>
 		</div>
 
