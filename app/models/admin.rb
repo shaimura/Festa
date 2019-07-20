@@ -9,6 +9,9 @@ class Admin < ApplicationRecord
 
   acts_as_paranoid
 
+  validates :name,presence: true, length:{ in: 1..50 }
+
+
 
 
    def organization
@@ -17,6 +20,14 @@ class Admin < ApplicationRecord
 
    def festival
    	Festival.unscoped{super}
+   end
+
+   def staff
+    Staff.unscoped{super}
+   end
+
+   def present
+    Present.unscoped{super}
    end
 
 

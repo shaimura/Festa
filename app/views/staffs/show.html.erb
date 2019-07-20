@@ -1,4 +1,4 @@
-<%= render 'layouts/subheader' %>
+<%= render 'layouts/header' %>
 
 
   <div class="container " style="background-color: rgba(255,165,0,0.5);">
@@ -31,14 +31,24 @@
           </tr>
           <tr class="staff-info">
             <td>ポイント</td>
-            <td> ポイント  <%= @staff.remaining_point %></td>
+            <td>
+              <div class="col-lg-5">
+                ポイント  <%= @staff.remaining_point %>
+              </div>
+              <div class="col-lg-7">
+               <p class="green-button"><%= link_to "ポイントを使う", new_staffs_order_path(staff_id: @staff), class: "link-none" %></p>
+              </div>
+            </td>
           </tr>
           <tr>
             <td colspan="2"></td>
           </tr>
         </table>
 
-        <p class="blue-button info-button"><%= link_to "お祭りからのお知らせ一覧へ", staffs_information_path, class: "link-none" %></p>
+        <p class="red-button info-button"><%= link_to "お祭りからのお知らせ一覧", staffs_information_path, class: "link-none" %></p>
+
+        <p class="blue-button info-button"><%= link_to "登録情報を変更する", edit_staff_path, class: "link-none" %></p>
+
 
 
         </div>

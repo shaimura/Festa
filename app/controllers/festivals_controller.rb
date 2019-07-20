@@ -4,6 +4,7 @@ class FestivalsController < ApplicationController
   def show
      @festival = Festival.unscoped.find(params[:id])
      @organization = @festival.organization
+     @informations = Information.where(festival_id: @festival)
 
      @matching = Match.new
 

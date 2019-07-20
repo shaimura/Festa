@@ -1,0 +1,52 @@
+<%= render 'layouts/subheader' %>
+
+<div class="container">
+	<div class="row">
+
+		<p class="title-text">
+			<%= @festival.name %><br>
+			登録スタッフ一覧
+	    </p>
+
+
+			<table class="table table-bordered sub-text">
+				<thead>
+					<tr>
+						<th style="width: 20%;">名</th>
+						<th style="width: 20%;">電話番号</th>
+						<th style="width: 40%;">ポイントプレゼント</th>
+						<th colspan="2" style="width: 20%; text-align: center;">会員状況</th>
+					</tr>
+				</thead>
+					<% @matchs.each do |matching| %>
+					<tbody>
+					<tr>
+						<td>
+							<p class="link-none"><%= matching.staff.name %></p>
+						</td>
+						<td>
+							<%= matching.staff.telephone %>
+						</td>
+		                <td>
+		                	<%= matching.staff.address %>
+		                </td>
+		                <td>
+		                	<%= form_for @point do |point| %>
+		                	<%= point.hidden_field :staff_id, :value => matching.staff_id %>
+		                	<%= point.hidden_field :festival_id, :value => matching.festival_id %>
+		                	<%= point.number_field :plus_point %>
+		                </td>
+		                <td>
+		                	<%= point.submit %>
+		                </td>
+					<% end %>
+				</tbody>
+				<% end %>
+			</table>
+	</div>
+</div>
+
+
+
+
+<p class="pagetop"></p>

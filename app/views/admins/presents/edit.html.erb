@@ -1,0 +1,46 @@
+<%= render 'layouts/subheader' %>
+
+<P class="title-text">プレゼント編集画面</P>
+
+<div class="row">
+	<div class="col-lg-5"></div>
+		<div class="col-lg-7">
+
+
+
+			<%= form_for @present, url:admins_present_path do |present| %>
+
+			<div style="margin-bottom: 20px">
+				<%= present.label :present, "プレゼント" %><br>
+				<%= present.text_field :present %>
+			</div>
+
+			<div style="margin-bottom: 20px">
+				<%= present.label :present_image, "プレゼントイメージ" %><br>
+				<%= present.attachment_field :present_image %>
+				<div class="preview festival-new-image">プレビューが表示されます</div>
+			</div>
+
+			<div style="margin-bottom: 20px">
+				<%= present.label :use_point, "必要ポイント" %>
+				<%= present.number_field :use_point %>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-3">
+					<div>
+						<%= present.submit "変更する", class: "green-button" %>
+					</div>
+				</div>
+				<div class="col-lg-2">
+					<div class="red-button ">
+						<%= link_to "削除する", admins_present_path(present), class: "link-none destroy_#{@present.id}", method: :delete,data:{confirm:"本当に削除しますか？"} %>
+					</div>
+				</div>
+
+
+			<% end %>
+
+		</div>
+	</div>
+</div>

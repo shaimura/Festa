@@ -13,4 +13,9 @@ class Present < ApplicationRecord
    end
 
 
+   def present
+    Present.unscoped{super}
+   end
+
+
 end

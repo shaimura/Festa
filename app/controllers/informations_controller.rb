@@ -5,13 +5,14 @@ class InformationsController < ApplicationController
 	end
 
 	def create
+		festival = Festival.find(params[:festival_id])
 		information = Information.new(information_params)
 		information.save!
-		redirect_to organizations_festival_path(@information.festival)
+		redirect_to organizations_festival_path(festival)
 	end
 
 
 	def information_params
-  	params.require(:information).permit(:id, :festival_id, :message)
-  end
+  	  params.require(:information).permit(:id, :festival_id, :message)
+    end
 end

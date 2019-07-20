@@ -14,6 +14,12 @@ class MatchsController < ApplicationController
         redirect_to  festival_path(@festival.id)
 	end
 
+	def index
+		@festival = Festival.find(params[:festival_id])
+		@matchs = Match.where(festival_id: @festival)
+		@point = Point.new
+	end
+
 	protected
 
 	 def match_params

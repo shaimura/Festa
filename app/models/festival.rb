@@ -12,9 +12,11 @@ class Festival < ApplicationRecord
 
 	after_validation :geocode, if: :address_changed?
 
-	has_many :informations
+	has_many :informations, dependent: :destroy
 
-	has_many :matchs
+	has_many :matchs, dependent: :destroy
+
+	has_many :points
 
 
 
@@ -23,12 +25,25 @@ class Festival < ApplicationRecord
 	enum staff_status:{募集中: 0, 募集していません: 1}
 
 
+	validates :name, presence: true, length:{ in: 1..100 }
+	validates :traffic, presence: true
+	validates :profile, presence: true, length: { maximum: 500 }
+	validates :web_url, presence: true
+	validates :date, presence: true
+	validates :fes_image_id, presence: true
+	validates :address, presence: true
+
+
    def organization
    	Organization.unscoped{super}
    end
 
    def festival
    	Festival.unscoped{super}
+   end
+
+   def staff
+   	Staff.unscoped{super}
    end
 
 

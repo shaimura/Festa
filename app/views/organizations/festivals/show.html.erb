@@ -41,7 +41,14 @@
 					<tr style="font-size: 18px;">
 						<td>スタッフ募集</td>
 						<td>
-						 <%= @festival.staff_status %>
+							<div class="col-lg-6">
+						 		<%= @festival.staff_status %>
+							</div>
+							<div class="col-lg-6">
+								<% if @festival.staff_status = "募集中" %>
+								<%= link_to "登録スタッフ一覧へ", festival_matchs_path(festival_id: @festival) %>
+								<% end %>
+							</div>
 						</td>
 					</tr>
 					<tr style="font-size: 18px;">
@@ -95,7 +102,8 @@
 					<p class="new-info-text">新規お知らせ配信</p>
 					<%= form_for @information, url: festival_informations_path(@festival) do |info| %>
 					<%= info.text_area :message, size: "200x10", class: 'form-control new-info-box' %>
-					<%= info.submit "お知らせ配信" %>
+					<%= info.hidden_field :festival_id, :value => @festival.id %>
+					<%= info.submit "お知らせを配信する", class: "blue-button festibal-show-botunn info-botunn" %>
 					<% end %>
 				</div>
 
@@ -106,12 +114,13 @@
 							<th class="fes_pr_head">お知らせ一覧</th>
 						</tr>
 					</thead>
+					<% @informations.each do |information| %>
 					<tbody>
-						<% @informations.each do |information| %>
 						<td  class="fes_pr_body"> <%= information.message %> </td>
-						<% end %>
 					</tbody>
+					<% end %>
 				</table>
+
 			</div>
 		</div>
 

@@ -13,4 +13,8 @@ class Match < ApplicationRecord
    	Festival.unscoped{super}
    end
 
+   def staff
+   	Staff.unscoped{super}
+   end
+
 end

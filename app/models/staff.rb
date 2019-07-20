@@ -8,7 +8,16 @@ class Staff < ApplicationRecord
 
   has_many :matchs
 
+  has_many :points
+
+  has_many :orders
+
   acts_as_paranoid
+
+  validates :name,presence: true, length:{ in: 1..50 }
+  validates :postalcode,presence: true, length:{is:7},format:{with:/\A[0-9]+\z/ ,message:'は数字で入力してください。'}
+  validates :telephone,presence: true,length:{ in: 9..20 },format:{with:/\A[0-9]+\z/ ,message:'は数字で入力してください。'}
+  validates :address, presence: true
 
 
    def organization
@@ -18,6 +27,14 @@ class Staff < ApplicationRecord
 
    def festival
     Festival.unscoped{super}
+   end
+
+   def staff
+    Staff.unscoped{super}
+   end
+
+   def present
+    Present.unscoped{super}
    end
 
 end
