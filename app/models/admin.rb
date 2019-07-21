@@ -4,7 +4,29 @@ class Admin < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :organizationreplies
+  has_many :presens
+
+
+  validates :name, length:{ in: 1..50 }
+
+
+
+
+   def organization
+   	Organization.unscoped{super}
+   end
+
+   def festival
+   	Festival.unscoped{super}
+   end
+
+   def staff
+    Staff.unscoped{super}
+   end
+
+   def present
+    Present.unscoped{super}
+   end
 
 
 end

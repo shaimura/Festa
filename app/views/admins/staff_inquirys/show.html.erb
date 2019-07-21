@@ -24,6 +24,21 @@
 	</div>
  </div>
 
+ <% if @staff_inquiry.inquiri_status == "返信済み" %>
+
+ <p class="inquity-title">返信内容</p>
+
+
+	<div class="form-group" style="margin-top: 30px;">
+    	 <p class="inquity-box inquity-text"><%= @staff_inquiry.staff_reply.message %></p>
+  	</div>
+
+    <div class="orange-button inquirys-show-buttn link-none">
+    <p class="inquirys-index-buttn-text"><%= link_to "一覧に戻る", admins_staff_inquirys_path, class: "inquirys-index-buttn-text link-none" %></p>
+  </div>
+
+  <% else %>
+
  <p class="inquity-title">返信</p>
 
 
@@ -33,11 +48,18 @@
     <%= reply.hidden_field :staff_inquiry_id, :value => @staff_inquiry.id %>
 
 
- 	<%= reply.submit '送信' %>
+ 	<%= reply.submit '送信', class: "green-button inquirys-buttn" %>
+
+  <div class="orange-button inquirys-show-buttn link-none">
+    <p class="inquirys-index-buttn-text"><%= link_to "一覧に戻る", admins_staff_inquirys_path, class: "inquirys-index-buttn-text link-none" %></p>
+  </div>
 
   <% end %>
 
   </div>
+
+
+  <% end %>
 
 
 

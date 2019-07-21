@@ -69,8 +69,8 @@
 				<nav class="drawer-nav" role="navigation">
 					<ul class="drawer-menu">
 						<li><P class="drawer-brand">ユーザーメニュー</P></li>
-						<li><%= link_to "スタッフページ", staff_path(id: current_staff.id),class: "drawer-menu-item" %></li>
-						<li><%= link_to "お問い合わせ", new_staffs_staff_inquiry_path,class: "drawer-menu-item link-none" %> </li>
+						<li><%= link_to "スタッフページ", staff_path(id: current_staff.id), class: "drawer-menu-item" %></li>
+						<li><%= link_to "お問い合わせ", new_staffs_staff_inquiry_path, class: "drawer-menu-item link-none" %> </li>
 						<li><%= link_to "ログアウト", destroy_staff_session_path, class: "drawer-menu-item link-none", method: :delete %> </li>
 					</ul>
 			</div>
@@ -83,7 +83,10 @@
 				<nav class="drawer-nav" role="navigation">
 					<ul class="drawer-menu">
 						<li><P class="drawer-brand" href="#">ユーザーメニュー</P></li>
-						<li><%= link_to "団体ページ", organization_path(id: current_organization.id),class: "drawer-menu-item" %></li>
+						<li><%= link_to "団体ページ", organization_path(id: current_organization.id), class: "drawer-menu-item" %></li>
+						<li><%= link_to "お問い合わせ", new_organizations_organization_inquiry_path, class: "drawer-menu-item link-none" %> </li>
+						<li><%= link_to "登録お祭り一覧", organizations_festivals_path, class: "drawer-menu-item" %></li>
+						<li><%= link_to "お祭り登録", new_organizations_festival_path, class: "drawer-menu-item" %></li>
 						<li><%= link_to "ログアウト", destroy_organization_session_path, class: "drawer-menu-item", method: :delete %> </li>
 					</ul>
 			</div>

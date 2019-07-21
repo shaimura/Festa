@@ -1,0 +1,16 @@
+<%= render 'layouts/header' %>
+
+<%= form_for @order, url:staffs_orders_path(staff_id: current_staff.id) do |order| %>
+
+<h1>ポイント使用</h1>
+<div class="row">
+	<% @presents.each do |present| %>
+	<%= present.present %><br>
+	<%= attachment_image_tag present, :present_image, :fill, 100, 100, format: 'jpg' %>
+	<%= present.use_point %>
+	<p>必要ポイント<%= order.hidden_field :present_id, :value => present.id %></p>
+	<% end %>
+	<%= order.submit "ポイントを使う" %>
+</div>
+
+<% end %>

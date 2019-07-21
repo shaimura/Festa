@@ -19,10 +19,23 @@
 
  <div class="form-group" style="margin-top: 30px;">
  		<p class="sub-text">お問い合わせ内容</p>
- 	<div class="inquity-box">
-    	<p class="inquity-text"><%= @organization_inquiry.message %></p>
-	</div>
+    	<p class="inquity-text inquity-box"><%= @organization_inquiry.message %></p>
  </div>
+
+<% if @organization_inquiry.inquiri_status == "返信済み" %>
+
+ <p class="inquity-title">返信内容</p>
+
+
+	<div class="form-group" style="margin-top: 30px;">
+    	 <p class="inquity-box inquity-text"><%= @organization_inquiry.organization_reply.message %></p>
+  	</div>
+
+    <div class="orange-button inquirys-show-buttn link-none">
+    <p class="inquirys-show-buttn-text"><%= link_to "一覧に戻る", admins_organization_inquirys_path, class: "link-none" %></p>
+  </div>
+
+  <% else %>
 
  <p class="inquity-title">返信</p>
 
@@ -33,11 +46,18 @@
     <%= reply.hidden_field :organization_inquiry_id, :value => @organization_inquiry.id %>
 
 
- 	<%= reply.submit '送信' %>
+ 	<%= reply.submit '送信', class: "green-button inquirys-buttn" %>
+
+  <div class="orange-button inquirys-show-buttn link-none">
+    <p class="inquirys-show-buttn-text"><%= link_to "一覧に戻る", admins_organization_inquirys_path, class: "link-none" %></p>
+  </div>
 
   <% end %>
 
   </div>
+
+
+  <% end %>
 
 
 

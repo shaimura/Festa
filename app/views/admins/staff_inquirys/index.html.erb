@@ -1,4 +1,4 @@
-<%= render 'layouts/header' %>
+<%= render 'layouts/subheader' %>
 
 <div class="container">
 	<div class="row">
@@ -12,7 +12,7 @@
 						<th>ユーザー名</th>
 						<th>お問い合わせ日</th>
 						<th>お問い合わせ内容</th>
-						<th>対応状況</th>
+						<th  colspan="2" style="text-align: center;">対応状況</th>
 					</tr>
 				</thead>
 					<% @staff_inquirys.each do |inquiry| %>
@@ -23,8 +23,16 @@
 		                <td><%= inquiry.message %></td>
 		                <td>
 		                	<%= inquiry.inquiri_status %>
-		                	<% if inquiry.inquiri_status == "未対応" %>
-		                	: <%= link_to "返信する",admins_staff_inquiry_path(id: inquiry.id) %>
+		                </td>
+		                <td>
+		                	<% if inquiry.inquiri_status == "返信済み" %>
+		                	<div class="orange-button inquirys-index-buttn link-none">
+		                	<p class="inquirys-index-buttn-text"><%= link_to "確認する",admins_staff_inquiry_path(id: inquiry.id), class: "link-none" %></p>
+		                	</div>
+		                	<% elsif inquiry.inquiri_status == "未対応" %>
+		                	<div class="green-button inquirys-index-buttn link-none">
+		                	<p class="inquirys-index-buttn-text"><%= link_to "返信する",admins_staff_inquiry_path(id: inquiry.id), class: "link-none" %></p>
+		                	</div>
 		                	<% end %>
 		                </td>
 					</tr>
@@ -33,8 +41,6 @@
 			</table>
 	</div>
 </div>
-
-
 
 
 <p class="pagetop"></p>

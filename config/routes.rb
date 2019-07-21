@@ -30,14 +30,15 @@ Rails.application.routes.draw do
   get 'festivals/date'
   get 'festivals/etc'
   get 'admins/top'
+  get 'festivals/staffs'
 
 
-  get 'organizations/show'
-  get 'organizations/index'
 
   namespace :organizations do
     resources :organization_inquirys
-    resources :festivals
+    resources :festivals do
+      resources :informations
+    end
   end
 
 
@@ -52,43 +53,52 @@ Rails.application.routes.draw do
     resources :staffs
     resources :festivals
     resources :presents
+    get 'orders/index'
     get 'top'
   end
 
 
     namespace :staffs do
     resources :staff_inquirys
+    resources :orders
+    get 'information'
   end
 
-  resources :organization_inquirys
-  resources :organization_replies
-  resources :staff_replies
-  resources :staff_inquirys
+
+
+  resources :admins do
+    resources :organization_replies
+    resources :presents
+    resources :staff_replies
+  end
 
 
 
-  resources :admins
-  resources :presents
+  resources :staffs do
+    resources :staff_inquirys
+    resources :points
+    resources :orders
+  end
 
 
-  resources :staffs
+
+
 
 
 
 
   resources :organizations do
     resources :organization_inquirys
-    resources :festivals
   end
 
 
 
 
-  resources :festivals
+  resources :festivals do
+    resources :matchs
+    resources :informations
+  end
 
-
-  resources :matchs
-  resources :points
 
 
 end

@@ -8,7 +8,14 @@
 
 				<div style="text-align: center; margin: 30px;">
 					<p class="title-text"> <%= @festival.name %> </p>
-					<%= link_to "編集画面へ", edit_organizations_festival_path %>
+					<div class="row">
+						<div class="col-lg-6">
+						<p class="blue-button festibal-show-botunn"><%= link_to "編集画面へ", edit_organizations_festival_path, class: "link-none" %></p>
+					</div>
+					<div class="col-lg-6">
+						<p class="red-button festibal-show-botunn"><%= link_to "削除する", organizations_festival_path, class: "link-none", method: :delete, data:{confirm:"本当に削除しますか？"} %></p>
+					</div>
+					</div>
 				</div>
 			</div>
 
@@ -34,7 +41,14 @@
 					<tr style="font-size: 18px;">
 						<td>スタッフ募集</td>
 						<td>
-						 <%= @festival.staff_status %>
+							<div class="col-lg-6">
+						 		<%= @festival.staff_status %>
+							</div>
+							<div class="col-lg-6">
+								<% if @festival.staff_status = "募集中" %>
+								<%= link_to "登録スタッフ一覧へ", festival_matchs_path(festival_id: @festival) %>
+								<% end %>
+							</div>
 						</td>
 					</tr>
 					<tr style="font-size: 18px;">
@@ -77,6 +91,36 @@
 						<td  class="fes_pr_body"> <%= @festival.profile %> </td>
 					</tbody>
 				</table>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-lg-10 col-lg-offset-1">
+
+				<div>
+					<p class="new-info-text">新規お知らせ配信</p>
+					<%= form_for @information, url: festival_informations_path(@festival) do |info| %>
+					<%= info.text_area :message, size: "200x10", class: 'form-control new-info-box' %>
+					<%= info.hidden_field :festival_id, :value => @festival.id %>
+					<%= info.submit "お知らせを配信する", class: "blue-button festibal-show-botunn info-botunn" %>
+					<% end %>
+				</div>
+
+
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th class="fes_pr_head">お知らせ一覧</th>
+						</tr>
+					</thead>
+					<% @informations.each do |information| %>
+					<tbody>
+						<td  class="fes_pr_body"> <%= information.message %> </td>
+					</tbody>
+					<% end %>
+				</table>
+
 			</div>
 		</div>
 

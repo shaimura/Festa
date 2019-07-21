@@ -2,8 +2,9 @@ class FestivalsController < ApplicationController
 
 
   def show
-     @festival = Festival.find(params[:id])
+     @festival = Festival.unscoped.find(params[:id])
      @organization = @festival.organization
+     @informations = Information.where(festival_id: @festival)
 
      @matching = Match.new
 
@@ -13,7 +14,7 @@ class FestivalsController < ApplicationController
       @festivals = Festival.where('date >= ?', Date.today).page(params[:page]).order(:date)
   end
 
-  def etc
+  def name
       @searchs = Festival.search_name(params[:search_name]).page(params[:page]).where('date >= ?', Date.today).order(:date)
       @festivals = Festival.where('date >= ?', Date.today).page(params[:page]).order(:date)
   end
@@ -27,9 +28,6 @@ class FestivalsController < ApplicationController
     @searchs = Festival.search_date(params[:search_date]).page(params[:page]).order(:date)
     @festivals = Festival.where('date >= ?', Date.today).page(params[:page]).order(:date)
 
-  end
-
-  def edit
   end
 
 

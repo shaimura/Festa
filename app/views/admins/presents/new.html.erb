@@ -1,24 +1,82 @@
 <%= render 'layouts/subheader' %>
 
-<P>プレゼント登録画面</P>
+<P class="title-text">プレゼント登録画面</P>
+
+<div class="row">
+	<div class="col-lg-5"></div>
+	<div class="col-lg-7">
 
 
-<%= form_for @present, url:admins_presents_path do |present| %>
 
-<%= present.label :present, "プレゼント" %>
-<%= present.text_field :present %>
+		<%= form_for @present, url:admins_presents_path do |present| %>
 
-<%= present.label :present_image, "プレゼントイメージ" %>
-<%= present.attachment_field :present_image %>
+		<div style="margin-bottom: 20px">
+			<%= present.label :present, "プレゼント" %><br>
+			<%= present.text_field :present %>
+		</div>
 
-<%= present.label :use_point, "必要ポイント" %>
-<%= present.number_field :use_point %>
+		<div style="margin-bottom: 20px">
+			<%= present.label :present_image, "プレゼントイメージ" %><br>
+			<%= present.attachment_field :present_image %>
+			<div class="preview festival-new-image">プレビューが表示されます</div>
+		</div>
 
-<%= present.submit %>
+		<div style="margin-bottom: 20px">
+			<%= present.label :use_point, "必要ポイント" %>
+			<%= present.number_field :use_point %>
+		</div>
+
+		<div style="margin-bottom: 20px">
+			<%= present.submit "登録する" %>
+		</div>
 
 
-<% end %>
+		<% end %>
 
+	</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+	<div class="col-lg-10 col-lg-offset-1">
+		<p class="title-text">プレゼント一覧</p>
+			<table class="table table-bordered sub-text">
+				<thead>
+					<tr>
+						<th style="width: 20%;">イメージ画像</th>
+						<th style="width: 40%;">名称</th>
+						<th style="width: 20%;">設定ポイント</th>
+						<th></th>
+					</tr>
+				</thead>
+					<% @presents.each do |present| %>
+					<tbody>
+					<tr>
+						<td>
+							<%= attachment_image_tag present, :present_image, :fill, 50, 50, format: 'jpg' %>
+						</td>
+						<td>
+							<%= present.present %>
+						</td>
+		                <td>
+		                	<%= present.use_point %>
+		                </td>
+		                <td>
+		                	<div class="blue-button link-none">
+			                	<p class="inquirys-index-buttn-text">
+			                		<%= link_to "変更する", edit_admins_present_path(present), class: "link-none" %>
+			                	</p>
+			                </div>
+		                </td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+
+</div>
+</div>
+</div>
 
 
 

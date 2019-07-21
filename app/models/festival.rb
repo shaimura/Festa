@@ -2,6 +2,13 @@ require 'date'
 
 class Festival < ApplicationRecord
 
+
+	def dete_cannot_be_in_the_past
+	  if dete.present? && date.past?
+	    errors.add(:date, "登録日が過去の日付になっています。")
+	  end
+	end
+
 	acts_as_paranoid
 
 	belongs_to :organization
@@ -12,13 +19,47 @@ class Festival < ApplicationRecord
 
 	after_validation :geocode, if: :address_changed?
 
-	has_many :matchs
+	has_many :informations, dependent: :destroy
+
+	has_many :matchs, dependent: :destroy
+
+	has_many :points
 
 
 
 	enum area:{北海道: 0, 東北: 1, 関東: 2, 中部: 3, 近畿: 4, 中国: 5, 四国: 6, 沖縄: 7}
 
 	enum staff_status:{募集中: 0, 募集していません: 1}
+
+
+	validates :name, length:{ in: 1..100 }
+	validates :traffic, presence: true
+	validates :profile, presence: true, length: { maximum: 500 }
+	validates :date, presence: true
+	validates :fes_image_id, presence: true
+	validates :address, presence: true
+
+
+
+
+
+   def organization
+   	Organization.unscoped{super}
+   end
+
+   def festival
+   	Festival.unscoped{super}
+   end
+
+   def staff
+   	Staff.unscoped{super}
+   end
+
+
+
+	def matched_by?(staff)
+	  matchs.where(staff_id: staff.id).exists?
+	end
 
 
 
