@@ -25,26 +25,20 @@ class ApplicationController < ActionController::Base
     end
 
 
-	 def configure_permitted_parameters
-	  devise_parameter_sanitizer.permit(:sign_up) do |staff_params|
-	    staff_params.permit(:name, :postalcode, :address, :telephone, :email, :password, :password_confirmation)
-	  end
-	  devise_parameter_sanitizer.permit(:sign_in) do |staff_params|
-	    staff_params.permit(:name, :postalcode, :address, :telephone, :email, :remember_me)
-	  end
-	  devise_parameter_sanitizer.permit(:sign_up) do |organization_params|
-	    organization_params.permit(:name, :postalcode, :address, :telephone, :email, :password, :password_confirmation)
-	  end
-	  devise_parameter_sanitizer.permit(:sign_in) do |organization_params|
-	    organization_params.permit(:name, :postalcode, :address, :telephone, :email, :remember_me)
-	  end
-	  devise_parameter_sanitizer.permit(:sign_up) do |admin_params|
-	    admin_params.permit(:name, :email, :password, :password_confirmation)
-	  end
-	  devise_parameter_sanitizer.permit(:sign_in) do |admin_params|
-	    admin_params.permit(:name, :email, :remember_me)
-	  end
-	end
+	protected
+
+		 def configure_permitted_parameters
+
+			  if params['contoroler'] == 'staffs/registrations'
+				    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :postalcode, :address, :telephone])
+				    devise_parameter_sanitizer.permit(:sign_in, keys: [:name, :postalcode, :address, :telephone])
+					devise_parameter_sanitizer.permit(:account_update, keys: [:name, :postalcode, :address, :telephone])
+			  elsif params['contoroler'] == 'organizations/registrations'
+				    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :postalcode, :address, :telephone])
+				    devise_parameter_sanitizer.permit(:sign_in, keys: [:name, :postalcode, :address, :telephone])
+					devise_parameter_sanitizer.permit(:account_update, keys: [:name, :postalcode, :address, :telephone])
+			  end
+		 end
 
 
 

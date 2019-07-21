@@ -6,6 +6,9 @@ class Present < ApplicationRecord
 
 	attachment :present_image
 
+	validates :present_image_id, presence: true
+	validates :present, presence: true
+
 
 
    def staff

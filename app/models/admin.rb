@@ -4,12 +4,10 @@ class Admin < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :organizationreplies
+  has_many :presens
 
 
-  acts_as_paranoid
-
-  validates :name,presence: true, length:{ in: 1..50 }
+  validates :name, length:{ in: 1..50 }
 
 
 

@@ -7,6 +7,7 @@ class InformationsController < ApplicationController
 	def create
 		festival = Festival.find(params[:festival_id])
 		information = Information.new(information_params)
+		information.festival = festival
 		information.save!
 		redirect_to organizations_festival_path(festival)
 	end

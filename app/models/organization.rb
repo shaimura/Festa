@@ -6,9 +6,14 @@ class Organization < ApplicationRecord
 
    acts_as_paranoid
 
-  validates :name,presence: true, length:{ in: 1..50 }
-  validates :postalcode,presence: true, length:{is:7},format:{with:/\A[0-9]+\z/ ,message:'は数字で入力してください。'}
-  validates :telephone_number,presence: true,length:{ in: 9..20 },format:{with:/\A[0-9]+\z/ ,message:'は数字で入力してください。'}
+
+   has_many :festivals
+
+   has_many :organization_inquiries
+
+  validates :name, length:{ in: 1..50 }
+  validates :postalcode, presence: true, length:{is:7},format:{with:/\A[0-9]+\z/ ,message:'は数字で入力してください。'}
+  validates :telephone, length:{ in: 9..20 },format:{with:/\A[0-9]+\z/ ,message:'は数字で入力してください。'}
   validates :address, presence: true
 
    def organization
@@ -23,8 +28,5 @@ class Organization < ApplicationRecord
     Staff.unscoped{super}
    end
 
-   has_many :festivals
-
-   has_many :organization_inquiries
 
 end
