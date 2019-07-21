@@ -25,10 +25,9 @@ class Festival < ApplicationRecord
 	enum staff_status:{募集中: 0, 募集していません: 1}
 
 
-	validates :name, presence: true, length:{ in: 1..100 }
+	validates :name, length:{ in: 1..100 }
 	validates :traffic, presence: true
 	validates :profile, presence: true, length: { maximum: 500 }
-	validates :web_url, presence: true
 	validates :date, presence: true
 	validates :fes_image_id, presence: true
 	validates :address, presence: true

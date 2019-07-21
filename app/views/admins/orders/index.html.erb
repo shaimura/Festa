@@ -1,4 +1,61 @@
+<%= render 'layouts/subheader' %>
+
 <% @orders.each do |order| %>
 <%= order.staff.name %>
 <%= order.present.present %>
 <% end %>
+
+
+<table class="table table-bordered">
+		<thead>
+			<tr >
+				<th>No</th>
+				<th>購入者</th>
+				<th>会員情報</th>
+				<th style="text-align: center;">
+				  ポイント使用日
+				</th>
+				<th style="text-align: center;">
+				  プレゼント詳細
+				</th>
+				</th>
+				<th style="text-align: center;">
+				  送付先
+				</th>
+				<th colspan="2" style="text-align: center;" >
+				  販売ステータス
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @orders.each do |order| %>
+			<tr>
+				<td><%= order.id %></td>
+				<td><%= order.user.name %></td>
+				<td>
+					<% if order.user.deleted_at == nil %>
+					<p>入会</p>
+				    <% else %>
+				    <p>退会</p>
+				    <% end %>
+				</td>
+				<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+				<td>
+					<%= order.present.present %>
+                </td>
+				<td>
+					〒<%= order.staff.postalcode %><br>
+					<%= order.staff.address %><br>
+				</td>
+				<%= form_for order, url: admins_staff_order_path(staff_id: order.staff_id, id: order.id) do |o| %>
+				<td style="text-align: center;">
+				  <%= o.select :order_status, Order.order_statuses.keys.map{|status| [status, status]}, {:prompt => order.order_status} %>
+				</td>
+				<td style="text-align: center;">
+				  <%= o.submit "変更", class: "orange-button" %>
+				</td>
+				<% end %>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
