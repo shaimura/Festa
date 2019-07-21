@@ -9,5 +9,25 @@ RSpec.describe Admin, type: :model do
   			expect(build(:admin)).to be_valid
   		end
   	end
+
+  	context "保存できない場合" do
+
+  		it "名前が入力されていない" do
+  			expect(build(:admin, :no_name)).to_not be_valid
+  		end
+
+  		it "名前が長い" do
+  			expect(build(:admin, :name_long)).to_not be_valid
+  		end
+
+  		it "メールが入力されていない" do
+  			expect(build(:admin, :no_email)).to_not be_valid
+  		end
+
+  		it "パスワードが入力されていない" do
+  			expect(build(:admin, :no_email)).to_not be_valid
+  		end
+
+  	end
   end
 end

@@ -2,10 +2,11 @@ FactoryBot.define do
 	password = Faker::Internet.password(6)
   factory :admin do
     sequence(:name){ |n| "testname#{n}"}
-  	sequence(:email){ |n| "testemail#{n}@gmail.com"}
-  	sequence(:password){ password }
+  	sequence(:email){ |n| "test#{n}@gmail.com"}
+  	password { password }
+    password_confirmation { password }
 
-  	rait :no_name do
+  	trait :no_name do
   		name {}
   	end
 

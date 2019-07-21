@@ -66,12 +66,15 @@ Rails.application.routes.draw do
 
 
 
-  resources :admins
-  resources :presents
+  resources :admins do
+    resources :organization_replies
+    resources :presents
+    resources :staff_replies
+  end
+
 
 
   resources :staffs do
-    resources :staff_replies
     resources :staff_inquirys
     resources :points
     resources :orders
@@ -86,7 +89,6 @@ Rails.application.routes.draw do
 
   resources :organizations do
     resources :organization_inquirys
-    resources :organization_replies
   end
 
 
@@ -97,9 +99,6 @@ Rails.application.routes.draw do
     resources :informations
   end
 
-
-
-  resources :matchs
 
 
 end

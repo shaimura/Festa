@@ -3,7 +3,8 @@ FactoryBot.define do
   factory :staff do
   	sequence(:name){ |n| "testname#{n}"}
   	sequence(:email){ |n| "testemail#{n}@gmail.com"}
-  	sequence(:password){ password }
+  	password { password }
+    password_confirmation { password }
   	sequence(:telephone){|n| "1111111111#{n}"}
   	sequence(:postalcode){ |n| "111111#{n}"}
   	sequence(:address){ |n| "testaddress#{n}"}

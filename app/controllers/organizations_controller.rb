@@ -11,7 +11,9 @@ class OrganizationsController < ApplicationController
 
   def update
 	    organization = Organization.find(params[:id])
-	    organization.update!
+	    organization.update!(organization_params)
+      sign_in(organization, bypass: true)
+      redirect_to organization_path(organization.id)
 	end
 
 	protected

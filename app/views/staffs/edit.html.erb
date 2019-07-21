@@ -32,19 +32,6 @@
           <%= f.email_field :email,:size  => "50", autofocus: true, autocomplete: "email" %>
         </div>
 
-        <div class="field">
-          <%= f.label :password,class: "sub-sgin-text" %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password,:size  => "50", autocomplete: "new-password" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :password_confirmation,class: "sub-sgin-text" %><br />
-          <%= f.password_field :password_confirmation,:size  => "50", autocomplete: "new-password" %>
-        </div>
-
         <div class="actions">
           <%= f.submit "変更する", class: "green-button sign-button" %>
         </div>

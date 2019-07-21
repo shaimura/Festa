@@ -2,6 +2,13 @@ require 'date'
 
 class Festival < ApplicationRecord
 
+
+	def dete_cannot_be_in_the_past
+	  if dete.present? && date.past?
+	    errors.add(:date, "登録日が過去の日付になっています。")
+	  end
+	end
+
 	acts_as_paranoid
 
 	belongs_to :organization
@@ -31,6 +38,9 @@ class Festival < ApplicationRecord
 	validates :date, presence: true
 	validates :fes_image_id, presence: true
 	validates :address, presence: true
+
+
+
 
 
    def organization

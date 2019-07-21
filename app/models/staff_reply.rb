@@ -4,7 +4,7 @@ class StaffReply < ApplicationRecord
 	belongs_to :admin
 
 
-	validates :message, presence: true, length:{ in: 1..1000 }
+	validates :message, length:{ in: 1..800 }
 
 
    def staff

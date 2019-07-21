@@ -2,8 +2,9 @@ FactoryBot.define do
 	password = Faker::Internet.password(6)
   factory :organization do
     sequence(:name){ |n| "testname#{n}"}
-  	sequence(:email){ |n| "testemail#{n}@gmail.com"}
-  	sequence(:password){ password }
+  	sequence(:email){ |n| "email#{n}@gmail.com"}
+  	password { password }
+    password_confirmation { password }
   	sequence(:telephone){|n| "1111111111#{n}"}
   	sequence(:postalcode){ |n| "111111#{n}"}
   	sequence(:address){ |n| "testaddress#{n}"}
