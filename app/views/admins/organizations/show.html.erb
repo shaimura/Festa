@@ -43,7 +43,7 @@
 
             <p class="blue-button info-button"><%= link_to "団体情報を変更する", edit_organization_path, class: "link-none butn" %></p>
 
-            <p class="red-button info-button"><%= link_to "登録しているお祭りを確認する", organizations_festivals_path, class: "link-none" %></p>
+            <p class="red-button info-button"><%= link_to "登録しているお祭りを確認する", admins_organization_festivals_path(organization_id: @organization.id), class: "link-none" %></p>
 
 
         </div>

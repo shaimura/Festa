@@ -13,6 +13,8 @@ class InformationsController < ApplicationController
 	end
 
 
+	protected
+
 	def information_params
   	  params.require(:information).permit(:id, :festival_id, :message)
     end

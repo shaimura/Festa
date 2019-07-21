@@ -11,6 +11,8 @@ class Admins::StaffRepliesController < ApplicationController
     redirect_to admins_organization_inquirys_path
   end
 
+  protected
+
 
   def staff_reply_params
   	params.require(:staff_reply).permit(:id, :admin_id, :message, :staff_inquiry_id)

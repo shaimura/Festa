@@ -1,0 +1,43 @@
+<%= render 'layouts/subheader' %>
+
+<div class="container">
+	<div class="row">
+
+		<p class="title-text"> 登録お祭り一覧　</p>
+
+
+			<table class="table table-bordered sub-text">
+				<thead>
+					<tr>
+						<th style="text-align: center;">お祭り画像</th>
+						<th>お祭り名</th>
+						<th>開催日</th>
+						<th>スタッフ募集状況</th>
+					</tr>
+				</thead>
+					<% @festivals.each do |festival| %>
+					<tbody>
+					<tr>
+						<td style="text-align: center;"><%=link_to admins_festival_path(id: festival.id) do %>
+							<%= attachment_image_tag festival, :fes_image, :fill, 50, 50, format: 'jpg' %>
+							<% end %>
+							</td>
+						<td><%= festival.name %></td>
+		                <td><%= festival.date %></td>
+		                <td>
+		                	<%= festival.staff_status %>
+		                </td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+
+	</div>
+</div>
+
+
+
+
+<p class="pagetop"></p>
+
+

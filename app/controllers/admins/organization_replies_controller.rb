@@ -15,6 +15,8 @@ class Admins::OrganizationRepliesController < ApplicationController
 
   end
 
+  protected
+
   def organization_reply_params
   	params.require(:organization_reply).permit(:id, :admin_id, :message, :organization_inquiry_id)
   end

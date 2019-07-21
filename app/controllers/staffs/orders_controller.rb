@@ -16,6 +16,8 @@ class Staffs::OrdersController < ApplicationController
   	redirect_to new_staffs_order_path
   end
 
+  protected
+
   def order_params
 	  	params.require(:order).permit(:id, :present_id, :staff_id)
   end

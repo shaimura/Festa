@@ -49,11 +49,13 @@ Rails.application.routes.draw do
     resources :staff_inquirys
     resources :organization_inquirys
     resources :organization_replies
-    resources :organizations
+    resources :organizations do
+      get 'festivals'
+    end
     resources :staffs
     resources :festivals
     resources :presents
-    get 'orders/index'
+    resources :orders
     get 'top'
   end
 

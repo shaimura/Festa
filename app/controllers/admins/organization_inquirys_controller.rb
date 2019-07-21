@@ -9,4 +9,11 @@ class Admins::OrganizationInquirysController < ApplicationController
   	@organization_reply = OrganizationReply.new
 
   end
+
+  protected
+
+  def organization_inquiry_params
+  	params.require(:organization_inquiry).permit(:id, :orgfnization_id, :message)
+  end
+
 end

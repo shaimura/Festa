@@ -12,9 +12,8 @@ class Organizations::OrganizationInquirysController < ApplicationController
     OrganizationInquiryMailer.organization_send_mail(@organization_inquiry).deliver
   end
 
-  def show
 
-  end
+  protected
 
   def organization_inquiry_params
   	params.require(:organization_inquiry).permit(:id, :orgfnization_id, :message)

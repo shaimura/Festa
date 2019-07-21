@@ -90,6 +90,12 @@
 						<li><%= link_to "ログアウト", destroy_organization_session_path, class: "drawer-menu-item", method: :delete %> </li>
 					</ul>
 			</div>
+			<% else %>
+			<li class="heder-li-search">
+				<div>
+					<%= link_to "ログインする", root_path, class: "link-none " %>
+				</div>
+			</li>
 			<% end %>
 		</ul>
 	</nav>

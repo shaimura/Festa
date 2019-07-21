@@ -9,6 +9,7 @@
 						<% end %>
 					</nav>
 
+				<% if admin_signed_in? %>
 				<ul class="nav navbar-nav navbar-center" style="margin: 25px 30px 0 30px;">
 					<li>
 						<%= link_to admins_staffs_path, class: "link-none" do %>
@@ -41,6 +42,7 @@
 						<% end %>
 					</li>
 				</ul>
+				<% end %>
 
 			</div>
 		</div>
