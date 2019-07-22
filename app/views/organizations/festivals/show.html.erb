@@ -41,12 +41,14 @@
 					<tr style="font-size: 18px;">
 						<td>スタッフ募集</td>
 						<td>
-							<div class="col-lg-6">
+							<div class="col-lg-5">
 						 		<%= @festival.staff_status %>
 							</div>
-							<div class="col-lg-6">
+							<div class="col-lg-7">
 								<% if @festival.staff_status = "募集中" %>
-								<%= link_to "登録スタッフ一覧へ", festival_matchs_path(festival_id: @festival) %>
+								<div class="orange-button">
+								<%= link_to "登録スタッフ一覧へ", festival_matchs_path(festival_id: @festival), class: "link-none" %>
+								</div>
 								<% end %>
 							</div>
 						</td>

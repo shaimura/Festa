@@ -33,10 +33,10 @@
             <td>ポイント</td>
             <td>
               <div class="col-lg-5">
-                ポイント  <%= @staff.remaining_point %>
+                <%= remaining_point(@staff) %>
               </div>
               <div class="col-lg-7">
-               <p class="green-button"><%= link_to "ポイントを使う", new_staffs_order_path(staff_id: @staff), class: "link-none" %></p>
+               <p class="green-button"><%= link_to "ポイントを使う", new_staffs_order_path, class: "link-none" %></p>
               </div>
             </td>
           </tr>

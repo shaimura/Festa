@@ -93,11 +93,11 @@
 							<th class="fes_pr_head">お知らせ一覧</th>
 						</tr>
 					</thead>
+					<% @informations.each do |information| %>
 					<tbody>
-						<% @informations.each do |information| %>
 						<td  class="fes_pr_body"> <%= information.message %> </td>
-						<% end %>
 					</tbody>
+					<% end %>
 				</table>
 
 

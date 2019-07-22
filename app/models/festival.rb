@@ -36,7 +36,7 @@ class Festival < ApplicationRecord
 	validates :traffic, presence: true
 	validates :profile, presence: true, length: { maximum: 500 }
 	validates :date, presence: true
-	validates :fes_image_id, presence: true
+	validates :fes_image, presence: true
 	validates :address, presence: true
 
 

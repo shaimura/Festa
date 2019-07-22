@@ -17,7 +17,7 @@ class MatchsController < ApplicationController
 	def index
 		@festival = Festival.find(params[:festival_id])
 		@matchs = Match.where(festival_id: @festival)
-		@point = Point.new
+		@newpoint = Point.new
 	end
 
 	protected

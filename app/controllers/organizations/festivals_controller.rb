@@ -12,7 +12,7 @@ class Organizations::FestivalsController < ApplicationController
   end
 
   def index
-  	@festivals = Festival.where(organization_id: current_organization.id)
+  	@festivals = Festival.where(organization_id: current_organization.id).order(:date)
   end
 
   def create

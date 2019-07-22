@@ -8,14 +8,19 @@
 
 				<div style="text-align: center; margin: 30px;">
 					<p class="title-text"> <%= @festival.name %> </p>
+					<% if @festival.deleted_at == nil %>
 					<div class="row">
 						<div class="col-lg-6">
-						<p class="blue-button festibal-show-botunn"><%= link_to "編集画面へ", edit_adminss_festival_path, class: "link-none" %></p>
+							<p class="blue-button festibal-show-botunn"><%= link_to "編集画面へ", edit_admins_festival_path, class: "link-none" %></p>
+						</div>
+						<div class="col-lg-6">
+							<p class="red-button festibal-show-botunn"><%= link_to "削除する", admins_festival_path, class: "link-none", method: :delete, data:{confirm:"本当に削除しますか？"} %></p>
+						</div>
 					</div>
-					<div class="col-lg-6">
-						<p class="red-button festibal-show-botunn"><%= link_to "削除する", adminss_festival_path, class: "link-none", method: :delete, data:{confirm:"本当に削除しますか？"} %></p>
-					</div>
-					</div>
+					<% else %>
+						<p class="red-button festibal-show-botunn">削除済み</p>
+					<% end %>
+
 				</div>
 			</div>
 
@@ -97,15 +102,6 @@
 
 		<div class="row">
 			<div class="col-lg-10 col-lg-offset-1">
-
-				<div>
-					<p class="new-info-text">新規お知らせ配信</p>
-					<%= form_for @information, url: festival_informations_path(@festival) do |info| %>
-					<%= info.text_area :message, size: "200x10", class: 'form-control new-info-box' %>
-					<%= info.hidden_field :festival_id, :value => @festival.id %>
-					<%= info.submit "お知らせを配信する", class: "blue-button festibal-show-botunn info-botunn" %>
-					<% end %>
-				</div>
 
 
 				<table class="table table-bordered">

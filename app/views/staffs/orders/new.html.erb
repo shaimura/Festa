@@ -1,16 +1,109 @@
 <%= render 'layouts/header' %>
 
-<%= form_for @order, url:staffs_orders_path(staff_id: current_staff.id) do |order| %>
+<div class="container">
+	<div class="row">
+		<p class="title-text">プレゼント一覧</p>
+		<p class="order-text" style="font-size: 32px;"> 残りポイント<%= remaining_point(@staff) %></p>
+	</div>
 
-<h1>ポイント使用</h1>
-<div class="row">
-	<% @presents.each do |present| %>
-	<%= present.present %><br>
-	<%= attachment_image_tag present, :present_image, :fill, 100, 100, format: 'jpg' %>
-	<%= present.use_point %>
-	<p>必要ポイント<%= order.hidden_field :present_id, :value => present.id %></p>
-	<% end %>
-	<%= order.submit "ポイントを使う" %>
+
+
+
+			<div class="contener">
+
+				<div class="row">
+					<% @presents.each do |present| %>
+					 			<%= form_for @order, url:staffs_orders_path(staff_id: current_staff.id) do |order| %>
+					 <div  class="d-inline-block col-lg-3" style="margin-top: 30px; ">
+					 	<div class="order-text">
+					 		<%= present.present %>
+					 	</div>
+					 	<div class="order-text">
+					 		<%= attachment_image_tag present, :present_image, :fill, 100, 100, format: 'jpg' %>
+					 	</div>
+					 	<div class="order-text">
+					 		<p>必要ポイント :<%= present.use_point %></p>
+					 	</div>
+					 	<% if remaining_point(@staff) > present.use_point %>
+					 	<div class="order-text">
+					 		<%= order.hidden_field :present_id, :value => present.id %></p>
+							<%= order.submit "ポイントを使う" %>
+					 	</div>
+					 	<% else %>
+					 	<div class="order-text">
+					 		<p style="color: red;">ポイントが足りません</p>
+					 	</div>
+					 	<% end %>
+					</div>
+						<% end %>
+					<% end %>
+				</div>
+
+
+				<div class="row" style="margin-top: 30px;">
+					<div class="col-lg-6">
+						<p class="order-text" style="font-size: 32px;">ポイント使用履歴</p>
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th  style="text-align: center;">
+										プレゼント
+									</th>
+									<th  style="text-align: center;">
+									  ポイント使用日
+									</th>
+									<th  style="text-align: center;">
+									  使用ポイント
+									</th>
+								</tr>
+							</thead>
+							<tbody style="text-align: center;">
+								<% @orders.each do |order| %>
+								<tr>
+									<td><%= order.present.present %></td>
+									<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+									<td>
+										<%= order.present.use_point %>
+					                </td>
+								</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div>
+					<div class="col-lg-6">
+						<p class="order-text" style="font-size: 32px;">ポイント獲得履歴</p>
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th  style="text-align: center;">
+										プレゼント
+									</th>
+									<th  style="text-align: center;">
+									  ポイント使用日
+									</th>
+									<th  style="text-align: center;">
+									  使用ポイント
+									</th>
+								</tr>
+							</thead>
+							<tbody style="text-align: center;">
+								<% @points.each do |point| %>
+								<tr>
+									<td><%= point.festival.name %></td>
+									<td><%= point.created_at.strftime('%Y/%m/%d') %></td>
+									<td>
+										<%= point.plus_point %>
+					                </td>
+								</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+
+
+
+	</div>
 </div>
-
-<% end %>

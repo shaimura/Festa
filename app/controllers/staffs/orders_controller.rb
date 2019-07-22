@@ -2,7 +2,9 @@ class Staffs::OrdersController < ApplicationController
 
   def new
   	@order = Order.new
-  	@orders = Order.where(sutaff_id: current_staff.id)
+    @staff = current_staff
+  	@orders = Order.unscoped.where(staff_id: current_staff.id)
+    @points = Point.unscoped.where(staff_id: current_staff.id)
   	@presents = Present.all
   end
 

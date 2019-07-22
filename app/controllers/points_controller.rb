@@ -10,6 +10,14 @@ class PointsController < ApplicationController
 		redirect_to festival_matchs_path(festival_id: point.festival_id)
 	end
 
+	def update
+	    point = Point.find(params[:id])
+	    point.update!(point_params)
+	    redirect_to festival_matchs_path(festival_id: point.festival_id)
+	  end
+
+
+
 	protected
 
 	 def point_params

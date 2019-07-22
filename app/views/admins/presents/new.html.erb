@@ -27,7 +27,7 @@
 		</div>
 
 		<div style="margin-bottom: 20px">
-			<%= present.submit "登録する" %>
+			<%= present.submit "登録する", class: "green-button" %>
 		</div>
 
 
@@ -44,16 +44,16 @@
 			<table class="table table-bordered sub-text">
 				<thead>
 					<tr>
-						<th style="width: 20%;">イメージ画像</th>
-						<th style="width: 40%;">名称</th>
-						<th style="width: 20%;">設定ポイント</th>
-						<th></th>
+						<th style="width: 20%; text-align: center;">イメージ画像</th>
+						<th style="width: 40%; text-align: center;">名称</th>
+						<th style="width: 20%; text-align: center;">設定ポイント</th>
+						<th colspan="2"></th>
 					</tr>
 				</thead>
 					<% @presents.each do |present| %>
 					<tbody>
 					<tr>
-						<td>
+						<td style="text-align: center;">
 							<%= attachment_image_tag present, :present_image, :fill, 50, 50, format: 'jpg' %>
 						</td>
 						<td>
@@ -66,6 +66,13 @@
 		                	<div class="blue-button link-none">
 			                	<p class="inquirys-index-buttn-text">
 			                		<%= link_to "変更する", edit_admins_present_path(present), class: "link-none" %>
+			                	</p>
+			                </div>
+		                </td>
+		                <td>
+		                	<div class="red-button link-none">
+			                	<p class="inquirys-index-buttn-text">
+			                		<%= link_to "削除する", admins_present_path(present), class: "link-none destroy_#{present.id}", method: :delete,data:{confirm:"本当に削除しますか？"} %>
 			                	</p>
 			                </div>
 		                </td>

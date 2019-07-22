@@ -6,56 +6,58 @@
 
 		<p class="title-text"> ポイント履歴一覧　</p>
 
-		<table class="table table-bordered">
-				<thead>
-					<tr >
-						<th style="text-align: center;width: 12%;">購入者</th>
-						<th style="width: 8%;">会員情報</th>
-						<th style="text-align: center; width: 10%;">
-						  ポイント使用日
-						</th>
-						<th style="text-align: center; width: 15%;">
-						  プレゼント詳細
-						</th>
-						<th style="text-align: center; width: 30%;">
-						  送付先
-						</th>
-						<th colspan="2" style="text-align: center; width: 20%;" >
-						  販売ステータス
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @orders.each do |order| %>
-					<tr>
-						<td><%= order.staff.name %></td>
-						<td>
-							<% if order.staff.deleted_at == nil %>
-							<p>入会</p>
-						    <% else %>
-						    <p>退会</p>
-						    <% end %>
-						</td>
-						<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-						<td>
-							<%= order.present.present %>
-		                </td>
-						<td>
-							〒<%= order.staff.postalcode %><br>
-							<%= order.staff.address %><br>
-						</td>
-						<%= form_for order, url: admins_order_path(id: order.id) do |o| %>
-						<td style="text-align: center;">
-						  <%= o.select :order_status, Order.order_statuses.keys.map{|status| [status, status]}, {:prompt => order.order_status} %>
-						</td>
-						<td style="text-align: center;">
-						  <%= o.submit "変更", class: "orange-button" %>
-						</td>
+					<table class="table table-bordered">
+					<thead>
+						<tr >
+							<th style="text-align: center;width: 12%;">ポイント利用者</th>
+							<th style="width: 8%;">会員情報</th>
+							<th style="text-align: center; width: 10%;">
+							  ポイント使用日
+							</th>
+							<th style="text-align: center; width: 15%;">
+							  プレゼント詳細
+							</th>
+							<th style="text-align: center; width: 30%;">
+							  送付先
+							</th>
+							<th colspan="2" style="text-align: center; width: 20%;" >
+							  販売ステータス
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @orders.each do |order| %>
+						<tr>
+							<td><%= order.staff.name %></td>
+							<td>
+								<% if order.staff.deleted_at == nil %>
+								<p>入会</p>
+							    <% else %>
+							    <p>退会</p>
+							    <% end %>
+							</td>
+							<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+							<td>
+								<%= order.present.present %>
+			                </td>
+							<td>
+								〒<%= order.staff.postalcode %><br>
+								<%= order.staff.address %><br>
+							</td>
+							<%= form_for order, url: admins_order_path(id: order.id) do |o| %>
+							<td style="text-align: center;">
+							  <%= o.select :order_status, Order.order_statuses.keys.map{|status| [status, status]}, {:prompt => order.order_status} %>
+							</td>
+							<td style="text-align: center;">
+							  <%= o.submit "変更", class: "orange-button" %>
+							</td>
+							<% end %>
+						</tr>
 						<% end %>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
+					</tbody>
+				</table>
 
 	</div>
 </div>
+
+<p class="pagetop"></p>

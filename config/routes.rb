@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'festivals/area'
   get 'festivals/date'
-  get 'festivals/etc'
+  get 'festivals/name'
   get 'admins/top'
   get 'festivals/staffs'
 
@@ -53,7 +53,10 @@ Rails.application.routes.draw do
       get 'festivals'
     end
     resources :staffs
-    resources :festivals
+    resources :festivals do
+      resources :matchs
+      resources :informations
+    end
     resources :presents
     resources :orders
     get 'top'
@@ -78,14 +81,8 @@ Rails.application.routes.draw do
 
   resources :staffs do
     resources :staff_inquirys
-    resources :points
     resources :orders
   end
-
-
-
-
-
 
 
 
@@ -100,6 +97,9 @@ Rails.application.routes.draw do
     resources :matchs
     resources :informations
   end
+
+    resources :points
+
 
 
 

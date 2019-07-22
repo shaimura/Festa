@@ -6,6 +6,8 @@ class Admins::StaffsController < ApplicationController
 
   def show
   	@staff = Staff.unscoped.find(params[:id])
+    @festivals = Festival.all
+    @matchs = Match.unscoped.where(staff_id: current_staff.id)
   end
 
   def edit

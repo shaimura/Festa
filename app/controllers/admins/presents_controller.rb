@@ -13,7 +13,7 @@ class Admins::PresentsController < ApplicationController
   def create
   	present = Present.new(present_params)
   	present.save!
-  	redirect_to admins_present_path(present)
+  	redirect_to new_admins_present_path
   end
 
   def update

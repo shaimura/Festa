@@ -1,4 +1,4 @@
-<%= render 'layouts/header' %>
+<%= render 'layouts/subheader' %>
 
 <div class="container">
   <div class="row">
@@ -39,12 +39,9 @@
 
 
       <div class="orange-button index-link-buttn link-none">
-        <p class="index-link-buttn-text"><%= link_to "マイページに戻る", staff_path(@staff), class: "link-none" %></p>
+        <p class="index-link-buttn-text"><%= link_to "スタッフ詳細画面に戻る", admins_staff_path(@staff), class: "link-none" %></p>
       </div>
 
-      <div class="red-button index-link-buttn link-none">
-        <p class="index-link-buttn-text"><%= link_to "退会する", admins_staff_path(@staff), class: "link-none destroy_#{@staff.id}", method: :delete,data:{confirm:"本当に退会しますか？"} %></p>
-      </div>
 
 
     </div>

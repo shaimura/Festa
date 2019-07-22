@@ -4,20 +4,16 @@ class StaffsController < ApplicationController
 	    @staff = Staff.find(params[:id])
 	    @festivals = Festival.all
     	@matchs = Match.unscoped.where(staff_id: current_staff.id)
-
 	end
 
 
 	def information
 		@staff = current_staff
 		@matchs = Match.unscoped.where(staff_id: @staff.id)
-		@informations = []
 	end
 
 	def edit
 		@staff = Staff.find(params[:id])
-		if current_staff.id != @staff.id
-		end
 	end
 
 
@@ -31,7 +27,7 @@ class StaffsController < ApplicationController
 	protected
 
 	def staff_params
-	  	params.require(:staff).permit(:id, :name, :postalcode, :address, :telephone, :email, :password, :password_confirmation)
+	  	params.require(:staff).permit(:id, :name, :postalcode, :address, :telephone, :total_point, :remaining_point, :email, :password, :password_confirmation)
 	end
 
 
