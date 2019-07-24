@@ -13,9 +13,9 @@
 				<thead>
 					<tr>
 						<th style="width: 15%;">名前</th>
-						<th style="width: 15%;">電話番号</th>
-						<th style="width: 30%;">住所</th>
-						<th colspan="3" style="width: 40%; text-align: center;">ポイント</th>
+						<th style="width: 13%;">電話番号</th>
+						<th style="width: 29%;">住所</th>
+						<th colspan="4" style="width: 43%; text-align: center;">ポイント</th>
 					</tr>
 				</thead>
 					<% @matchs.each do |matching| %>
@@ -30,9 +30,12 @@
 		                <td>
 		                	<%= matching.staff.address %>
 		                </td>
+		                <td>
+		                	総合ポイント：<%= total_point(matching.staff) %>
+		                </td>
 		                <% if Point.find_by(staff_id: matching.staff.id) %>
 		                <td>
-		                	現在のポイント：<%= Point.find_by(staff_id: matching.staff.id).plus_point %>
+		                	現在のポイント：<%= remaining_point(matching.staff) %>
 		                </td>
 		                <td>
 		                	<%= form_for Point.find_by(staff_id: matching.staff.id) do |point| %>

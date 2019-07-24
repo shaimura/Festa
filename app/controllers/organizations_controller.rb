@@ -11,9 +11,14 @@ class OrganizationsController < ApplicationController
 
   def update
 	    organization = Organization.find(params[:id])
-	    organization.update!(organization_params)
-      sign_in(organization, bypass: true)
-      redirect_to organization_path(organization.id)
+	    if organization.update!(organization_params)
+        sign_in(organization, bypass: true)
+        flash[:notice] = "変更しました"
+        redirect_to organization_path(organization.id)
+      else
+        flash[:alert] = "変更に失敗しました"
+        render :edit
+      end
 	end
 
 	protected

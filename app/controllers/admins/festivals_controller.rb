@@ -16,14 +16,24 @@ class Admins::FestivalsController < ApplicationController
 
   def update
     festival = Festival.find(params[:id])
-    festival.update!(festival_params)
-    redirect_to organizations_festival_path(festival)
+    if festival.update!(festival_params)
+      flash[:notice] = "変更しました"
+      redirect_to admins_festival_path(festival)
+    else
+      flash[:alert] = "変更に失敗しました"
+      render :edit
+    end
   end
 
   def destroy
       festival = Festival.find(params[:id])
-      festival.destroy
-      redirect_to admins_organization_festivals_path(organization_id: festival.organization.id)
+      if festival.destroy
+        flash[:notice] = "削除しました"
+        redirect_to admins_festivals_path
+      else
+        flash[:alert] = "削除に失敗しました"
+        render :edit
+      end
   end
 
   protected

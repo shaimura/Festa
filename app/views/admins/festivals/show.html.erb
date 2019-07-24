@@ -1,129 +1,154 @@
 <%= render 'layouts/subheader' %>
 
 
+<% if notice %>
+<div class="alert alert-info alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">close</span>
+  </button>
+  <%= notice %>
+</div>
+<% end %>
+<% if alert %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">close</span>
+  </button>
+  <%= alert %>
+</div>
+<% end %>
 
-	<div class="container" style="background-color: rgba(178,255,178,0.3);">
-		<div style="background-color: rgba(178,255,178,0.7); margin: 20px 0 20px 0;">
-			<div class="row">
 
-				<div style="text-align: center; margin: 30px;">
-					<p class="title-text"> <%= @festival.name %> </p>
-					<% if @festival.deleted_at == nil %>
-					<div class="row">
-						<div class="col-lg-6">
-							<p class="blue-button festibal-show-botunn"><%= link_to "編集画面へ", edit_admins_festival_path, class: "link-none" %></p>
-						</div>
-						<div class="col-lg-6">
-							<p class="red-button festibal-show-botunn"><%= link_to "削除する", admins_festival_path, class: "link-none", method: :delete, data:{confirm:"本当に削除しますか？"} %></p>
-						</div>
+
+
+
+
+<div class="container" style="background-color: rgba(178,255,178,0.3); margin-bottom: 30px;">
+	<div style="background-color: rgba(178,255,178,0.7); margin: 20px 0 20px 0;">
+		<div class="row">
+
+			<div style="text-align: center; margin: 30px;">
+				<p class="title-text"> <%= @festival.name %> </p>
+				<% if @festival.deleted_at == nil %>
+				<div class="row">
+					<div class="col-lg-6">
+						<p class="blue-button festibal-show-botunn"><%= link_to "編集画面へ", edit_admins_festival_path, class: "link-none" %></p>
 					</div>
-					<% else %>
-						<p class="red-button festibal-show-botunn">削除済み</p>
-					<% end %>
-
+					<div class="col-lg-6">
+						<p class="red-button festibal-show-botunn"><%= link_to "削除する", admins_festival_path, class: "link-none", method: :delete, data:{confirm:"本当に削除しますか？"} %></p>
+					</div>
 				</div>
-			</div>
+				<% else %>
+					<p class="red-button festibal-show-botunn">削除済み</p>
+				<% end %>
 
-
-		<div class="col-lg-6">
-			<div  style="margin: 20px;">
-			<%= attachment_image_tag @festival,:fes_image, :fill,500,650 %>
 			</div>
 		</div>
 
-		<div class="col-lg-6">
-			<div style="margin: 20px 30px 10px 0;">
-				<table class="table">
-					<thead>
-						<tr>
-							<th colspan="2" style="text-align: center; font-size: 24px;">お祭り情報</th>
-						</tr>
-					</thead>
-					<tr style="font-size: 18px;">
-						<td>名称</td>
-						<td> <%= @festival.name %> </td>
-					</tr>
-					<tr style="font-size: 18px;">
-						<td>スタッフ募集</td>
-						<td>
-							<div class="col-lg-6">
-						 		<%= @festival.staff_status %>
-							</div>
-							<div class="col-lg-6">
-								<% if @festival.staff_status = "募集中" %>
-								<%= link_to "登録スタッフ一覧へ", festival_matchs_path(festival_id: @festival) %>
-								<% end %>
-							</div>
-						</td>
-					</tr>
-					<tr style="font-size: 18px;">
-						<td>開催日</td>
-						<td> <%= @festival.date %> </td>
-					</tr>
-					<tr style="font-size: 18px;">
-						<td>主催</td>
-						<td> <%= @organization.name %> </td>
-					</tr>
-					<tr style="font-size: 18px;">
-						<td>アクセス</td>
-						<td> <%= @festival.traffic %> </td>
-					</tr>
-					<tr style="font-size: 18px;">
-						<td>関連サイト</td>
-						<td> <a href="<%= @festival.web_url %>" target="_blank" > <%= @festival.web_url %> </a> </td>
-					</tr>
-					<tr style="font-size: 18px;">
-						<td>開催場所</td>
-						<td> <%= @festival.address %> </td>
-					</tr>
+
+	<div class="col-lg-6">
+		<div  style="margin: 20px;">
+		<%= attachment_image_tag @festival,:fes_image, :fill,500,650 %>
+		</div>
+	</div>
+
+	<div class="col-lg-6">
+		<div style="margin: 20px 30px 10px 0;">
+			<table class="table">
+				<thead>
 					<tr>
-						<td colspan="2" id="map"></td>
+						<th colspan="2" style="text-align: center; font-size: 24px;">お祭り情報</th>
 					</tr>
-				</table>
-			</div>
-
+				</thead>
+				<tr style="font-size: 18px;">
+					<td>名称</td>
+					<td> <%= @festival.name %> </td>
+				</tr>
+				<tr style="font-size: 18px;">
+					<td>スタッフ募集</td>
+					<td>
+						<div class="col-lg-5">
+					 		<%= @festival.staff_status %>
+						</div>
+						<div class="col-lg-7">
+							<% if @festival.staff_status = "募集中" %>
+							<div class="orange-button">
+							<%= link_to "登録スタッフ一覧へ", festival_matchs_path(festival_id: @festival), class: "link-none" %>
+							</div>
+							<% end %>
+						</div>
+					</td>
+				</tr>
+				<tr style="font-size: 18px;">
+					<td>開催日</td>
+					<td> <%= @festival.date %> </td>
+				</tr>
+				<tr style="font-size: 18px;">
+					<td>主催</td>
+					<td> <%= @organization.name %> </td>
+				</tr>
+				<tr style="font-size: 18px;">
+					<td>アクセス</td>
+					<td> <%= @festival.traffic %> </td>
+				</tr>
+				<tr style="font-size: 18px;">
+					<td>関連サイト</td>
+					<td> <a href="<%= @festival.web_url %>" target="_blank" > <%= @festival.web_url %> </a> </td>
+				</tr>
+				<tr style="font-size: 18px;">
+					<td>開催場所</td>
+					<td> <%= @festival.address %> </td>
+				</tr>
+				<tr>
+					<td colspan="2" id="map"></td>
+				</tr>
+			</table>
 		</div>
 
-		<div class="row">
-			<div class="col-lg-10 col-lg-offset-1">
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th class="fes_pr_head">お祭PR</th>
-						</tr>
-					</thead>
-					<tbody>
-						<td  class="fes_pr_body"> <%= @festival.profile %> </td>
-					</tbody>
-				</table>
-			</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th class="fes_pr_head">お祭PR</th>
+					</tr>
+				</thead>
+				<tbody>
+					<td  class="fes_pr_body"> <%= @festival.profile %> </td>
+				</tbody>
+			</table>
 		</div>
+	</div>
 
 
-		<div class="row">
-			<div class="col-lg-10 col-lg-offset-1">
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1">
 
 
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th class="fes_pr_head">お知らせ一覧</th>
-						</tr>
-					</thead>
-					<% @informations.each do |information| %>
-					<tbody>
-						<td  class="fes_pr_body"> <%= information.message %> </td>
-					</tbody>
-					<% end %>
-				</table>
-
-			</div>
-		</div>
-
-
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th class="fes_pr_head">お知らせ一覧</th>
+					</tr>
+				</thead>
+				<% @informations.each do |information| %>
+				<tbody>
+					<td  class="fes_pr_body"> <%= information.message %> </td>
+				</tbody>
+				<% end %>
+			</table>
 
 		</div>
 	</div>
+
+
+
+	</div>
+</div>
 
 
 

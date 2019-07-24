@@ -8,6 +8,7 @@ FactoryBot.define do
     sequence(:organization_id){ |n|"#{n}"}
     sequence(:date){ date }
     sequence(:fes_image_id){|n| "#{n}.jpg"}
+    association :organization
 
     trait :no_organization do
         organization_id {}

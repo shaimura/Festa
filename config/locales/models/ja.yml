@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    attributes:
+      organization:
+        name: "名前"
+        email: "Eメール"
+        postalcode: "郵便番号"
+        telephone: "電話番号"
+        address: "住所"
+        password: "password"
+      staff:
+        name: "名前"
+        email: "Eメール"
+        postalcode: "郵便番号"
+        telephone: "電話番号"
+        address: "住所"
+        password: "password"

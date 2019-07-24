@@ -12,10 +12,14 @@ class Staffs::OrdersController < ApplicationController
   	order = Order.new(order_params)
   	staff = current_staff
   	order.staff = current_staff
-  	order.save!
-    staff.remaining_point -= order.present.use_point
-    staff.save
-  	redirect_to new_staffs_order_path
+  	if order.save!
+       flash[:notice] = "登録しました"
+  	   redirect_to new_staffs_order_path
+    else
+      flash[:alert] = "登録に失敗しました"
+      render :new
+    end
+
   end
 
   protected

@@ -8,8 +8,14 @@ class InformationsController < ApplicationController
 		festival = Festival.find(params[:festival_id])
 		information = Information.new(information_params)
 		information.festival = festival
-		information.save!
-		redirect_to organizations_festival_path(festival)
+		if information.save!
+		   flash[:notice] = "登録しました"
+		   redirect_to organizations_festival_path(festival)
+		else
+		   flash[:alert] = "登録に失敗しました"
+		   render :new
+		end
+
 	end
 
 

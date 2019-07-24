@@ -1,7 +1,29 @@
 <%= render 'layouts/subheader' %>
 
 
-  <div class="container " style="background-color: rgba(255,165,0,0.5);">
+<% if notice %>
+<div class="alert alert-info alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">close</span>
+  </button>
+  <%= notice %>
+</div>
+<% end %>
+<% if alert %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">close</span>
+  </button>
+  <%= alert %>
+</div>
+<% end %>
+
+
+
+
+  <div class="container " style="background-color: rgba(255,165,0,0.5); margin-bottom: 30px;">
     <div style="background-color: rgba(255,165,0,0.3); margin: 20px 0 20px 0;">
       <p class="staff-title">スタッフページ</p>
 
@@ -43,9 +65,15 @@
             <td> <%= @staff.email %></td>
           </tr>
           <tr class="staff-info">
-            <td>ポイント</td>
+            <td>総合ポイント</td>
             <td>
-                ポイント  <%= @staff.remaining_point %>
+                ポイント  <%= total_point(@staff) %>
+            </td>
+          </tr>
+          <tr class="staff-info">
+            <td>残りポイント</td>
+            <td>
+                ポイント  <%= remaining_point(@staff) %>
             </td>
           </tr>
           <tr>
