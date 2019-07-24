@@ -8,13 +8,19 @@ class Organizations::OrganizationInquirysController < ApplicationController
   def create
   	@organization_inquiry = OrganizationInquiry.new(organization_inquiry_params)
     @organization_inquiry.organization = current_organization
-  	@organization_inquiry.save!
-    OrganizationInquiryMailer.organization_send_mail(@organization_inquiry).deliver
+  	if @organization_inquiry.save!
+       OrganizationInquiryMailer.organization_send_mail(@organization_inquiry).deliver
+       flash[:notice] = "送信しました"
+       redirect_to organization_path(@organization_inquiry.organization)
+    else
+      flash[:alert] = "送信に失敗しました"
+      render :new
+    end
+
   end
 
-  def show
 
-  end
+  protected
 
   def organization_inquiry_params
   	params.require(:organization_inquiry).permit(:id, :orgfnization_id, :message)

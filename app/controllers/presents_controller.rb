@@ -13,8 +13,11 @@ class PresentsController < ApplicationController
 
   def create
   	present = Present.new(present_params)
-  	present.save!
-  	redirect_to present_path(present)
+  	if present.save!
+       flash[:notice] = "登録しました"
+  	   redirect_to present_path(present)
+     else
+      flash[:alert] = "登録に失敗しました"
   end
 
   protected

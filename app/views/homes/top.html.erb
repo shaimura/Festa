@@ -1,35 +1,77 @@
 <%= render 'layouts/header' %>
 
-<h1 class="top-h">FESTAへようこそ！</h1>
+
+<% if notice %>
+<div class="alert alert-info alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">close</span>
+  </button>
+  <%= notice %>
+</div>
+<% end %>
+<% if alert %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">close</span>
+  </button>
+  <%= alert %>
+</div>
+<% end %>
+
+
+
+<p class="title-text" style="color: red; font-family: '游明朝体+36ポかな','YuMincho +36p Kana',sans-serif;">お 祭 り に 行 こ う !</p>
+
+
+<div style="margin: 50px 0 50px 0;">
+	<p class="top-sub-text">近日開催のお祭り</p>
+	<div id="top-festival-date">
+		<% @festivals.each do |festival| %>
+			<%=link_to festival_path(festival.id) do %>
+				<div class="order-text link-none" style="font-size: 20px;">
+			 		<%= festival.name %>
+			 	</div>
+			 	<div class="order-text" style="margin-left: 73px;">
+	                    <%= attachment_image_tag festival, :fes_image, :fill, 250, 250, format: 'jpg' %>
+			 	</div>
+			 	<div class="order-text link-none">
+			 		開催地域：<%= festival.area %>
+			 	</div>
+			 	<div class="order-text link-none">
+			 		開催日：<%= festival.date %>
+			 	</div>
+	        <% end %>
+		<% end %>
+	</div>
+</div>
 
 
 
 <div class="container-fluid">
 	<div class="top-festival-box">
 		<%= link_to festivals_path,class: "link-none" do %>
-		<p class="top-festival-text link-none">お祭りを探しに行く</p>
+		<p class="top-festival-text link-none">もっとお祭りを探しに行く</p>
 		<% end %>
 	</div>
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="top-staff-box">
-				<%= link_to new_staff_session_path,class: "link-none" do %>
-				<p class="top-staff-text link-none">スタッフ ログイン</p>
-				<% end %>
-			</div>
-		</div>
-		<div class="col-lg-6">
-			<div class="top-organization-box">
-				<%= link_to new_organization_session_path,class: "link-none" do %>
-				<p class="top-organization-text link-none">団体 ログイン</p>
-				<% end %>
-			</div>
-		</div>
+	<p class="top-sub-text">スタッフとしてお祭りに参加しよう!</p>
+	<div class="top-staff-box">
+		<%= link_to new_staff_session_path,class: "link-none" do %>
+		<p class="top-staff-text link-none">スタッフ ログイン</p>
+		<% end %>
+	</div>
+	<p class="top-sub-text">お祭り主催者の方はこちらから</p>
+	<div class="top-organization-box">
+		<%= link_to new_organization_session_path,class: "link-none" do %>
+		<p class="top-organization-text link-none">主催者 ログイン</p>
+		<% end %>
 	</div>
 </div>
 
 
-<div class="hanavi"></div>
+
+
 
 
 

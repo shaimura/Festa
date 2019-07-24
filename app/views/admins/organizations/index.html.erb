@@ -1,69 +1,92 @@
 <%= render 'layouts/subheader' %>
 
+
+
+<% if notice %>
+<div class="alert alert-info alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">close</span>
+  </button>
+  <%= notice %>
+</div>
+<% end %>
+<% if alert %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">close</span>
+  </button>
+  <%= alert %>
+</div>
+<% end %>
+
+
+
 <div class="container">
 	<div class="row">
 
 		<p class="title-text"> 登録団体一覧　</p>
 
 
-			<table class="table table-bordered sub-text">
-				<thead>
-					<tr>
-						<th style="width: 20%;">団体名</th>
-						<th style="width: 20%;">電話番号</th>
-						<th style="width: 40%;">住所</th>
-						<th colspan="3" style="width: 20%; text-align: center;">会員状況</th>
-					</tr>
-				</thead>
-					<% @organizations.each do |organization| %>
-					<tbody>
-					<tr>
-						<td>
-							<%=link_to admins_organization_path(organization.id) do %>
-							<p class="link-none"><%= organization.name %></p>
-							<% end %>
-						</td>
-						<td>
-							<%= organization.telephone %>
-						</td>
-		                <td>
-		                	<%= organization.address %>
-		                </td>
-		                <td>
-		                	<% if organization.deleted_at == nil %>
-								<p>入会</p>
-						    <% else %>
-						    	<p style="color: red;">退会</p>
-						    <% end %>
-		                </td>
-		                <% if organization.deleted_at == nil %>
-		                <td>
-		                	<div class="orange-button link-none">
-			                	<p class="inquirys-index-buttn-text">
-			                		<%= link_to "詳細へ", admins_organization_path(organization), class: "link-none" %>
-			                	</p>
-			                </div>
-		                </td>
-		                <td>
-		                	<div class="red-button link-none">
-			                	<p class="inquirys-index-buttn-text">
-			                		<%= link_to "退会させる", admins_organization_path(organization), class: "link-none destroy_#{organization.id}", method: :delete,data:{confirm:"本当に削除しますか？"} %>
-			                	</p>
-			                </div>
-		                </td>
-		                <% else %>
-		                <td colspan="2">
-		                	<div class="orange-button link-none">
-			                	<p class="inquirys-index-buttn-text">
-			                		<%= link_to "詳細へ", admins_organization_path(organization), class: "link-none" %>
-			                	</p>
-			                </div>
-		                </td>
-		                <% end %>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
+				<table class="table table-bordered sub-text">
+					<thead>
+						<tr>
+							<th style="width: 20%;">団体名</th>
+							<th style="width: 20%;">電話番号</th>
+							<th style="width: 40%;">住所</th>
+							<th colspan="3" style="width: 20%; text-align: center;">会員状況</th>
+						</tr>
+					</thead>
+						<% @organizations.each do |organization| %>
+						<tbody>
+						<tr>
+							<td>
+								<%=link_to admins_organization_path(organization.id) do %>
+								<p class="link-none"><%= organization.name %></p>
+								<% end %>
+							</td>
+							<td>
+								<%= organization.telephone %>
+							</td>
+			                <td>
+			                	<%= organization.address %>
+			                </td>
+			                <td>
+			                	<% if organization.deleted_at == nil %>
+									<p>入会</p>
+							    <% else %>
+							    	<p style="color: red;">退会</p>
+							    <% end %>
+			                </td>
+			                <% if organization.deleted_at == nil %>
+			                <td>
+			                	<div class="orange-button link-none">
+				                	<p class="inquirys-index-buttn-text">
+				                		<%= link_to "詳細へ", admins_organization_path(organization), class: "link-none" %>
+				                	</p>
+				                </div>
+			                </td>
+			                <td>
+			                	<div class="red-button link-none">
+				                	<p class="inquirys-index-buttn-text">
+				                		<%= link_to "退会させる", admins_organization_path(organization), class: "link-none destroy_#{organization.id}", method: :delete,data:{confirm:"本当に削除しますか？"} %>
+				                	</p>
+				                </div>
+			                </td>
+			                <% else %>
+			                <td colspan="2">
+			                	<div class="orange-button link-none">
+				                	<p class="inquirys-index-buttn-text">
+				                		<%= link_to "詳細へ", admins_organization_path(organization), class: "link-none" %>
+				                	</p>
+				                </div>
+			                </td>
+			                <% end %>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
 	</div>
 </div>
 

@@ -25,15 +25,16 @@ class ApplicationController < ActionController::Base
     end
 
 
+
 	protected
 
 		 def configure_permitted_parameters
 
-			  if params['contoroler'] == 'staffs/registrations'
+			  if params['controller'] == 'staffs/registrations'
 				    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :postalcode, :address, :telephone])
 				    devise_parameter_sanitizer.permit(:sign_in, keys: [:name, :postalcode, :address, :telephone])
 					devise_parameter_sanitizer.permit(:account_update, keys: [:name, :postalcode, :address, :telephone])
-			  elsif params['contoroler'] == 'organizations/registrations'
+			  elsif params['controller'] == 'organizations/registrations'
 				    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :postalcode, :address, :telephone])
 				    devise_parameter_sanitizer.permit(:sign_in, keys: [:name, :postalcode, :address, :telephone])
 					devise_parameter_sanitizer.permit(:account_update, keys: [:name, :postalcode, :address, :telephone])

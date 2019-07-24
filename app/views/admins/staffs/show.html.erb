@@ -1,4 +1,4 @@
-<%= render 'layouts/header' %>
+<%= render 'layouts/subheader' %>
 
 
 <% if notice %>
@@ -23,9 +23,22 @@
 
 
 
-<div class="container" style="background-color: rgba(127,255,127,0.3); margin-bottom: 30px;">
-    <div style="background-color: rgba(127,255,127,0.6); margin: 20px 0 20px 0;">
-      <p class="title-text">団体ページ</p>
+  <div class="container " style="background-color: rgba(255,165,0,0.5); margin-bottom: 30px;">
+    <div style="background-color: rgba(255,165,0,0.3); margin: 20px 0 20px 0;">
+      <p class="staff-title">スタッフページ</p>
+
+      <% if @staff.deleted_at == nil %>
+      <div class="row">
+            <div class="col-lg-6">
+            <p class="blue-button festibal-show-botunn"><%= link_to "編集画面へ", edit_admins_staff_path, class: "link-none" %></p>
+          </div>
+          <div class="col-lg-6">
+            <p class="red-button festibal-show-botunn"><%= link_to "削除する", admins_staff_path, class: "link-none", method: :delete, data:{confirm:"本当に削除しますか？"} %></p>
+          </div>
+      </div>
+      <% else %>
+            <p class="red-button festibal-show-botunn">削除済み</p>
+      <% end %>
 
       <div class="row">
         <div class="col-lg-6" style="padding: 30px 50px 30px 40px;">
@@ -33,32 +46,41 @@
 
         <table class="table">
           <thead>
-              <th class="organizations-info" colspan="2" style="text-align: center; font-size: 24px;">団体情報</th>
+              <th class="staff-info" colspan="2" style="text-align: center; font-size: 24px;">スタッフ情報</th>
           </thead>
-          <tr class="organizations-info">
+          <tr class="staff-info">
             <td>名前</td>
-            <td> <%= @organization.name %> </td>
+            <td> <%= @staff.name %> </td>
           </tr>
-          <tr class="organizations-info">
+          <tr class="staff-info">
             <td>登録住所</td>
-            <td> <%= @organization.address %> </td>
+            <td> <%= @staff.address %> </td>
           </tr>
-          <tr class="organizations-info">
+          <tr class="staff-info">
             <td>電話番号</td>
-            <td> <%= @organization.telephone %></td>
+            <td> <%= @staff.telephone %></td>
           </tr>
-          <tr class="organizations-info">
+          <tr class="staff-info">
             <td>メールアドレス</td>
-            <td> <%= @organization.email %></td>
+            <td> <%= @staff.email %></td>
           </tr>
-          <tr><td colspan="2"></td></tr>
+          <tr class="staff-info">
+            <td>総合ポイント</td>
+            <td>
+                ポイント  <%= total_point(@staff) %>
+            </td>
+          </tr>
+          <tr class="staff-info">
+            <td>残りポイント</td>
+            <td>
+                ポイント  <%= remaining_point(@staff) %>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+          </tr>
         </table>
 
-            <p class="blue-button info-button"><%= link_to "団体情報を変更する", edit_organization_path, class: "link-none" %></p>
-
-            <p class="red-button info-button"><%= link_to "登録しているお祭りを確認する", organizations_festivals_path, class: "link-none" %></p>
-
-            <p class="orange-button info-button"><%= link_to "お祭りを新規登録する", new_organizations_festival_path, class: "link-none" %></p>
 
 
         </div>
@@ -67,13 +89,13 @@
 
           <div class="row" style="margin-left: 10px;">
             <div class="col-lg-3">
-              <button id="prev" type="button" class="red-button calender-button">前月</button>
+              <button id="prev" type="button" class="calender-button blue-button">前月</button>
             </div>
             <div class="col-lg-4">
               <div id="calendarhed"></div>
             </div>
             <div class="col-lg-3">
-              <button id="next" type="button" class="red-button calender-button">来月</button>
+              <button id="next" type="button" class="calender-button blue-button">来月</button>
             </div>
           </div>
 
@@ -87,6 +109,9 @@
 
     </div>
   </div>
+
+
+
 
 
 
@@ -134,7 +159,7 @@ function createCalender(year, month){
 
 
 
-  calendarHtmlhed += '<p class="organizations-calender">' + year + '/' + month + '</p>';
+  calendarHtmlhed += '<p class="calendar-h">' + year + '/' + month + '</p>';
 
   document.querySelector('#calendarhed').innerHTML = calendarHtmlhed;
 
@@ -185,8 +210,6 @@ function createCalender(year, month){
           var festivaldate = "";
           var festivalname = "";
           var festivalid = "";
-          var organization = "";
-          var organizations = [];
           var festivaldates = [];
           var festivalsname = [];
           var festivalsid = [];
@@ -196,17 +219,36 @@ function createCalender(year, month){
           festivaldate = ('<%= festival.date %>')
           festivalname = ('<%= festival.name %>')
           festivalid = ('<%= festival.id %>')
-          organization = ('<%= festival.organization %>')
-
           festivaldates.push(festivaldate)
 
 
           if (festivaldate == setday){
             festivalsname.push(festivalname)
             festivalsid.push(festivalid)
-            organizations.push(organization)
           }
 
+          <% end %>
+
+          //スタッフ登録しているお祭りの配列
+
+          var festivalstaffdates = [];
+          var festivalstaffsname = [];
+          var festivalstaffsid = [];
+          var festivalstaffdate = "";
+          var festivalstaffname = "";
+          var festibalstaffid = "";
+
+          <% @matchs.each do |matching| %>
+          festivalstaffname = ('<%= matching.festival.name %>')
+          festivalstaffdate = ('<%= matching.festival.date %>')
+          festibalstaffid = ('<%= matching.festival.id %>')
+
+          festivalstaffdates.push(festivalstaffdate)
+
+          if (festivalstaffdate == setday){
+            festivalstaffsname.push(festivalstaffname)
+            festivalstaffsid.push(festibalstaffid)
+          }
           <% end %>
 
 
@@ -214,11 +256,23 @@ function createCalender(year, month){
 
 
 
-          if (festivaldates.indexOf(setday) >= 0){
-            calendarHtml += '<td class="calender-td-festival pointa" style="color: #ff7f00;">' + '★' + '<ul class="list-inline balloon-calender">'
+
+
+          if  (festivalstaffdates.indexOf(setday) >= 0){
+            calendarHtml += '<td class="calender-td-festival-sutaff pointa">' + '★' + '<ul class="list-inline balloon-calender">'
+            for (var i = 0; i < festivalstaffsname.length; i++){
+            calendarHtml += '<li class="balloon-text">' + '<a href="/festivals/' + festivalstaffsid[i] + '" class="link-none">' + festivalstaffsname[i] + '</a>' + '</li>'
+          }
+
+
+          calendarHtml += '</ul>'  + '</td>'
+          }
+           //もしその日に開催するお祭りがあれば『祭』を表示
+          else if (festivaldates.indexOf(setday) >= 0){
+            calendarHtml += '<td class="calender-td-festival pointa">' + '祭' + '<ul class="list-inline balloon-calender">'
 
           for (var i = 0; i < festivalsname.length; i++){
-            calendarHtml += '<li class="balloon-text">' + '<a href="/organizations/festivals/' + festivalsid[i] + '" class="link-none">' + festivalsname[i] + '</a>' + '</li>'
+            calendarHtml += '<li class="balloon-text">' + '<a href="/festivals/' + festivalsid[i] + '" class="link-none">' + festivalsname[i] + '</a>' + '</li>'
           }
 
           calendarHtml += '</ul>'  + '</td>'

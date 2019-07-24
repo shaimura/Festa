@@ -9,6 +9,7 @@
 						<% end %>
 					</nav>
 
+				<% if admin_signed_in? %>
 				<ul class="nav navbar-nav navbar-center" style="margin: 25px 30px 0 30px;">
 					<li>
 						<%= link_to admins_staffs_path, class: "link-none" do %>
@@ -32,15 +33,26 @@
 					</li>
 					<li>
 						<%= link_to admins_organization_inquirys_path, class: "link-none" do %>
-							<p class="sub-header-text link-none">  </p>
+							<p class="sub-header-text link-none"> 団体お問い合わせ</p>
 						<% end %>
 					</li>
 					<li>
-						<%= link_to destroy_admin_session_path, class: "link-none" do %>
+						<%= link_to admins_staff_inquirys_path, class: "link-none" do %>
+							<p class="sub-header-text link-none"> スタッフお問い合わせ</p>
+						<% end %>
+					</li>
+					<li>
+						<%= link_to admins_orders_path, class: "link-none" do %>
+							<p class="sub-header-text link-none"> ポイント履歴一覧</p>
+						<% end %>
+					</li>
+					<li>
+						<%= link_to destroy_admin_session_path, class: "link-none", method: :delete do %>
 							<p class="sub-header-text link-none"> ログアウト </p>
 						<% end %>
 					</li>
 				</ul>
+				<% end %>
 
 			</div>
 		</div>

@@ -18,7 +18,7 @@
 		<ul class="nav navbar-nav navbar-center" style="margin: 25px 30px 0 30px;">
 			<li class="heder-li-s">
 				<div class="search">
-					<%= form_tag(festivals_etc_path, :method => 'get') do %>
+					<%= form_tag(festivals_name_path, :method => 'get') do %>
 					<p>
 						<%= text_field_tag :search_name, '', placeholder: "お祭りの名前で検索" %>
 						<%= submit_tag '検索', :name => nil %>
@@ -90,6 +90,12 @@
 						<li><%= link_to "ログアウト", destroy_organization_session_path, class: "drawer-menu-item", method: :delete %> </li>
 					</ul>
 			</div>
+			<% else %>
+			<li class="heder-li-search">
+				<div>
+					<%= link_to "ログインする", root_path, class: "link-none " %>
+				</div>
+			</li>
 			<% end %>
 		</ul>
 	</nav>

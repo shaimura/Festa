@@ -11,9 +11,8 @@ class Staffs::StaffInquirysController < ApplicationController
     StaffInquiryMailer.staff_send_mail(@staff_inquiry).deliver
   end
 
-  def show
 
-  end
+  protected
 
   def staff_inquiry_params
   	params.require(:staff_inquiry).permit(:id, :staff_id, :message)

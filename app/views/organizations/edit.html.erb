@@ -1,4 +1,25 @@
 <%= render 'layouts/header' %>
+
+<% if notice %>
+<div class="alert alert-info alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">close</span>
+  </button>
+  <%= notice %>
+</div>
+<% end %>
+<% if alert %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">close</span>
+  </button>
+  <%= alert %>
+</div>
+<% end %>
+
+
 <div class="container">
   <div class="row">
     <p class="title-text"> 団体情報編集 </p>
@@ -43,7 +64,7 @@
       </div>
 
       <div class="red-button index-link-buttn link-none">
-        <p class="index-link-buttn-text"><%= link_to "退会する", organization_path(@organization), class: "link-none" %></p>
+        <p class="index-link-buttn-text"><%= link_to "退会する", admins_organization_path(@organization), class: "link-none destroy_#{@organization.id}", method: :delete,data:{confirm:"本当に退会しますか？"} %></p>
       </div>
 
 

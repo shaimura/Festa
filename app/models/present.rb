@@ -6,7 +6,10 @@ class Present < ApplicationRecord
 
 	attachment :present_image
 
-	validates :present_image_id, presence: true
+  validates :use_point, numericality: {greater_than_or_equal_to: 0}
+
+
+	validates :present_image, presence: true
 	validates :present, presence: true
 
 

@@ -12,14 +12,19 @@ class Organizations::FestivalsController < ApplicationController
   end
 
   def index
-  	@festivals = Festival.where(organization_id: current_organization.id)
+  	@festivals = Festival.where(organization_id: current_organization.id).order(:date)
   end
 
   def create
     festival = Festival.new(festival_params)
     festival.organization = current_organization
-    festival.save!
-    redirect_to organizations_festival_path(festival)
+    if festival.save!
+      flash[:notice] = "登録しました"
+      redirect_to organizations_festival_path(festival)
+    else
+      flash[:alert] = "登録に失敗しました"
+      render :new
+    end
   end
 
   def edit
@@ -28,14 +33,24 @@ class Organizations::FestivalsController < ApplicationController
 
   def update
     festival = Festival.find(params[:id])
-    festival.update!(festival_params)
-    redirect_to organizations_festival_path(festival)
+    if festival.update!(festival_params)
+      flash[:notice] = "変更しました"
+      redirect_to organizations_festival_path(festival)
+    else
+      flash[:alert] = "変更に失敗しました"
+      render :edit
+    end
   end
 
   def destroy
       festival = Festival.find(params[:id])
-      festival.destroy
-      redirect_to organizations_festivals_path
+      if festival.destroy
+         flash[:notice] = "削除しました"
+         redirect_to organizations_festivals_path
+       else
+        flash[:alert] = "削除に失敗しました"
+        render :show
+      end
   end
 
   protected

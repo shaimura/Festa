@@ -1,7 +1,29 @@
 <%= render 'layouts/header' %>
 
 
-  <div class="container " style="background-color: rgba(255,165,0,0.5);">
+<% if notice %>
+<div class="alert alert-info alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">close</span>
+  </button>
+  <%= notice %>
+</div>
+<% end %>
+<% if alert %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">close</span>
+  </button>
+  <%= alert %>
+</div>
+<% end %>
+
+
+
+
+  <div class="container " style="background-color: rgba(255,165,0,0.5); margin-bottom: 30px; "  >
     <div style="background-color: rgba(255,165,0,0.3); margin: 20px 0 20px 0;">
       <p class="staff-title">スタッフページ</p>
 
@@ -33,10 +55,10 @@
             <td>ポイント</td>
             <td>
               <div class="col-lg-5">
-                ポイント  <%= @staff.remaining_point %>
+                <%= remaining_point(@staff) %>
               </div>
               <div class="col-lg-7">
-               <p class="green-button"><%= link_to "ポイントを使う", new_staffs_order_path(staff_id: @staff), class: "link-none" %></p>
+               <p class="green-button"><%= link_to "ポイントを使う", new_staffs_order_path, class: "link-none" %></p>
               </div>
             </td>
           </tr>
