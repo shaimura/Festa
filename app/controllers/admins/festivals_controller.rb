@@ -36,6 +36,12 @@ class Admins::FestivalsController < ApplicationController
       end
   end
 
+
+  def name
+      @searchs = Festival.unscoped.admin_search_name(params[:admin_search_name]).order(:date)
+      @festivals = Festival.all.order(:date)
+  end
+
   protected
 
   def festival_params

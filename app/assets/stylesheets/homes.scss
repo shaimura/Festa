@@ -15,6 +15,34 @@ body {
   padding-bottom: 0;
 }
 
+.home-title-text{
+  font-size: 60px;
+  color: #333333;
+  text-shadow: 1px 1px 0 #FFF, -1.2px -1.2px 0 #000000;
+  text-align: center;
+  color: red;
+  font-family: '游明朝体+36ポかな','YuMincho +36p Kana',sans-serif;
+}
+
+
+.top-text-festival-name{
+    font-size: 18px;
+    color: #333333;
+    text-align: center;
+    font-size: 20px;
+  }
+
+.top-image{
+    text-align: center;
+    margin: 10px 0 10px 30px;
+  }
+
+.top-text{
+    font-size: 18px;
+    color: #333333;
+    text-align: center;
+  }
+
 .top-sub-text{
 	text-align: center;
 	font-size: 30px;
@@ -93,50 +121,72 @@ footer{
   margin-bottom: 0;
 }
 
-/*
-.background {
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    position: fixed;
-    background-position: center center;
-    opacity: 0;
--webkit-background-size: cover;
-        background-size: cover;
--webkit-transition: all 0.5s ease 0s;
-   -moz-transition: all 0.5s ease 0s;
-        transition: all 0.5s ease 0s;
-}
-.show .background {
-    opacity: 1;
-}
-.contents .wrap {
-    padding: 40vh 0 60vh;
-    position: relative;
-    z-index: 2;
-}
-/* design*/
-/*
-#content01_bg {background-image: url("太陽.jpg");}
-#content02_bg {background-image: url("積乱雲.jpg");}
-#content03_bg {background-image: url(チョコバナナ.jpg);}
-#content01 .wrap { background-color: rgba(255,0,0,0.2);}
-#content02 .wrap { background-color: rgba(0,255,0,0.2);}
-#content03 .wrap { background-color: rgba(0,0,255,0.2);}
-.text-box {
-    padding: 50px 25px;
-    width: 480px;
-    background-color: rgba(0,0,0,0.5);
-    color: #fff;
-}
-.text-box .catch {
-    margin: 0 0 10px;
-    font-size: 40px;
-}
-.text-box .copy {
-    margin: 0;
-    line-height: 2;
-}
-*/
 
+@media screen and (max-width:425px){
+
+  .top-festival-box{
+    width: auto;
+    margin: 30px;
+
+  }
+
+  .top-sub-text{
+    font-size: 20px;
+    margin: 0 0 10px 0;
+  }
+
+  .top-staff-box{
+    width: auto;
+    margin: 30px;
+
+  }
+
+  .top-organization-box{
+    width: auto;
+    margin: 30px;
+  }
+
+
+  .top-festival-text{
+    font-size: 18px
+  }
+
+  .top-staff-text{
+    font-size: 20px
+  }
+
+  .top-organization-text{
+    font-size: 20px
+  }
+
+  .home-title-text{
+    font-size: 30px;
+  }
+
+  .top-text-festival-name{
+    color: #333333;
+    text-align: center;
+    font-size: 10px;
+  }
+
+  .top-image{
+    text-align: center;
+    margin-left: 5px;
+    width: 120px;
+    height: 120px;
+    margin-left: 20px;
+  }
+
+  .top-text{
+    font-size: 6px;
+    color: #333333;
+    text-align: center;
+  }
+
+
+  .top-sub-text{
+    font-size: 16px;
+  }
+
+
+}

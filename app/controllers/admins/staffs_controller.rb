@@ -25,6 +25,11 @@ class Admins::StaffsController < ApplicationController
     end
   end
 
+  def search
+    @searchs = Staff.search_staff_name(params[:search_staff_name])
+    @organizations = Staff.unscoped.all
+  end
+
 
   protected
 

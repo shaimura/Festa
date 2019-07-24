@@ -24,6 +24,11 @@ class Admins::OrganizationsController < ApplicationController
     end
   end
 
+  def search
+    @searchs = Organization.search_organization_name(params[:search_organization_name])
+    @organizations = Organization.unscoped.all
+  end
+
   def festivals
     @organization = Organization.unscoped.find(params[:organization_id])
     @festivals = Festival.where(organization_id: @organization.id).order(:date)

@@ -7,8 +7,7 @@ FactoryBot.define do
     sequence(:profile){ |n| "testprofile#{n}"}
     sequence(:organization_id){ |n|"#{n}"}
     sequence(:date){ date }
-    sequence(:fes_image_id){|n| "#{n}.jpg"}
-    association :organization
+    sequence(:fes_image){|n| "#{n}.jpg"}
 
     trait :no_organization do
         organization_id {}
@@ -46,8 +45,8 @@ FactoryBot.define do
     	date { date < Date.today }
     end
 
-    trait :no_fes_image_id do
-    	fes_image_id {}
+    trait :no_fes_image do
+    	fes_image {}
     end
 
   end

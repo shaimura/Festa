@@ -51,7 +51,7 @@ RSpec.describe Festival, type: :model do
 			end
 
 			it "イメージ画像が登録されていない" do
-				expect(build(:festival, :no_fes_image_id)).to_not be_valid
+				expect(build(:festival, :no_fes_image)).to_not be_valid
 			end
 		 end
 
