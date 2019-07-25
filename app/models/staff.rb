@@ -37,4 +37,14 @@ class Staff < ApplicationRecord
     Present.unscoped{super}
    end
 
+
+   def self.search_staff_name(search_staff_name)
+      if search_staff_name
+        Staff.unscoped.where(["name LIKE ?", "%#{search_staff_name}%"])
+      else
+        Staff.unscoped.all
+      end
+   end
+
+
 end

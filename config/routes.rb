@@ -45,6 +45,10 @@ Rails.application.routes.draw do
 
 
   namespace :admins do
+    get 'top'
+    get 'organizations/search'
+    get 'festivals/name'
+    get 'staffs/search'
     resources :staff_replies
     resources :staff_inquirys
     resources :organization_inquirys
@@ -59,7 +63,6 @@ Rails.application.routes.draw do
     end
     resources :presents
     resources :orders
-    get 'top'
   end
 
 

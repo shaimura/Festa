@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :present do
     sequence(:present){ |n| "testpresent#{n}"}
-    sequence(:present_image_id){ |n| "#{n}.jpg"}
+    sequence(:present_image){ |n| "#{n}.jpg"}
 
     trait :no_present do
     	present {}

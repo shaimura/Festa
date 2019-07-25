@@ -1,4 +1,5 @@
 class Admins::FestivalsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
   	@festivals = Festival.all.order(:date)
@@ -15,10 +16,10 @@ class Admins::FestivalsController < ApplicationController
   end
 
   def update
-    festival = Festival.find(params[:id])
-    if festival.update!(festival_params)
+    @festival = Festival.find(params[:id])
+    if @festival.update(festival_params)
       flash[:notice] = "変更しました"
-      redirect_to admins_festival_path(festival)
+      redirect_to admins_festival_path(@festival)
     else
       flash[:alert] = "変更に失敗しました"
       render :edit
@@ -26,14 +27,22 @@ class Admins::FestivalsController < ApplicationController
   end
 
   def destroy
-      festival = Festival.find(params[:id])
-      if festival.destroy
+      @festival = Festival.find(params[:id])
+      if @festival.destroy
         flash[:notice] = "削除しました"
         redirect_to admins_festivals_path
       else
+        @organization = @festival.organization
+        @informations = Information.where(festival_id: @festival)
         flash[:alert] = "削除に失敗しました"
-        render :edit
+        render :show
       end
+  end
+
+
+  def name
+      @searchs = Festival.unscoped.admin_search_name(params[:admin_search_name]).order(:date)
+      @festivals = Festival.all.order(:date)
   end
 
   protected

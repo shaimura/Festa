@@ -1,106 +1,112 @@
-<header role="banner">
-	<nav class="navbar navbar-default" >
-<div class="container-fluid">
+<header class="header-box" role="banner">
+	<div class="container-fluid">
+		<div class="row">
 
-			<nav class="nav navbar-nav navbar-left">
+			<div class="col-lg-2 col-xs-2">
 				<% if staff_signed_in? or organization_signed_in? %>
 					<%= link_to festivals_path, :style=>"color:#777;text-decoration: none;" do %>
-					<h1>FESTA</h1>
+					<p class="rogo">FESTA</p>
 					<% end%>
 					<% else %>
 						<%= link_to root_path, :style=>"color:#777;text-decoration: none;" do %>
-						<h1>FESTA</h1>
+						<p class="rogo">FESTA</p>
 					<% end %>
 				<% end %>
-			</nav>
-
-	<nav>
-		<ul class="nav navbar-nav navbar-center" style="margin: 25px 30px 0 30px;">
-			<li class="heder-li-s">
-				<div class="search">
-					<%= form_tag(festivals_name_path, :method => 'get') do %>
-					<p>
-						<%= text_field_tag :search_name, '', placeholder: "お祭りの名前で検索" %>
-						<%= submit_tag '検索', :name => nil %>
-					</p>
-					<% end %>
-				</div>
-			</li>
-			<li class="heder-li-search pointa">
-					エリアから探す
-					<%= form_tag(festivals_area_path, :method => 'get') do %>
-					<ul class="list-inline balloon1">
-						<li> <%= link_to "北海道", festivals_area_path(search_area: 0), class: "link-none" %> </li>
-						<li> <%= link_to "東北", festivals_area_path(search_area: 1), class: "link-none" %> </li>
-						<li> <%= link_to "関東", festivals_area_path(search_area: 2), class: "link-none" %> </li>
-						<li> <%= link_to "中部", festivals_area_path(search_area: 3), class: "link-none" %> </li>
-						<li> <%= link_to "近畿", festivals_area_path(search_area: 4), class: "link-none" %> </li>
-						<li> <%= link_to "中国", festivals_area_path(search_area: 5), class: "link-none" %> </li>
-						<li> <%= link_to "四国", festivals_area_path(search_area: 6), class: "link-none" %> </li>
-						<li> <%= link_to "沖縄", festivals_area_path(search_area: 7), class: "link-none" %> </li>
-					</ul>
-					<% end %>
-			</li>
-			<li class="heder-li-search pointa">
-					開催月から探す
-					<%= form_tag(festivals_date_path, :method => 'get') do %>
-					<ul class="list-inline balloon2">
-						<li> <%= link_to "1月", festivals_date_path(search_date: 1 ), class: "link-none" %> </li>
-						<li> <%= link_to "2月", festivals_date_path(search_date: 2 ), class: "link-none" %> </li>
-						<li> <%= link_to "3月", festivals_date_path(search_date: 3 ), class: "link-none" %> </li>
-						<li> <%= link_to "4月", festivals_date_path(search_date: 4 ), class: "link-none" %> </li>
-						<li> <%= link_to "5月", festivals_date_path(search_date: 5 ), class: "link-none" %> </li>
-						<li> <%= link_to "6月", festivals_date_path(search_date: 6 ), class: "link-none" %> </li>
-						<li> <%= link_to "7月", festivals_date_path(search_date: 7 ), class: "link-none" %> </li>
-						<li> <%= link_to "8月", festivals_date_path(search_date: 8 ), class: "link-none" %> </li>
-						<li> <%= link_to "9月", festivals_date_path(search_date: 9 ), class: "link-none" %> </li>
-						<li> <%= link_to "10月", festivals_date_path(search_date: 10 ), class: "link-none" %> </li>
-						<li> <%= link_to "11月", festivals_date_path(search_date: 11 ), class: "link-none" %> </li>
-						<li> <%= link_to "12月", festivals_date_path(search_date: 12 ), class: "link-none" %> </li>
-					</ul>
-					<% end %>
-			</li>
-			<% if staff_signed_in? %>
-			<div class="drawer drawer--right">
-				<button type="button" class="drawer-toggle drawer-hamburger">
-					<span class="sr-only"></span>
-					<span class="drawer-hamburger-icon"></span>
-				</button>
-				<nav class="drawer-nav" role="navigation">
-					<ul class="drawer-menu">
-						<li><P class="drawer-brand">ユーザーメニュー</P></li>
-						<li><%= link_to "スタッフページ", staff_path(id: current_staff.id), class: "drawer-menu-item" %></li>
-						<li><%= link_to "お問い合わせ", new_staffs_staff_inquiry_path, class: "drawer-menu-item link-none" %> </li>
-						<li><%= link_to "ログアウト", destroy_staff_session_path, class: "drawer-menu-item link-none", method: :delete %> </li>
-					</ul>
 			</div>
-			<% elsif organization_signed_in? %>
+
+			<div class="col-lg-4 col-xs-10">
+				<div class="search-box">
+					<div class="heder-li-s">
+						<div class="search">
+							<%= form_tag(festivals_name_path, :method => 'get') do %>
+								<%= text_field_tag :search_name, '', placeholder: "お祭りの名前で検索" %>
+								<%= submit_tag '検索', :name => nil %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div class="col-lg-2 col-xs-6">
+					<div class="heder-li-search heder-li-search-1 pointa">
+							エリアから探す
+							<%= form_tag(festivals_area_path, :method => 'get') do %>
+							<ul class="list-inline balloon1">
+								<li> <%= link_to "北海道", festivals_area_path(search_area: 0), class: "link-none" %> </li>
+								<li> <%= link_to "東北", festivals_area_path(search_area: 1), class: "link-none" %> </li>
+								<li> <%= link_to "関東", festivals_area_path(search_area: 2), class: "link-none" %> </li>
+								<li> <%= link_to "中部", festivals_area_path(search_area: 3), class: "link-none" %> </li>
+								<li> <%= link_to "近畿", festivals_area_path(search_area: 4), class: "link-none" %> </li>
+								<li> <%= link_to "中国", festivals_area_path(search_area: 5), class: "link-none" %> </li>
+								<li> <%= link_to "四国", festivals_area_path(search_area: 6), class: "link-none" %> </li>
+								<li> <%= link_to "沖縄", festivals_area_path(search_area: 7), class: "link-none" %> </li>
+							</ul>
+							<% end %>
+					</div>
+				</div>
+				<div class="col-lg-2 col-xs-5">
+					<div class="heder-li-search heder-li-search-2 pointa">
+							開催月から探す
+							<%= form_tag(festivals_date_path, :method => 'get') do %>
+							<ul class="list-inline balloon2">
+								<li> <%= link_to "1月", festivals_date_path(search_date: 1 ), class: "link-none" %> </li>
+								<li> <%= link_to "2月", festivals_date_path(search_date: 2 ), class: "link-none" %> </li>
+								<li> <%= link_to "3月", festivals_date_path(search_date: 3 ), class: "link-none" %> </li>
+								<li> <%= link_to "4月", festivals_date_path(search_date: 4 ), class: "link-none" %> </li>
+								<li> <%= link_to "5月", festivals_date_path(search_date: 5 ), class: "link-none" %> </li>
+								<li> <%= link_to "6月", festivals_date_path(search_date: 6 ), class: "link-none" %> </li>
+								<li> <%= link_to "7月", festivals_date_path(search_date: 7 ), class: "link-none" %> </li>
+								<li> <%= link_to "8月", festivals_date_path(search_date: 8 ), class: "link-none" %> </li>
+								<li> <%= link_to "9月", festivals_date_path(search_date: 9 ), class: "link-none" %> </li>
+								<li> <%= link_to "10月", festivals_date_path(search_date: 10 ), class: "link-none" %> </li>
+								<li> <%= link_to "11月", festivals_date_path(search_date: 11 ), class: "link-none" %> </li>
+								<li> <%= link_to "12月", festivals_date_path(search_date: 12 ), class: "link-none" %> </li>
+							</ul>
+							<% end %>
+					</div>
+				</div>
+				<% if staff_signed_in? %>
 				<div class="drawer drawer--right">
-				<button type="button" class="drawer-toggle drawer-hamburger">
-					<span class="sr-only"></span>
-					<span class="drawer-hamburger-icon"></span>
-				</button>
-				<nav class="drawer-nav" role="navigation">
-					<ul class="drawer-menu">
-						<li><P class="drawer-brand" href="#">ユーザーメニュー</P></li>
-						<li><%= link_to "団体ページ", organization_path(id: current_organization.id), class: "drawer-menu-item" %></li>
-						<li><%= link_to "お問い合わせ", new_organizations_organization_inquiry_path, class: "drawer-menu-item link-none" %> </li>
-						<li><%= link_to "登録お祭り一覧", organizations_festivals_path, class: "drawer-menu-item" %></li>
-						<li><%= link_to "お祭り登録", new_organizations_festival_path, class: "drawer-menu-item" %></li>
-						<li><%= link_to "ログアウト", destroy_organization_session_path, class: "drawer-menu-item", method: :delete %> </li>
-					</ul>
-			</div>
-			<% else %>
-			<li class="heder-li-search">
-				<div>
-					<%= link_to "ログインする", root_path, class: "link-none " %>
+					<button type="button" class="drawer-toggle drawer-hamburger">
+						<span class="sr-only"></span>
+						<span class="drawer-hamburger-icon"></span>
+					</button>
+					<nav class="drawer-nav" role="navigation">
+						<ul class="drawer-menu">
+							<li><P class="drawer-brand">ユーザーメニュー</P></li>
+							<li><%= link_to "スタッフページ", staff_path(id: current_staff.id), class: "drawer-menu-item" %></li>
+							<li><%= link_to "お問い合わせ", new_staffs_staff_inquiry_path, class: "drawer-menu-item link-none" %> </li>
+							<li><%= link_to "ログアウト", destroy_staff_session_path, class: "drawer-menu-item link-none", method: :delete %> </li>
+						</ul>
+					</nav>
 				</div>
-			</li>
-			<% end %>
-		</ul>
-	</nav>
+				<% elsif organization_signed_in? %>
+					<div class="drawer drawer--right">
+					<button type="button" class="drawer-toggle drawer-hamburger">
+						<span class="sr-only"></span>
+						<span class="drawer-hamburger-icon"></span>
+					</button>
+					<nav class="drawer-nav" role="navigation">
+						<ul class="drawer-menu">
+							<li><P class="drawer-brand" href="#">ユーザーメニュー</P></li>
+							<li><%= link_to "団体ページ", organization_path(id: current_organization.id), class: "drawer-menu-item" %></li>
+							<li><%= link_to "お問い合わせ", new_organizations_organization_inquiry_path, class: "drawer-menu-item link-none" %> </li>
+							<li><%= link_to "登録お祭り一覧", organizations_festivals_path, class: "drawer-menu-item" %></li>
+							<li><%= link_to "お祭り登録", new_organizations_festival_path, class: "drawer-menu-item" %></li>
+							<li><%= link_to "ログアウト", destroy_organization_session_path, class: "drawer-menu-item", method: :delete %> </li>
+						</ul>
+					</nav>
+				</div>
+				<% else %>
+				<li class="heder-li-search">
+					<div>
+						<%= link_to "ログインする", root_path, class: "link-none " %>
+					</div>
+				</li>
+				<% end %>
+			</div>
 
-</div>
-</nav>
+
+		</div>
+	</div>
 </header>
 

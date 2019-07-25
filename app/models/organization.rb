@@ -28,5 +28,13 @@ class Organization < ApplicationRecord
     Staff.unscoped{super}
    end
 
+   def self.search_organization_name(search_organization_name)
+      if search_organization_name
+        Organization.unscoped.where(["name LIKE ?", "%#{search_organization_name}%"])
+      else
+        Organization.unscoped.all
+      end
+   end
+
 
 end

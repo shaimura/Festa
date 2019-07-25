@@ -1,4 +1,5 @@
 class Admins::PresentsController < ApplicationController
+  before_action :authenticate_admin!
 
 
   def new
@@ -11,18 +12,19 @@ class Admins::PresentsController < ApplicationController
   end
 
   def create
-  	present = Present.new(present_params)
-  	if present.save!
+  	@present = Present.new(present_params)
+  	if @present.save
       flash[:notice] = "登録しました"
       redirect_to new_admins_present_path
     else
+      @presents = Present.all
       flash[:alert] = "登録に失敗しました"
       render :new
     end
   end
 
   def update
-    present = Present.find(params[:id])
+    @present = Present.find(params[:id])
     if present.update!(present_params)
       flash[:notice] = "変更しました"
       redirect_to new_admins_present_path

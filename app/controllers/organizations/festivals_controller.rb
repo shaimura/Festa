@@ -1,4 +1,5 @@
 class Organizations::FestivalsController < ApplicationController
+  before_action :authenticate_organization!
 
   def new
   	@festival = Festival.new
@@ -16,11 +17,11 @@ class Organizations::FestivalsController < ApplicationController
   end
 
   def create
-    festival = Festival.new(festival_params)
-    festival.organization = current_organization
-    if festival.save!
+    @festival = Festival.new(festival_params)
+    @festival.organization = current_organization
+    if @festival.save
       flash[:notice] = "登録しました"
-      redirect_to organizations_festival_path(festival)
+      redirect_to organizations_festival_path(@festival)
     else
       flash[:alert] = "登録に失敗しました"
       render :new
@@ -32,10 +33,10 @@ class Organizations::FestivalsController < ApplicationController
   end
 
   def update
-    festival = Festival.find(params[:id])
-    if festival.update!(festival_params)
+    @festival = Festival.find(params[:id])
+    if festival.update(festival_params)
       flash[:notice] = "変更しました"
-      redirect_to organizations_festival_path(festival)
+      redirect_to organizations_festival_path(@festival)
     else
       flash[:alert] = "変更に失敗しました"
       render :edit
@@ -43,11 +44,14 @@ class Organizations::FestivalsController < ApplicationController
   end
 
   def destroy
-      festival = Festival.find(params[:id])
-      if festival.destroy
+      @festival = Festival.find(params[:id])
+      if @festival.destroy
          flash[:notice] = "削除しました"
          redirect_to organizations_festivals_path
        else
+        @organization = @festival.organization
+        @information = Information.new
+        @informations = Information.where(festival_id: @festival)
         flash[:alert] = "削除に失敗しました"
         render :show
       end

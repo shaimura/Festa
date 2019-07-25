@@ -96,13 +96,27 @@ $(function(){
 
 
 $(document).ready(function(){
+	var w = $(window).width();
+	var x = 425;
+	if ( w < x ){
  $('#top-festival-date').slick({
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 3000,
+      });
+	}else{
+		 $('#top-festival-date').slick({
             slidesToShow: 4,
             slidesToScroll: 1,
             autoplay: true,
             autoplaySpeed: 3000,
       });
+	}
 });
+
+
+
 
 
 $(function(){

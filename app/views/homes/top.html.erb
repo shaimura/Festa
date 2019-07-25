@@ -22,25 +22,25 @@
 
 
 
-<p class="title-text" style="color: red; font-family: '游明朝体+36ポかな','YuMincho +36p Kana',sans-serif;">お 祭 り に 行 こ う !</p>
+<p class="home-title-text">お 祭 り に 行 こ う !</p>
 
 
-<div style="margin: 50px 0 50px 0;">
+<div style="margin: 20px 0 50px 0;">
 	<p class="top-sub-text">近日開催のお祭り</p>
 	<div id="top-festival-date">
 		<% @festivals.each do |festival| %>
 			<%=link_to festival_path(festival.id) do %>
-				<div class="order-text link-none" style="font-size: 20px;">
-			 		<%= festival.name %>
+				<div>
+			 		<P class="top-text-festival-name link-none" ><%= festival.name %></P>
 			 	</div>
-			 	<div class="order-text" style="margin-left: 73px;">
-	                    <%= attachment_image_tag festival, :fes_image, :fill, 250, 250, format: 'jpg' %>
+			 	<div class="top-image">
+	                    <%= attachment_image_tag festival, :fes_image, :fill, 250, 250, format: 'jpg', class: "top-image" %>
 			 	</div>
-			 	<div class="order-text link-none">
-			 		開催地域：<%= festival.area %>
+			 	<div class="top-text link-none">
+			 		<P class="top-text" >開催地域：<%= festival.area %></P>
 			 	</div>
-			 	<div class="order-text link-none">
-			 		開催日：<%= festival.date %>
+			 	<div class="top-text link-none">
+			 		<p class="top-text">開催日：<%= festival.date %></p>
 			 	</div>
 	        <% end %>
 		<% end %>

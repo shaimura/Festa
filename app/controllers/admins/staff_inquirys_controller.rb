@@ -1,4 +1,6 @@
 class Admins::StaffInquirysController < ApplicationController
+	before_action :authenticate_admin!
+
   def index
   	@staff_inquirys = StaffInquiry.all.order(id: "DESC")
   end

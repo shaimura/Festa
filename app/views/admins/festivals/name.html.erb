@@ -1,5 +1,7 @@
 <%= render 'layouts/subheader' %>
 
+
+
 <% if notice %>
 <div class="alert alert-info alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert">
@@ -19,11 +21,16 @@
 </div>
 <% end %>
 
+
+<% if @searchs.blank? %>
+
+<p class="search-blank-text">検索結果は０件でした</p>
+
+
 <div class="container">
 	<div class="row">
 
-		<p class="title-text"> 登録お祭り一覧　</p>
-
+		<p class="title-text" style="margin-left: 20px;"> 登録お祭り一覧　</p>
 
 		<div class="admin-search">
 			<%= form_tag(admins_festivals_name_path, :method => 'get') do %>
@@ -31,7 +38,6 @@
 				<%= submit_tag '検索', :name => nil %>
 			<% end %>
 		</div>
-
 
 
 				<table class="table table-bordered sub-text">
@@ -63,9 +69,52 @@
 </div>
 
 
+<% else %>
+<div class="container">
+	<div class="row">
+
+		<p class="title-text"> 登録お祭り検索結果　</p>
+
+		<div class="admin-search">
+			<%= form_tag(admins_festivals_name_path, :method => 'get') do %>
+				<%= text_field_tag :admin_search_name, '', placeholder: "お祭りの名前で検索" %>
+				<%= submit_tag '検索', :name => nil %>
+			<% end %>
+		</div>
+
+				<table class="table table-bordered sub-text">
+					<thead>
+						<tr>
+							<th style="text-align: center;">お祭り画像</th>
+							<th>お祭り名</th>
+							<th>開催日</th>
+							<th>登録団体</th>
+						</tr>
+					</thead>
+						<% @searchs.each do |festival| %>
+						<tbody>
+						<tr>
+							<td style="text-align: center;"><%=link_to admins_festival_path(festival.id) do %>
+								<%= attachment_image_tag festival, :fes_image, :fill, 50, 50, format: 'jpg' %>
+								<% end %>
+								</td>
+							<td><%= festival.name %></td>
+			                <td><%= festival.date %></td>
+			                <td>
+			                	<%= festival.organization.name %>
+			                </td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+	</div>
+</div>
+
+<% end %>
+
+
+
+
 
 
 <p class="pagetop"></p>
-
-
-

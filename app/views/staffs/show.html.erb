@@ -28,12 +28,12 @@
       <p class="staff-title">スタッフページ</p>
 
       <div class="row">
-        <div class="col-lg-6" style="padding: 30px 50px 30px 40px;">
+        <div class="col-lg-6 col-xs-12" style="padding: 30px 50px 30px 50px;">
 
 
         <table class="table">
           <thead>
-              <th class="staff-info" colspan="2" style="text-align: center; font-size: 24px;">スタッフ情報</th>
+              <th class="staff-info-title" colspan="2">スタッフ情報</th>
           </thead>
           <tr class="staff-info">
             <td>名前</td>
@@ -54,10 +54,10 @@
           <tr class="staff-info">
             <td>ポイント</td>
             <td>
-              <div class="col-lg-5">
+              <div class="col-lg-4">
                 <%= remaining_point(@staff) %>
               </div>
-              <div class="col-lg-7">
+              <div class="col-lg-8">
                <p class="green-button"><%= link_to "ポイントを使う", new_staffs_order_path, class: "link-none" %></p>
               </div>
             </td>
@@ -75,7 +75,7 @@
 
         </div>
 
-        <div class="col-lg-6" style="padding: 30px 50px 30px 40px;">
+        <div class="col-lg-6 col-xs-12" style="padding: 30px 50px 30px 40px;">
 
           <div class="row" style="margin-left: 10px;">
             <div class="col-lg-3">

@@ -26,36 +26,36 @@
 			<div class="row">
 
 				<div style="text-align: center; margin: 30px;">
-					<p class="title-text"> <%= @festival.name %> </p>
+					<p class="festival-title-text"> <%= @festival.name %> </p>
 				</div>
 			</div>
 
 
-		<div class="col-lg-6">
+		<div class="col-lg-6 col-xs-12">
 			<div  style="margin: 20px;">
-			<%= attachment_image_tag @festival,:fes_image, :fill,500,650 %>
+			<%= attachment_image_tag @festival,:fes_image, :fill,500,650, class: "festival-show-image" %>
 			</div>
 		</div>
 
-		<div class="col-lg-6">
-			<div style="margin: 20px 30px 10px 0;">
+		<div class="col-lg-6 col-xs-12">
+			<div class="festoval-table">
 				<table class="table">
 					<thead>
 						<tr>
-							<th colspan="2" style="text-align: center; font-size: 24px;">お祭り情報</th>
+							<th class="festival-show-teble-title" colspan="2">お祭り情報</th>
 						</tr>
 					</thead>
-					<tr style="font-size: 18px;">
+					<tr class="festival-show-teble">
 						<td style="width: 30%;">名称</td>
 						<td> <%= @festival.name %> </td>
 					</tr>
-					<tr style="font-size: 18px;">
+					<tr class="festival-show-teble">
 						<td>スタッフ募集</td>
 						<td>
-							<div class="col-lg-6">
+							<div class="col-lg-6 col-xs-6">
 								 <%= @festival.staff_status %>
 							</div>
-							<div class="col-lg-6">
+							<div class="col-lg-6 col-xs-6">
 									 <% if @festival.staff_status == "募集中" and @festival.matched_by?(current_staff) %>
 									 <%= link_to festival_match_path(@festival.id), class: "link-none", method: :delete do %>
 									 <p class="orange-button link-none">参加を取り消す</p>
@@ -69,19 +69,19 @@
 							</div>
 						</td>
 					</tr>
-					<tr style="font-size: 18px;">
+					<tr class="festival-show-teble">
 						<td>開催日</td>
 						<td> <%= @festival.date %> </td>
 					</tr>
-					<tr style="font-size: 18px;">
+					<tr class="festival-show-teble">
 						<td>アクセス</td>
 						<td> <%= @festival.traffic %> </td>
 					</tr>
-					<tr style="font-size: 18px;">
+					<tr class="festival-show-teble">
 						<td>関連サイト</td>
 						<td> <a href="<%= @festival.web_url %>" target="_blank" > <%= @festival.web_url %> </a> </td>
 					</tr>
-					<tr style="font-size: 18px;">
+					<tr class="festival-show-teble">
 						<td>開催場所</td>
 						<td> <%= @festival.address %> </td>
 					</tr>
@@ -94,15 +94,15 @@
 		</div>
 
 		<div class="row">
-			<div class="col-lg-10 col-lg-offset-1">
+			<div class="col-lg-10 col-lg-offset-1 col-xs-10 col-xs-offset-1">
 				<table class="table table-bordered">
 					<thead>
 						<tr>
-							<th class="fes_pr_head">お祭PR</th>
+							<th class="fes-pr-head">お祭PR</th>
 						</tr>
 					</thead>
 					<tbody>
-						<td  class="fes_pr_body"> <%= @festival.profile %> </td>
+						<td  class="fes-pr-body"> <%= @festival.profile %> </td>
 					</tbody>
 				</table>
 
@@ -110,12 +110,12 @@
 					<table class="table table-bordered">
 						<thead>
 							<tr>
-								<th class="fes_pr_head">お知らせ一覧</th>
+								<th class="fes-pr-head">お知らせ一覧</th>
 							</tr>
 						</thead>
 						<% @informations.each do |information| %>
 						<tbody>
-							<td  class="fes_pr_body"> <%= information.message %> </td>
+							<td  class="fes-pr-body"> <%= information.message %> </td>
 						</tbody>
 						<% end %>
 					</table>
