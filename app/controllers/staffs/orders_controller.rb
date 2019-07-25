@@ -9,13 +9,16 @@ class Staffs::OrdersController < ApplicationController
   end
 
   def create
-  	order = Order.new(order_params)
-  	staff = current_staff
-  	order.staff = current_staff
-  	if order.save!
+  	@order = Order.new(order_params)
+  	@order.staff = current_staff
+  	if @order.save
        flash[:notice] = "登録しました"
   	   redirect_to new_staffs_order_path
     else
+      @staff = current_staff
+      @orders = Order.unscoped.where(staff_id: current_staff.id)
+      @points = Point.unscoped.where(staff_id: current_staff.id)
+      @presents = Present.all
       flash[:alert] = "登録に失敗しました"
       render :new
     end

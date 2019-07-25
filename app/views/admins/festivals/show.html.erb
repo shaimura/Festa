@@ -59,7 +59,7 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th colspan="2" style="text-align: center; font-size: 24px;">お祭り情報</th>
+						<th colspan="2" class="festival-show-teble-title">お祭り情報</th>
 					</tr>
 				</thead>
 				<tr style="font-size: 18px;">
@@ -114,11 +114,11 @@
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th class="fes_pr_head">お祭PR</th>
+						<th class="fes-pr-head">お祭PR</th>
 					</tr>
 				</thead>
 				<tbody>
-					<td  class="fes_pr_body"> <%= @festival.profile %> </td>
+					<td  class="fes-pr-body"> <%= @festival.profile %> </td>
 				</tbody>
 			</table>
 		</div>
@@ -132,12 +132,12 @@
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th class="fes_pr_head">お知らせ一覧</th>
+						<th class="fes-pr-head">お知らせ一覧</th>
 					</tr>
 				</thead>
 				<% @informations.each do |information| %>
 				<tbody>
-					<td  class="fes_pr_body"> <%= information.message %> </td>
+					<td  class="fes-pr-body"> <%= information.message %> </td>
 				</tbody>
 				<% end %>
 			</table>

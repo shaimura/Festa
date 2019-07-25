@@ -108,6 +108,13 @@
 
 		<p class="title-text"> 登録団体検索結果　</p>
 
+		<div class="admin-search">
+			<%= form_tag(admins_organizations_search_path, :method => 'get') do %>
+				<%= text_field_tag :search_organization_name, '', placeholder: "団体の名前で検索" %>
+				<%= submit_tag '検索', :name => nil %>
+			<% end %>
+		</div>
+
 				<table class="table table-bordered sub-text">
 					<thead>
 						<tr>

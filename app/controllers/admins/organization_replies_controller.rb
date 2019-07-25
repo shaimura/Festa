@@ -1,12 +1,13 @@
 class Admins::OrganizationRepliesController < ApplicationController
+  before_action :authenticate_admin!
 
   def create
   	@organization_reply = OrganizationReply.new(organization_reply_params)
     @organization_reply.admin = current_admin
     @organization_inquiry = @organization_reply.organization_inquiry
-  	if @organization_reply.save!
+  	if @organization_reply.save
       @organization_inquiry.inquiri_status = 1
-      @organization_inquiry.save!
+      @organization_inquiry.save
       OrganizationReplyMailer.organization_reply_mail(@organization_reply).deliver
       flash[:notice] = "送信しました"
       redirect_to admins_organization_inquiry_path(@organization_inquiry)

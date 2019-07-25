@@ -75,6 +75,13 @@
 
 		<p class="title-text"> 登録お祭り検索結果　</p>
 
+		<div class="admin-search">
+			<%= form_tag(admins_festivals_name_path, :method => 'get') do %>
+				<%= text_field_tag :admin_search_name, '', placeholder: "お祭りの名前で検索" %>
+				<%= submit_tag '検索', :name => nil %>
+			<% end %>
+		</div>
+
 				<table class="table table-bordered sub-text">
 					<thead>
 						<tr>

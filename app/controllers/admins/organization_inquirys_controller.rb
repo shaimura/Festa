@@ -1,10 +1,12 @@
 class Admins::OrganizationInquirysController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
-  	@organization_inquirys = OrganizationInquiry.all.order(id: "DESC")
+  	@organization_inquirys = OrganizationInquiry.unscoped.all.order(id: "DESC")
   end
 
   def show
-  	@organization_inquiry = OrganizationInquiry.find(params[:id])
+  	@organization_inquiry = OrganizationInquiry.unscoped.find(params[:id])
   	@organization = @organization_inquiry.organization
   	@organization_reply = OrganizationReply.new
 

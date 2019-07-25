@@ -1,6 +1,11 @@
 class OrganizationsController < ApplicationController
+  before_action :authenticate_organization!
+
   def show
   	@organization = Organization.find(params[:id])
+    if current_organization.id != @organization.id
+      redirect_to root_path
+    end
   	@festivals = Festival.where(organization_id: current_organization.id)
   end
 
@@ -10,11 +15,11 @@ class OrganizationsController < ApplicationController
   end
 
   def update
-	    organization = Organization.find(params[:id])
-	    if organization.update!(organization_params)
-        sign_in(organization, bypass: true)
+	    @organization = Organization.find(params[:id])
+	    if @organization.update(organization_params)
+        sign_in(@organization, bypass: true)
         flash[:notice] = "変更しました"
-        redirect_to organization_path(organization.id)
+        redirect_to organization_path(@organization.id)
       else
         flash[:alert] = "変更に失敗しました"
         render :edit

@@ -3,7 +3,7 @@ class MatchsController < ApplicationController
 	def create
 		@match = Match.new(match_params)
 		@match.staff_id = current_staff.id
-		if @match.save!
+		if @match.save
 			flash[:notice] = "登録しました"
 		   redirect_to festival_path(@match.festival_id)
 		else

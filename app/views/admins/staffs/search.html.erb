@@ -8,6 +8,15 @@
 
 		<p class="title-text"> 登録スタッフ一覧　</p>
 
+		<p class="search-blank-text">検索結果は０件でした</p>
+
+		<div class="admin-search">
+			<%= form_tag(admins_staffs_search_path, :method => 'get') do %>
+				<%= text_field_tag :search_staff_name, '', placeholder: "スタッフの名前で検索" %>
+				<%= submit_tag '検索', :name => nil %>
+			<% end %>
+		</div>
+
 
 
 
@@ -72,7 +81,14 @@
 
 			<% else %>
 
-			<p class="title-text"> 登録スタッフ検索一覧　</p>
+			<p class="title-text"> 登録スタッフ検索　</p>
+
+			<div class="admin-search">
+				<%= form_tag(admins_staffs_search_path, :method => 'get') do %>
+					<%= text_field_tag :search_staff_name, '', placeholder: "スタッフの名前で検索" %>
+					<%= submit_tag '検索', :name => nil %>
+				<% end %>
+			</div>
 
 			<table class="table table-bordered sub-text">
 				<thead>

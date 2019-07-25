@@ -108,11 +108,11 @@
 				<table class="table table-bordered">
 					<thead>
 						<tr>
-							<th class="fes_pr_head">お祭PR</th>
+							<th class="fes-pr-head">お祭PR</th>
 						</tr>
 					</thead>
 					<tbody>
-						<td  class="fes_pr_body"> <%= @festival.profile %> </td>
+						<td  class="fes-pr-body"> <%= @festival.profile %> </td>
 					</tbody>
 				</table>
 			</div>
@@ -135,12 +135,12 @@
 				<table class="table table-bordered">
 					<thead>
 						<tr>
-							<th class="fes_pr_head">お知らせ一覧</th>
+							<th class="fes-pr-head">お知らせ一覧</th>
 						</tr>
 					</thead>
 					<% @informations.each do |information| %>
 					<tbody>
-						<td  class="fes_pr_body"> <%= information.message %> </td>
+						<td  class="fes-pr-body"> <%= information.message %> </td>
 					</tbody>
 					<% end %>
 				</table>
