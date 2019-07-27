@@ -20,6 +20,7 @@ class PointsController < ApplicationController
 	   	   flash[:alert] = "変更に失敗しました"
 	   	   redirect_to festival_matchs_path(festival_id: @point.festival_id)
 	  end
+	end
 
 
 
