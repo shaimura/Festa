@@ -39,7 +39,11 @@ class ApplicationController < ActionController::Base
 				    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :postalcode, :address, :telephone])
 				    devise_parameter_sanitizer.permit(:sign_in, keys: [:name, :postalcode, :address, :telephone])
 					  devise_parameter_sanitizer.permit(:account_update, keys: [:name, :postalcode, :address, :telephone])
-			  end
+          elsif params['controller'] == 'admins/registrations'
+            devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+            devise_parameter_sanitizer.permit(:sign_in, keys: [:name])
+            devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+        end
 		 end
 
 
