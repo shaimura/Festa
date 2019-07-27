@@ -1,6 +1,6 @@
 class CreatePresents < ActiveRecord::Migration[5.2]
   def change
-    create_table :presents do |t|
+    create_table :presents, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
 
     	t.string :product
     	t.string :product_image_id
