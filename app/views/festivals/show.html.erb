@@ -56,15 +56,17 @@
 								 <%= @festival.staff_status %>
 							</div>
 							<div class="col-lg-6 col-xs-6">
-									 <% if @festival.staff_status == "募集中" and @festival.matched_by?(current_staff) %>
-									 <%= link_to festival_match_path(@festival.id), class: "link-none", method: :delete do %>
-									 <p class="orange-button link-none">参加を取り消す</p>
-									<% end %>
-									<% elsif @festival.staff_status == "募集中" %>
-									<%= form_for @matching, url:festival_matchs_path(@festival) do |matching| %>
-									<%= matching.hidden_field :festival_id, :value => @festival.id %>
-									<%= matching.submit "お祭に参加する", class: "blue-button" %>
-									<% end %>
+								<% if staff_signed_in? %>
+										 <% if @festival.staff_status == "募集中" and @festival.matched_by?(current_staff) %>
+											 <%= link_to festival_match_path(@festival.id), class: "link-none", method: :delete do %>
+											 <p class="orange-button link-none">参加を取り消す</p>
+											<% end %>
+											<% elsif @festival.staff_status == "募集中" %>
+											<%= form_for @matching, url:festival_matchs_path(@festival) do |matching| %>
+											<%= matching.hidden_field :festival_id, :value => @festival.id %>
+											<%= matching.submit "お祭に参加する", class: "blue-button" %>
+											<% end %>
+										<% end %>
 								<% end %>
 							</div>
 						</td>
