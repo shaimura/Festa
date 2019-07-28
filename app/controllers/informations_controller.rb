@@ -5,7 +5,7 @@ class InformationsController < ApplicationController
 	def create
 		@festival = Festival.find(params[:festival_id])
 		@information = Information.new(information_params)
-		@information.festival = festival
+		@information.festival = @festival
 		if @information.save
 		   flash[:notice] = "登録しました"
 		   redirect_to organizations_festival_path(@festival)

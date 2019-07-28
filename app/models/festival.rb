@@ -53,7 +53,7 @@ class Festival < ApplicationRecord
 
 
 	def matched_by?(staff)
-	  matchs.where(staff_id: staff.id).exists?
+		matchs.where(staff_id: staff).exists?
 	end
 
 

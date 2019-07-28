@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
 
   namespace :organizations do
-    resources :organization_inquirys
+    resources :organization_inquirys, only:[:new, :create]
     resources :festivals do
       resources :informations
     end
@@ -49,10 +49,10 @@ Rails.application.routes.draw do
     get 'organizations/search'
     get 'festivals/name'
     get 'staffs/search'
-    resources :staff_replies
-    resources :staff_inquirys
-    resources :organization_inquirys
-    resources :organization_replies
+    resources :staff_replies, only:[:create]
+    resources :staff_inquirys, only:[:index, :show]
+    resources :organization_inquirys, only:[:index, :show]
+    resources :organization_replies, only:[:create]
     resources :organizations do
       get 'festivals'
     end
@@ -61,14 +61,14 @@ Rails.application.routes.draw do
       resources :matchs
       resources :informations
     end
-    resources :presents
-    resources :orders
+    resources :presents, only:[:new, :edit, :create, :update]
+    resources :orders, only:[:index, :update]
   end
 
 
     namespace :staffs do
-    resources :staff_inquirys
-    resources :orders
+    resources :staff_inquirys, only:[:new, :create]
+    resources :orders, only:[:new, :create]
     get 'information'
   end
 
@@ -83,22 +83,22 @@ Rails.application.routes.draw do
 
 
   resources :staffs do
-    resources :staff_inquirys
+    resources :staff_inquirys, only:[:new, :create]
     resources :orders
   end
 
 
 
   resources :organizations do
-    resources :organization_inquirys
+    resources :organization_inquirys, only:[:new, :create]
   end
 
 
 
 
-  resources :festivals do
-    resources :matchs
-    resources :informations
+  resources :festivals, only:[:show, :index] do
+    resources :matchs, only:[:index, :create, :destroy]
+    resources :informations, only:[:create]
   end
 
     resources :points
