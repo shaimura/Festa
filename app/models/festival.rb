@@ -104,6 +104,7 @@ class Festival < ApplicationRecord
 
 	end
 
+	#管理者側の検索機能
 	def self.admin_search_name(admin_search_name)
 		if admin_search_name
 			Festival.unscoped.where(["name LIKE ?", "%#{admin_search_name}%"])

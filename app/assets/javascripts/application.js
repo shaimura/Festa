@@ -69,7 +69,6 @@ $(function(){
 		})(file);
 		reader.readAsDataURL(file);
 
-		console.log(file)
 	});
 });
 
