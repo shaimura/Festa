@@ -34,7 +34,7 @@ class Organizations::FestivalsController < ApplicationController
 
   def update
     @festival = Festival.find(params[:id])
-    if festival.update(festival_params)
+    if @festival.update(festival_params)
       flash[:notice] = "変更しました"
       redirect_to organizations_festival_path(@festival)
     else

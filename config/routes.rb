@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get 'festivals/name'
   get 'admins/top'
   get 'festivals/staffs'
+  get 'festivals/etc'
 
 
 
