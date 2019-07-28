@@ -70,6 +70,10 @@ body{
 	cursor: pointer;
 }
 
+.pointa:hover {
+  cursor: pointer;
+}
+
 
 .balloon1{
 	display: none;
@@ -157,7 +161,7 @@ footer{
   right: 15px;
    width: 60px;
   height: 60px;
-  background: image-url("arrow3.png");
+  background: image-url("/images/arrow3.png");
   background-size: cover;
   cursor: pointer;
 }

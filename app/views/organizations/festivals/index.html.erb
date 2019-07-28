@@ -1,5 +1,26 @@
 <%= render 'layouts/header' %>
 
+<% if notice %>
+<div class="alert alert-info alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">close</span>
+  </button>
+  <%= notice %>
+</div>
+<% end %>
+<% if alert %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">close</span>
+  </button>
+  <%= alert %>
+</div>
+<% end %>
+
+
+
 <div class="container">
 	<div class="row">
 
@@ -18,11 +39,16 @@
 					<% @festivals.each do |festival| %>
 					<tbody>
 					<tr>
-						<td style="text-align: center;"><%=link_to organizations_festival_path(id: festival.id) do %>
+						<td style="text-align: center;">
+							<%=link_to organizations_festival_path(id: festival.id) do %>
 							<%= attachment_image_tag festival, :fes_image, :fill, 50, 50, format: 'jpg' %>
 							<% end %>
-							</td>
-						<td><%= festival.name %></td>
+						</td>
+						<td>
+							<%=link_to organizations_festival_path(id: festival.id) do %>
+							<p class="link-none pointa"><%= festival.name %></p>
+							<% end %>
+						</td>
 		                <td><%= festival.date %></td>
 		                <td>
 		                	<%= festival.staff_status %>
@@ -34,7 +60,6 @@
 
 	</div>
 </div>
-
 
 
 

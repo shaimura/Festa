@@ -28,6 +28,7 @@ class MatchsController < ApplicationController
 		@festival = Festival.find(params[:festival_id])
 		@matchs = Match.where(festival_id: @festival)
 		@newpoint = Point.new
+		@pointday = @festival.date.since(14.days)
 	end
 
 	protected
