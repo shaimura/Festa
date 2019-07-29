@@ -4,6 +4,9 @@ class Organizations::OrganizationInquirysController < ApplicationController
   def new
   	@organization_inquiry = OrganizationInquiry.new
     @organization = current_organization
+    if current_organization.id != @organization.id
+       redirect_to root_path
+    end
   end
 
   def create
