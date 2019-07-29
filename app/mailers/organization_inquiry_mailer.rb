@@ -5,7 +5,7 @@ class OrganizationInquiryMailer < ApplicationMailer
 		@organization = @organization_inquiry.organization
 		mail(
 			from: @organization.email,
-			to:    'portforliofest@gmail.com',
+			to:    ENV['KEY'],
 			subject: 'お問い合わせ通知'
 			)
 	end
