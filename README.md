@@ -73,6 +73,26 @@ javascript<br>
 お祭りの主催者団体がスタッフに付与した情報があるテーブル
 
 
+#使用したgem
+'devise'<br>
+ログイン機能をつけるgem
 
+'bootstrap-sass'<br>
+レイアウトをやりやすくするためのgem
+
+'jquery-rails'<br>
+jqueryを使うためのgem
+
+'refile','refile-mini_magick'<br>
+画像を扱うためのgem
+
+'kaminari'<br>
+ページネーションのためのgem
+
+'paranoia','acts_as_paranoid'<br>
+論理削除のためのgem
+
+'font-awesome-rails'<br>
+アイコンのためのgem
 
 
