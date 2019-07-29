@@ -2,15 +2,16 @@
 
 This README would normally document whatever steps are necessary to get the
 
-#リポジトリ名
+#リポジトリ名<br>
 「Festa」
 
-#お祭り検索サイト
+#サイト種類<br>
+お祭り検索サイト
 
-#開発環境
+#開発環境<br>
 Ruby on Rails
 
-#使用言語
+#使用言語<br>
 ruby<br>
 javascript<br>
 
@@ -29,6 +30,30 @@ javascript<br>
 １２）スタッフ、団体共に退会機能がある<br>
 １３）管理者側で、スタッフと団体とお祭りの名前検索ができる<br>
 14)管理者側でプレゼントの配送状況を変更できる<br>
+
+
+#主なテーブル<br>
+１）Admin　テーブル<br>
+管理者の情報があるテーブル<br>
+
+２）Staff テーブル<br>
+スタッフの情報があるテーブル<br>
+
+３）organization テーブル<br>
+主催者団体の情報があるテーブル<br>
+
+4)festival　テーブル<br>
+お祭りの情報があるテーブル<br>
+
+5)information テーブル<br>
+お祭りのスタッフに対するお知らせがあるテーブル<br>
+
+6)staff_inquirie<br>
+スタッフのお問い合わせのテーブル
+
+7)organization_inquirie<br>
+団体のお問い合わせのテーブル
+
 
 
 
