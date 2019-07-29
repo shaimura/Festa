@@ -46,7 +46,7 @@
 
 		<div style="margin-bottom: 20px">
 			<%= present.label :use_point, "必要ポイント" %>
-			<%= present.number_field :use_point %>
+			<%= present.number_field :use_point, min: 1 %>
 		</div>
 
 		<div style="margin-bottom: 20px">
