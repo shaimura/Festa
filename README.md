@@ -95,4 +95,6 @@ jqueryを使うためのgem
 'font-awesome-rails'<br>
 アイコンのためのgem
 
+'geocoder'<br>
+ジオコーディングするためのgem
 
