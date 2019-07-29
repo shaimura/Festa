@@ -12,6 +12,9 @@ class OrganizationsController < ApplicationController
 
   def edit
   	@organization = Organization.find(params[:id])
+    if current_organization.id != @organization.id
+       redirect_to root_path
+    end
   end
 
   def update

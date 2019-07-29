@@ -28,6 +28,9 @@ class StaffsController < ApplicationController
 
 	def edit
 		@staff = Staff.find(params[:id])
+		if current_staff.id != @staff.id
+	    	redirect_to root_path
+	    end
 	end
 
 
