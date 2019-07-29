@@ -3,5 +3,4 @@ ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../Gemfile', __dir__)
 load Gem.bin_path('bundler', 'bundle')
 
 
-export KEY="portforliofest@gmail.com"
-export SECRET_KEY="01310815"
+
