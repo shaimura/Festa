@@ -8,6 +8,9 @@ class Organizations::FestivalsController < ApplicationController
   def show
   	 @festival = Festival.find(params[:id])
      @organization = @festival.organization
+    if current_organization.id != @organization.id
+       redirect_to root_path
+    end
      @information = Information.new
      @informations = Information.where(festival_id: @festival)
   end
@@ -30,6 +33,10 @@ class Organizations::FestivalsController < ApplicationController
 
   def edit
     @festival = Festival.find(params[:id])
+    @organization = @festival.organization
+    if current_organization.id != @organization.id
+       redirect_to root_path
+    end
   end
 
   def update
