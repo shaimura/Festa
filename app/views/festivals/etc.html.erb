@@ -1,0 +1,102 @@
+<%= render 'layouts/header' %>
+
+
+<% if notice %>
+<div class="alert alert-info alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">close</span>
+  </button>
+  <%= notice %>
+</div>
+<% end %>
+<% if alert %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">close</span>
+  </button>
+  <%= alert %>
+</div>
+<% end %>
+
+
+
+
+
+<p class="title-text">お祭り編集画面</p>
+
+<div class="row">
+<div class="col-lg-4"></div>
+<div class="col-lg-8">
+	<%= form_for @festival, url:organizations_festival_path(festival_id: @festival) do |festival| %>
+
+	<div class="festival-new-box">
+		<%= festival.label :name, "１：お祭りの名前を入力してください", class: "festival-new-text" %><br>
+		<%= festival.text_field :name, class: "festival-form" %>
+	</div>
+
+	<div class="festival-new-box">
+		<%= festival.label :area, "２：地域を選択してください", class: "festival-new-text" %>
+		<%= festival.select :area, Festival.areas.keys.map{|area| [area, area]},{},{class: "select-box"} %>
+	</div>
+
+	<div class="festival-new-box">
+		<%= festival.label :date, "３：開催日を選択してください", class: "festival-new-text" %>
+		<%= festival.text_field :date, class: "date-picker" , autocomplete: "off" %>
+	</div>
+
+	<div class="festival-new-box">
+		<%= festival.label :address, "４：住所を入力してください", class: "festival-new-text" %><br>
+		<%= festival.text_field :address, class: "festival-form" %>
+	</div>
+
+	<div class="festival-new-box">
+		<%= festival.label :traffic, "５：交通情報を入力してください（例：JR渋谷駅から徒歩５分）", class: "festival-new-text" %>
+		<%= festival.text_field :traffic, class: "festival-form" %>
+	</div>
+
+	<div class="festival-new-box">
+		<%= festival.label :staff_status, "６：スタッフ募集状況を選択してください", class: "festival-new-text" %>
+		<%= festival.select :staff_status, Festival.staff_statuses.keys.map{|staff| [staff, staff]},{},{class: "select-box"} %>
+	</div>
+
+	<div class="festival-new-box">
+		<%= festival.label :fes_image, "７：お祭りイメージ画像を登録してください", class: "festival-new-text" %>
+		<%= festival.attachment_field :fes_image %>
+		<div class="row">
+			<div class="col-lg-3">
+				<div style="margin-top: 10px;"><%= attachment_image_tag @festival,:fes_image, :fill,200,200 %></div>
+			</div>
+			<div class="col-lg-9">
+				<div class="preview festival-new-image">プレビューが表示されます</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="festival-new-box">
+		<%= festival.label :web_url, "８：関連サイトのURLを入力してください", class: "festival-new-text" %><br>
+		<%= festival.text_field :web_url, class: "festival-form" %>
+	</div>
+
+	<div class="festival-new-box">
+		<%= festival.label :profile, "９：お祭りのPRを入力してください", class: "festival-new-text" %><br>
+		<%= festival.text_area :profile, class: "festival-form-pr" %>
+	</div>
+
+	<div>
+		<%= festival.submit "内容を登録します", class: "green-button festival-button" %>
+	</div>
+
+</div>
+</div>
+
+
+
+
+<% end %>
+
+
+
+
+
