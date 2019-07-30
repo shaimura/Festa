@@ -11,7 +11,10 @@ class Staffs::OrdersController < ApplicationController
   def create
   	@order = Order.new(order_params)
   	@order.staff = current_staff
-  	if @order.save
+    @present = @order.present
+    @point = remaining_point(current_staff)
+  	if @point >= @order.present.use_point
+       @order.save
        flash[:notice] = "登録しました"
   	   redirect_to new_staffs_order_path
     else
