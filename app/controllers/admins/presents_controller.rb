@@ -25,7 +25,7 @@ class Admins::PresentsController < ApplicationController
 
   def update
     @present = Present.find(params[:id])
-    if present.update!(present_params)
+    if @present.update(present_params)
       flash[:notice] = "変更しました"
       redirect_to new_admins_present_path
     else

@@ -124,6 +124,7 @@
 
 				<div>
 					<p class="new-info-text">新規お知らせ配信</p>
+					<p style="text-align: center;">（このお祭りにスタッフとして登録した人へのお知らせになります）</p>
 					<%= form_for @information, url: festival_informations_path(@festival) do |info| %>
 					<%= info.text_area :message, size: "200x10", class: 'form-control new-info-box' %>
 					<%= info.hidden_field :festival_id, :value => @festival.id %>
