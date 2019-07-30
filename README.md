@@ -1,9 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-
 #リポジトリ名<br>
 「Festa」
+
+#制作日
+2019年7月1日~
 
 #サイト種類<br>
 お祭り検索サイト
