@@ -43,7 +43,7 @@
 					 	<div class="order-text">
 					 		<p>必要ポイント :<%= present.use_point %></p>
 					 	</div>
-					 	<% if remaining_point(@staff) > present.use_point %>
+					 	<% if remaining_point(@staff) >= present.use_point %>
 					 	<div class="order-text">
 					 		<%= order.hidden_field :present_id, :value => present.id %></p>
 							<%= order.submit "ポイントを使う" %>

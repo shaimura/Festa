@@ -5,7 +5,7 @@ class StaffInquiryMailer < ApplicationMailer
 		@staff = @staff_inquiry.staff
 		mail(
 			from: @staff.email,
-			to:    'portforliofest@gmail.com',
+			to:    ENV['KEY'],
 			subject: 'お問い合わせ通知'
 			)
 	end
