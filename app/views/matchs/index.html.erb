@@ -39,12 +39,12 @@
 		                <td>
 		                	総合ポイント：<%= total_point(matching.staff) %>
 		                </td>
-		                <% if Point.find_by(staff_id: matching.staff.id) %>
+		                <% if Point.find_by(staff_id: matching.staff.id, festival_id: matching.festival.id) %>
 		                <td>
 		                	現在のポイント：<%= remaining_point(matching.staff) %>
 		                </td>
 		                <td>
-		                	<%= form_for Point.find_by(staff_id: matching.staff.id) do |point| %>
+		                	<%= form_for Point.find_by(staff_id: matching.staff.id, festival_id: matching.festival.id) do |point| %>
 		                	<%= point.number_field :plus_point, min: 1, max: 3, class: "form-control", style: "width: 50px;"  %>
 		                </td>
 		                <td>
