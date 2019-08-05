@@ -28,7 +28,7 @@
       <p class="staff-title">スタッフページ</p>
 
       <div class="row">
-        <div class="col-lg-6 col-xs-12" style="padding: 30px 50px 30px 50px;">
+        <div class="col-lg-6 col-xs-12 staff-show-box">
 
 
         <table class="table">
@@ -54,10 +54,10 @@
           <tr class="staff-info">
             <td>ポイント</td>
             <td>
-              <div class="col-lg-4">
+              <div class="col-lg-4 col-xs-4">
                 <%= remaining_point(@staff) %>
               </div>
-              <div class="col-lg-8">
+              <div class="col-lg-8 col-xs-8">
                <p class="green-button"><%= link_to "ポイントを使う", new_staffs_order_path, class: "link-none" %></p>
               </div>
             </td>
@@ -67,9 +67,9 @@
           </tr>
         </table>
 
-        <p class="red-button info-button"><%= link_to "お祭りからのお知らせ一覧", staffs_information_path, class: "link-none" %></p>
+        <p class="red-button info-button staff-show-button"><%= link_to "お祭りからのお知らせ一覧", staffs_information_path, class: "link-none" %></p>
 
-        <p class="blue-button info-button"><%= link_to "登録情報を変更する", edit_staff_path, class: "link-none" %></p>
+        <p class="blue-button info-button staff-show-button"><%= link_to "登録情報を変更する", edit_staff_path, class: "link-none" %></p>
 
 
 
@@ -78,13 +78,13 @@
         <div class="col-lg-6 col-xs-12" style="padding: 30px 50px 30px 40px;">
 
           <div class="row" style="margin-left: 10px;">
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-xs-2">
               <button id="prev" type="button" class="calender-button blue-button">前月</button>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-xs-6">
               <div id="calendarhed"></div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-xs-2">
               <button id="next" type="button" class="calender-button blue-button">来月</button>
             </div>
           </div>
