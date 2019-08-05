@@ -16,10 +16,10 @@ class PointsController < ApplicationController
 	    if @point.update(point_params)
 	       flash[:notice] = "変更しました"
 	       redirect_to festival_matchs_path(festival_id: @point.festival)
-	   else
+	      else
 	   	   flash[:alert] = "変更に失敗しました"
 	   	   redirect_to festival_matchs_path(festival_id: @point.festival)
-	   end
+	    end
 	end
 
 
